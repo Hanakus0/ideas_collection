@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Users" %>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path %>
+
+<div class="bg-orange-600">tailwindCSS</div>
+<div>DaisyUI</div>
+<header class="bg-blue-600 text-white p-4">
+  <div class="container mx-auto">
+    <h1 class="text-2xl font-bold">TODOアプリ</h1>
+  </div>
+</header>
+<footer class="bg-gray-800 text-white text-center p-4 mt-8">
+  <p>&copy; 2024 TODOアプリ. All Rights Reserved.</p>
+</footer>

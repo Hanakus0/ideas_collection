@@ -104,7 +104,7 @@ KJ法などで自分一人でアイデアを練る手法はあるが結局は自
 
 ---
 ### 画面遷移図
-Figma：https://www.figma.com/design/vz6XbnnnYwU8RdRK2PTKqH/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?node-id=0-1&node-type=canvas&t=8M1pUhCfBERJVRpg-0
+Figma：https://www.figma.com/design/vz6XbnnnYwU8RdRK2PTKqH/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?m=auto&t=3V13DKribKRTLizi-1
 
 ### READMEに記載した機能
 - [x] ユーザー登録機能

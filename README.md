@@ -163,6 +163,7 @@ Figma：https://www.figma.com/design/vz6XbnnnYwU8RdRK2PTKqH/%E5%8D%92%E6%A5%AD%E
 - [x] ユーザー登録機能
 - [x] ログイン機能
 - [x] 投稿機能 (画像投稿含む)
+- [x] 投稿下書き保存機能
 - [x] 投稿のジャンル登録
 - [x] 投稿のタグ登録
 - [x] 引用投稿機能

@@ -12,13 +12,33 @@
   <% end %>
 
   <div>
+    <%= form.label :user_uid, style: "display: block" %>
+    <%= form.text_field :user_uid %>
+  </div>
+
+  <div>
+    <%= form.label :profile_image, style: "display: block" %>
+    <%= form.text_field :profile_image %>
+  </div>
+
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.number_field :gender %>
+  </div>
+
+  <div>
+    <%= form.label :age, style: "display: block" %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :introduction, style: "display: block" %>
+    <%= form.text_area :introduction %>
   </div>
 
   <div>

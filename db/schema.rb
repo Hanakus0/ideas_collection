@@ -114,6 +114,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_13_164512) do
 
   create_table "users", force: :cascade do |t|
     t.string "user_uid"
+    t.string "screen_name"
+    t.string "account_name"
     t.string "profile_image"
     t.string "name"
     t.integer "gender"

@@ -4,11 +4,11 @@
 
 <h1>Users</h1>
 
-<div id="admin_users" >
+<div id="admin_users">
   <% @admin_users.each do |admin_user| %>
     <%= render admin_user %>
     <p>
-      <%= link_to "Show this user", admin_user %>
+      <%= link_to "Show this user", admin_user_path(admin_user) %>
     </p>
   <% end %>
 </div>

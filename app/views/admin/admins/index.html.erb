@@ -1,0 +1,41 @@
+<h1 class="bg-orange-600">ADMIN</h1>
+<ul class="ps-5 mt-2 space-y-1">
+  <li>
+    <%= link_to 'admin_users_path', admin_users_path, class: "btn btn-outline"%>
+  </li>
+  <ul class="ps-5 mt-2 space-y-1 list-inside">
+    <li>
+      <%= link_to 'admin_follows_path', admin_follows_path, class: "btn btn-outline" %>
+    </li>
+  </ul>
+  <li>
+    <%= link_to 'admin_posts_path', admin_posts_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_bookmarks_path', admin_bookmarks_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_comment_likes_path', admin_comment_likes_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_comments_path', admin_comments_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_post_genres_path', admin_post_genres_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_post_likes_path', admin_post_likes_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_post_records_path', admin_post_records_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_tags_path', admin_tags_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_post_tags_path', admin_post_tags_path, class: "btn btn-outline" %>
+  </li>
+  <li>
+    <%= link_to 'admin_quote_relations_path', admin_quote_relations_path, class: "btn btn-outline" %>
+  </li>
+</ul>

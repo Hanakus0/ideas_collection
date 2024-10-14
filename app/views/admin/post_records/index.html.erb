@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Post records" %>
+
+<h1>Post records</h1>
+
+<div id="admin_post_records">
+  <% @admin_post_records.each do |admin_post_record| %>
+    <%= render admin_post_record %>
+    <p>
+      <%= link_to "Show this post record", admin_post_record %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post record", new_admin_post_record_path %>

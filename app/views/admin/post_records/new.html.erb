@@ -1,0 +1,11 @@
+<% content_for :title, "New post record" %>
+
+<h1>New post record</h1>
+
+<%= render "form", admin_post_record: @admin_post_record %>
+
+<br>
+
+<div>
+  <%= link_to "Back to post records", admin_post_records_path %>
+</div>

@@ -23,10 +23,14 @@ class User < ApplicationRecord
   # バリデーション
   # column: user_uid
   validates :user_uid, presence: true, length: { minimum:15 , maximum: 20 }, uniqueness: true
-  # profile_image
   # column: screen_name
   validates :screen_name, presence: true, length: { minimum: 5 , maximum: 15 }, uniqueness: true
-
+  # column: account_name
+  validates :name, presence: true, length: { minimum: 1 , maximum: 20 }
+  #######################
+  # TODO: profile_image #
+  #######################
+  # validates :gender
 
 
 end

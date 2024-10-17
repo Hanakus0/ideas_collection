@@ -108,6 +108,8 @@ GEM
       reline (>= 0.3.8)
     debug_inspector (1.2.0)
     drb (2.2.1)
+    enumerize (2.8.1)
+      activesupport (>= 3.2)
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -303,6 +305,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+  enumerize
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

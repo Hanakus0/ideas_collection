@@ -1,16 +1,21 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Users" %>
-
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<!-- main -->
+<div class="bg-white py-12 sm:py-12">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">ユーザー一覧</h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600">こちらの画面はユーザー一覧になります</p>
+    </div>
+    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+    <!-- user_cards-START -->
+      <% @users.each do |user| %>
+          <%= render 'user_card', user: user %>
+      <% end %>
+      <!-- user_cards-END -->
+    </div>
+  </div>
 </div>
+
 
 <%= link_to "New user", new_user_path %>

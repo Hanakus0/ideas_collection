@@ -2,6 +2,7 @@
 
 one:
   user_uid: MyString
+  email: alice@example.com
   profile_image: MyString
   name: MyString
   gender: 1
@@ -10,6 +11,7 @@ one:
 
 two:
   user_uid: MyString
+  email: bob@example.com
   profile_image: MyString
   name: MyString
   gender: 1

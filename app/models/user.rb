@@ -1,10 +1,14 @@
 class User < ApplicationRecord
-  ################
-  # table: posts #
-  ################
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   # For `gem Enumerize`
   extend Enumerize
 
+  ################
+  # table: posts #
+  ################
   # アソシエーション
   has_many :posts
   # table: post_likes

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # admin resources
+  devise_for :users
+  get "home/index"
+  # admin routes
   namespace :admin do
     get '/', to: 'admins#index'
     resources :users
@@ -16,7 +18,9 @@ Rails.application.routes.draw do
     resources :tags
   end
 
-  root "posts#index"
+  # general routes
+  devise_for :users # deviseを使用するURLに「users」を含む
+  root "home#index"
   resources :users
   resources :posts
 end

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get "home/index"
+  # by devise
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
   # admin routes
   namespace :admin do
     get '/', to: 'admins#index'
@@ -19,8 +23,6 @@ Rails.application.routes.draw do
   end
 
   # general routes
-  devise_for :users # deviseを使用するURLに「users」を含む
   root "home#index"
-  resources :users
   resources :posts
 end

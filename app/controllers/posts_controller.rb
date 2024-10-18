@@ -65,6 +65,8 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:post_uid, :user_id, :genre_id, :images, :title, :content, :draft_flg)
+      # create_User
+
+      # params.require(:post).permit(:post_uid, :images, :title, :content, :draft_flg).merge(user_id: , genre_id: );
     end
 end

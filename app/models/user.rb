@@ -36,7 +36,7 @@ class User < ApplicationRecord
   # TODO: profile_image #
   #######################
   # column: gender
-  validates :gender, presence: true, inclusion: { in: (0..2) }
+  # validates :gender, presence: true, inclusion: { in: (0..2) }
   # column: introduction (文字数はXの自己紹介文160文字制限仕様に倣う)
   validates :introduction, length: { maximum: 160, too_long: "自己紹介文は 160 文字以内にしてください" }, allow_blank: true
 

@@ -1,13 +1,15 @@
 class PostGenre < ApplicationRecord
+  extend Enumerize
+
   # バリデーション
-  validates
+  # validates
 
   # バリデーション
   # validates :genre
 
   # 列挙型
   # column: genre
-  enumerize :genre, in: {
+  enumerize :name, in: [
                           :technology, # サイエンス・テクノロジー
                           :entertainment, # 芸能・エンタメ
                           :lifestyle, # 暮らし・健康・料理
@@ -23,5 +25,5 @@ class PostGenre < ApplicationRecord
                           :travel, # 旅行
                           :funny, # ネタ・適当なアイデア
                           :other, # その他
-                        }
+                        ], default: :other # その他
 end

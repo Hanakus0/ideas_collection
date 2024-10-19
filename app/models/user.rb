@@ -6,9 +6,19 @@ class User < ApplicationRecord
   # For `gem Enumerize`
   extend Enumerize
 
+  require 'securerandom'
+
+
   ################
-  # table: posts #
+  # table: users #
   ################
+  # アトリビュート
+  attribute :user_uid, :string, default: -> { SecureRandom.alphanumeric(30) }
+  attribute :screen_name, :string, default: -> { SecureRandom.alphanumeric }
+  attribute :account_name, :string, default: '匿名さん'
+  attribute :gender, :integer, default: 0
+  attribute :introduction, :string, default: 'よろしくお願いいたします'
+
   # アソシエーション
   has_many :posts
   # table: post_likes
@@ -31,11 +41,11 @@ class User < ApplicationRecord
 
   # バリデーション
   # column: user_uid
-  validates :user_uid, presence: true, length: { minimum:15 , maximum: 20 }, uniqueness: true
+  validates :user_uid, presence: true, length: { is: 30 }, uniqueness: true
   # column: screen_name
-  validates :screen_name, presence: true, length: { minimum: 5 , maximum: 15 }, uniqueness: true
+  validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true
   # column: account_name
-  validates :name, presence: true, length: { minimum: 1 , maximum: 20 }, allow_blank: true
+  validates :account_name, presence: true, length: { minimum: 1 , maximum: 20 }, allow_blank: true
   #######################
   # TODO: profile_image #
   #######################
@@ -47,8 +57,5 @@ class User < ApplicationRecord
   # 列挙型
   # column: gender
   enumerize :gender, in: { other: 0, male: 1, female: 2 }, default: :other
-
-
-
 
 end

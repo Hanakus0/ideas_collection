@@ -1,0 +1,11 @@
+<% content_for :title, "New post like" %>
+
+<h1>New post like</h1>
+
+<%= render "form", admin_post_like: @admin_post_like %>
+
+<br>
+
+<div>
+  <%= link_to "Back to post likes", admin_post_likes_path %>
+</div>

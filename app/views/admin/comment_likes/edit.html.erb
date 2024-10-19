@@ -1,0 +1,12 @@
+<% content_for :title, "Editing comment like" %>
+
+<h1>Editing comment like</h1>
+
+<%= render "form", admin_comment_like: @admin_comment_like %>
+
+<br>
+
+<div>
+  <%= link_to "Show this comment like", @admin_comment_like %> |
+  <%= link_to "Back to comment likes", admin_comment_likes_path %>
+</div>

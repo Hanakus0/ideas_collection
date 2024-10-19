@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_quote_relation %>
+
+<div>
+  <%= link_to "Edit this quote relation", edit_admin_quote_relation_path(@admin_quote_relation) %> |
+  <%= link_to "Back to quote relations", admin_quote_relations_path %>
+
+  <%= button_to "Destroy this quote relation", @admin_quote_relation, method: :delete %>
+</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_uid: MyString
+  email: alice@example.com
+  profile_image: MyString
+  name: MyString
+  gender: 1
+  age: 1
+  introduction: MyText
+
+two:
+  user_uid: MyString
+  email: bob@example.com
+  profile_image: MyString
+  name: MyString
+  gender: 1
+  age: 1
+  introduction: MyText

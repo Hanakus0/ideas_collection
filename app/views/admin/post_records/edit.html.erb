@@ -1,0 +1,12 @@
+<% content_for :title, "Editing post record" %>
+
+<h1>Editing post record</h1>
+
+<%= render "form", admin_post_record: @admin_post_record %>
+
+<br>
+
+<div>
+  <%= link_to "Show this post record", @admin_post_record %> |
+  <%= link_to "Back to post records", admin_post_records_path %>
+</div>

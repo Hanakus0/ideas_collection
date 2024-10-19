@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Post genres" %>
+
+<h1>Post genres</h1>
+
+<div id="admin_post_genres">
+  <% @admin_post_genres.each do |admin_post_genre| %>
+    <%= render admin_post_genre %>
+    <p>
+      <%= link_to "Show this post genre", admin_post_genre %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post genre", new_admin_post_genre_path %>

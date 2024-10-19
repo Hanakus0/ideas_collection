@@ -1,0 +1,12 @@
+<% content_for :title, "Editing bookmark" %>
+
+<h1>Editing bookmark</h1>
+
+<%= render "form", admin_bookmark: @admin_bookmark %>
+
+<br>
+
+<div>
+  <%= link_to "Show this bookmark", @admin_bookmark %> |
+  <%= link_to "Back to bookmarks", admin_bookmarks_path %>
+</div>

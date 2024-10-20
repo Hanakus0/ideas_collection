@@ -1,4 +1,19 @@
 ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      user: ユーザー 
+      board: 掲示板
+    # model毎に定義したいattributesを記述
+    attributes:
+        user:
+          id: ID
+          first_name: 名前
+          last_name: 姓
+          email: メールアドレス
+          file: プロフィール画像
+          crypted_password: パスワード
+  # 
   enumerize:
     user:
       gender:

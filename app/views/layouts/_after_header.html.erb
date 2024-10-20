@@ -7,10 +7,32 @@
       <% end %>
     </div>
     <div class="hidden lg:flex lg:gap-x-4">
-      <%= link_to "みんなの投稿を見る", posts_path, class: "p-2.5 text-sm font-semibold leading-6 text-gray-900" %>
-      <%= link_to destroy_user_session_pathdo %>
-        <div class="px-6 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit">ログアウト</div>
-      <% end %>
+      <%= link_to "みんなの投稿を見る", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+      <%= link_to "投稿する", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+      <%= link_to "マイページ", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+      <!-- Menu button -->
+      <details class="dropdown dropdown-bottom dropdown-end">
+        <summary class="btn drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
+          <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </summary>
+        <ul class="menu dropdown-content rounded-box z-[1] w-52 p-2 shadow bg-slate-100 leading-6 text-gray-900 border-2 border-slate-300">
+          <li>
+            <%= link_to "ブックマーク", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          </li>
+          <li>
+            <%= link_to "フォロー", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          </li>
+          <li>
+            <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          </li>
+          <li class="border-1 border-t-neutral-950"></li>
+          <li class="mb-4">
+              <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          </li>
+        </ul>
+      </details>
     </div>
 
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -35,7 +57,7 @@
             </li>
             <li class="border-1 border-t-neutral-950"></li>
             <li class="mb-4">
-               <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold bg-slate-200 leading-6 text-gray-900" %>
+               <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
             </li>
           </ul>
         </div>
@@ -43,5 +65,3 @@
     </div>
   </nav>
 </header>
-
-

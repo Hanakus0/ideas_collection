@@ -1,8 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :timeoutable
   # For `gem Enumerize`
   extend Enumerize
 
@@ -40,6 +44,9 @@ class User < ApplicationRecord
   has_many :like_posts, through: :post_likes, source: :post, dependent: :destroy
 
   # バリデーション
+  # devise field
+  # パスワード登録時に必要な最低文字数を8文字に変更
+  devise :validatable, password_length: 8..128
   # column: user_uid
   validates :user_uid, presence: true, length: { is: 30 }, uniqueness: true
   # column: screen_name

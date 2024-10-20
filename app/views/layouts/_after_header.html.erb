@@ -1,83 +1,74 @@
-<header class="bg-slate-100">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
-    <div class="flex lg:flex-1">
-      <%= link_to root_path class: "-m-1.5 p-1.5" do %>
-        <span class="sr-only">Your Company</span>
-        <img class="h-8 w-auto" src="" alt="【TODO】アイコン">
-      <% end %>
-    </div>
-    <div class="hidden lg:flex lg:gap-x-4">
-      <%= link_to "みんなの投稿を見る", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
-      <%= link_to "投稿する", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
-      <%= link_to "マイページ", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
-      <!-- Menu button -->
-      <details class="dropdown dropdown-bottom dropdown-end">
-        <summary class="btn drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
-          <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </summary>
-        <ul class="menu dropdown-content rounded-box z-[1] w-52 p-2 shadow bg-slate-100 leading-6 text-gray-900 border-2 border-slate-300">
-          <li>
-            <%= link_to "ブックマーク", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-          </li>
-          <li>
-            <%= link_to "フォロー", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-          </li>
-          <li>
-            <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-          </li>
-          <li class="border-1 border-t-neutral-950"></li>
-          <li class="mb-4">
-              <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-          </li>
-        </ul>
-      </details>
-    </div>
+<div class="hidden lg:flex lg:gap-x-4">
+  <%= link_to "みんなの投稿を見る", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+  <%= link_to "投稿する", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+  <%= link_to "マイページ", edit_user_registration_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+  <!-- Menu button -->
+  <details class="dropdown dropdown-bottom dropdown-end">
+    <summary class="btn drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
+      <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </summary>
+    <ul class="menu dropdown-content rounded-box z-[1] w-52 p-2 shadow bg-slate-100 leading-6 text-gray-900 border-2 border-slate-300">
+      <li>
+        <%= link_to "ブックマーク", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      </li>
+      <li>
+        <%= link_to "フォロー", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      </li>
+      <li>
+        <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      </li>
+      <li class="border-1 border-t-neutral-950"></li>
+      <li class="mb-4">
+          <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      </li>
+    </ul>
+  </details>
+</div>
 
-  <!-- Mobile menu, show/hide based on menu open state. -->
-  <div class="flex lg:hidden">
-    <!-- Background backdrop, show/hide based on slide-over state. -->
-      <div class="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
-          <!-- Page content here -->
-          <label for="my-drawer-4" class="drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
-            <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </label>
-        </div>
-        <div class="drawer-side">
-          <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-          <ul class="flex menu bg-base-200 text-base-content min-h-full w-60 p-4">
-            <!-- Sidebar content here -->
-            <li>
-              <%= link_to "みんなの投稿を見る", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li>
-              <%= link_to "投稿する", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li>
-              <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li class="border-1 border-t-neutral-950"></li>
-            <li>
-              <%= link_to "マイページ", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li>
-              <%= link_to "ブックマーク", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li>
-              <%= link_to "フォロー", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li class="border-1 border-t-neutral-950"></li>
-            <li class="mb-4">
-               <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-          </ul>
-        </div>
-      </div>
+<!-- Mobile menu, show/hide based on menu open state. -->
+<div class="flex lg:hidden">
+<!-- Background backdrop, show/hide based on slide-over state. -->
+  <div class="drawer drawer-end">
+    <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <!-- Page content here -->
+      <label for="my-drawer-4" class="drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
+        <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </label>
     </div>
-  </nav>
-</header>
+    <div class="drawer-side">
+      <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="flex menu bg-base-200 text-base-content min-h-full w-60 p-4">
+        <!-- Sidebar content here -->
+        <li>
+          <%= link_to "みんなの投稿を見る", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li>
+          <%= link_to "投稿する", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li>
+          <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li class="border-1 border-t-neutral-950"></li>
+        <li>
+          <%= link_to "マイページ", edit_user_registration_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li>
+          <%= link_to "ブックマーク", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li>
+          <%= link_to "フォロー", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li class="border-1 border-t-neutral-950"></li>
+        <li class="mb-4">
+            <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

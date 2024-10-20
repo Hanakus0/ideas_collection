@@ -21,17 +21,7 @@
     <%= javascript_include_tag "application", defer: true %>
   </head>
     <!-- ログイン有無での表示内容の切り替え -->
-    <%
-=begin%>
- <% if user_signed_in? %>
-      <%= render 'layouts/after_header' %>
-    <% else %>
-      <%= render 'layouts/before_header' %>
-    <% end %> 
-<%
-=end%>
-
-      <%= render 'layouts/after_header' %>
+    <%= render 'layouts/header' %>
   <body>
     <%= yield %>
   </body>

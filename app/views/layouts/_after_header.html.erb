@@ -35,7 +35,7 @@
       </details>
     </div>
 
-      <!-- Mobile menu, show/hide based on menu open state. -->
+  <!-- Mobile menu, show/hide based on menu open state. -->
   <div class="flex lg:hidden">
     <!-- Background backdrop, show/hide based on slide-over state. -->
       <div class="drawer drawer-end">
@@ -50,10 +50,26 @@
         </div>
         <div class="drawer-side">
           <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-          <ul class="flex menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          <ul class="flex menu bg-base-200 text-base-content min-h-full w-60 p-4">
             <!-- Sidebar content here -->
             <li>
               <%= link_to "みんなの投稿を見る", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            </li>
+            <li>
+              <%= link_to "投稿する", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            </li>
+            <li>
+              <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            </li>
+            <li class="border-1 border-t-neutral-950"></li>
+            <li>
+              <%= link_to "マイページ", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            </li>
+            <li>
+              <%= link_to "ブックマーク", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            </li>
+            <li>
+              <%= link_to "フォロー", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
             </li>
             <li class="border-1 border-t-neutral-950"></li>
             <li class="mb-4">

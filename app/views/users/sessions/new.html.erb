@@ -7,7 +7,7 @@
       <!-- START of <form> element -->
       <%= form_with model: @user, url: session_path(resource_name), class: "new_user mt-8 mb-2 w-80 max-w-screen-lg sm:w-96", id: "new_user", locale: true do |f| %>
         <div class="mb-4 flex flex-col gap-6">
-        <%= render "users/shared/error_messages", resource: resource %>
+          <%= render "users/shared/error_messages", resource: resource %>
           <div class="relative h-11 w-full min-w-[200px]">
             <!-- Email -->
             <%= f.email_field :email, id: "user_email",

@@ -9,15 +9,16 @@ class User < ApplicationRecord
          :timeoutable
   # For `gem Enumerize`
   extend Enumerize
-
+  # TODO:以下不要か？
   require 'securerandom'
 
+  # Table name: users
+  # 保存前処理
+  before_save :check_secure_id
+  before_save :check_screen_id
 
-  ################
-  # table: users #
-  ################
   # アトリビュート
-  attribute :user_uid, :string, default: -> { SecureRandom.alphanumeric(30) }
+  attribute :user_uid, :string, default: -> { SecureRandom.alphanumeric(20) }
   attribute :screen_name, :string, default: -> { SecureRandom.alphanumeric }
   attribute :account_name, :string, default: '匿名さん'
   attribute :gender, :integer, default: 0
@@ -48,7 +49,7 @@ class User < ApplicationRecord
   # パスワード登録時に必要な最低文字数を8文字に変更
   devise :validatable, password_length: 8..128
   # column: user_uid
-  validates :user_uid, presence: true, length: { is: 30 }, uniqueness: true
+  validates :user_uid, presence: true, length: { is: 20 }, uniqueness: true
   # column: screen_name
   validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true
   # column: account_name
@@ -64,5 +65,22 @@ class User < ApplicationRecord
   # 列挙型
   # column: gender
   enumerize :gender, in: { other: 0, male: 1, female: 2 }, default: :other
+
+  private ###################################################################
+    # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
+    def check_secure_id
+      loop do
+        break if User.find_by(user_uid: self.user_uid) == nil
+        self.user_uid = SecureRandom.alphanumeric(20)
+      end
+    end
+
+    # 新規会員登録時および、screen_idに重複が無いかをチェックした上で保存する
+    def check_screen_id
+      loop do
+        break if User.find_by(screen_name: self.screen_name) == nil
+        self.screen_name = SecureRandom.alphanumeric
+      end
+    end
 
 end

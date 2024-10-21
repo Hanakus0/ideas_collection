@@ -2,6 +2,8 @@ class PostRecord < ApplicationRecord
   # アソシエーション
   belongs_to :post
 
-  # バリデーション
-  # validates :view_count
+  private ######################################
+    def countup_view
+      self.view_count += 1
+    end
 end

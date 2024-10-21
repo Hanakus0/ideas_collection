@@ -25,6 +25,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        post_record.create(post_id: @post.id)
+
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -65,7 +67,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      genre = PostGenre.find_by(params[:post_genre_id])
+      genre = PostGenre.find_by(name: params.require(:post)[:post_genre_type])
 
       params.require(:post).permit(:post_uid, :images, :title, :content, :draft_flg).merge(user_id: current_user.id, post_genre_id: genre.id);
     end

@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= f.label :post_genre_id, style: "display: block" %>
-    <%= f.text_field :post_genre_id %>
+    <%= f.label :post_genre_type, style: "display: block" %>
+    <%= f.select(:post_genre_type, Post.post_genre_type.options) %>
   </div>
 
   <div>

@@ -1,7 +1,7 @@
 <div class="hidden lg:flex lg:gap-x-4">
-  <%= link_to "みんなの投稿を見る", posts_path, class: "p-2.5 text-sm font-semibold leading-6 text-gray-900" %>
+  <%= link_to t('header.see_posts'), posts_path, class: "p-2.5 text-sm font-semibold leading-6 text-gray-900" %>
   <%= link_to new_user_session_path do %>
-    <div class="px-6 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit">ログイン</div>
+    <div class="px-6 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit"><%= t 'header.signin' %></div>
   <% end %>
   <%= link_to new_user_registration_path do %>
     <div class="px-2 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit"><%= t 'header.signup' %></div>
@@ -26,14 +26,14 @@
       <ul class="flex menu bg-base-200 text-base-content min-h-full w-60 p-4">
         <!-- Sidebar content here -->
         <li>
-          <%= link_to "みんなの投稿を見る", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          <%= link_to t('header.see_posts'), posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li class="border-1 border-t-neutral-950"></li>
         <li class="mb-4">
-            <%= link_to "ログイン", new_user_session_path, class: "text-sm font-semibold bg-slate-200 leading-6 text-gray-900" %>
+            <%= link_to t('header.signin'), new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li class="mb-4">
-            <%= link_to "新規会員登録", new_user_registration_path, class: "text-sm font-semibold bg-slate-200 leading-6 text-gray-900" %>
+            <%= link_to t('header.signup'), new_user_registration_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
 <div class="hidden lg:flex lg:gap-x-4">
   <%= link_to "みんなの投稿を見る", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
-  <%= link_to "投稿する", posts_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
+  <%= link_to "投稿する", new_post_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
   <%= link_to "マイページ", edit_user_registration_path, class: "p-3 text-sm font-semibold leading-6 text-gray-900" %>
   <!-- Menu button -->
   <details class="dropdown dropdown-bottom dropdown-end">
@@ -48,7 +48,7 @@
           <%= link_to "みんなの投稿を見る", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li>
-          <%= link_to "投稿する", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          <%= link_to "投稿する", new_post_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li>
           <%= link_to "下書き", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>

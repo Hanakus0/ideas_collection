@@ -65,8 +65,8 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      # create_User
+      genre = PostGenre.find_by(params[:post_genre_id])
 
-      # params.require(:post).permit(:post_uid, :images, :title, :content, :draft_flg).merge(user_id: , genre_id: );
+      params.require(:post).permit(:post_uid, :images, :title, :content, :draft_flg).merge(user_id: current_user.id, post_genre_id: genre.id);
     end
 end

@@ -2,7 +2,7 @@
   <div class="relative flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
     <div class="p-4 border-2 rounded-lg  border-slate-300">
       <h4 class="mb-3 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-        新規会員登録
+        <%= t 'header.signup' %>
       </h4>
       <!-- START of <form> element -->
       <%= form_with model: @user, url: registration_path(resource_name), id: "new_user", class:"new_user  mt-8 mb-2 w-80 max-w-screen-lg sm:w-96", locale: true do |f| %>

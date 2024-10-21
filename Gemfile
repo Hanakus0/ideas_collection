@@ -39,6 +39,7 @@ gem "bootsnap", require: false
 # below: added gem
 gem 'enumerize'
 gem "devise", "~> 4.9"
+gem 'rails-i18n', '~> 7.0.0'
 
 
 group :development, :test do

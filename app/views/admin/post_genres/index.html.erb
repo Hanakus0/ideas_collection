@@ -8,7 +8,11 @@
   <% @admin_post_genres.each do |admin_post_genre| %>
     <%= render admin_post_genre %>
     <p>
-      <%= link_to "Show this post genre", admin_post_genre %>
+      <%
+=begin%>
+ <%= link_to "Show this post genre", admin_post_genre %> 
+<%
+=end%>
     </p>
   <% end %>
 </div>

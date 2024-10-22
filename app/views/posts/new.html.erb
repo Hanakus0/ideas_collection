@@ -1,11 +1,9 @@
-<% content_for :title, "New post" %>
+<!-- 新規投稿 -->
+<% content_for :title, t('title.post.new') %>
 
-<h1>New post</h1>
-
-<%= render "form", post: @post %>
-
-<br>
-
-<div>
-  <%= link_to "Back to posts", posts_path %>
+<div class="bg-white shadow p-4 py-8" x-data="{ images: [] }">
+  <!-- title -->
+  <div class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"><%= t('form.post.new') %></div>
+  <!-- form section -->
+  <%= render "form", post: @post %>
 </div>

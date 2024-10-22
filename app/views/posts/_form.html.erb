@@ -1,6 +1,6 @@
-<%= form_with(model: post) do |f| %>
+<%= form_with model: post, class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
   <% if post.errors.any? %>
-    <div style="color: red">
+    <div style="color: red" class="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -11,32 +11,65 @@
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :post_genre_type, style: "display: block" %>
-    <%= f.select(:post_genre_type, Post.post_genre_type.options) %>
+  <!-- PostGenre -->
+  <%= f.label :post_genre_type, class: "text-lg text-gray-600" %>
+  <%= f.select :post_genre_type, Post.post_genre_type.options, {}, class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" %>
+
+  <!-- Title -->
+  <%= f.label :title, class: "text-lg text-gray-600" %>
+  <%= f.text_field :title,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "Title" %>
+
+  <!-- Content -->
+  <%= f.label :content, class: "text-lg text-gray-600" %>
+  <%= f.text_area :content, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
+  <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
+
+  <!-- Images -->
+  <%= f.label :images, style: "display: block" %>
+  <%= f.text_field :images, class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "TODO:まだ未実装" %>
+  
+  <!-- Preview image here -->
+  <%
+=begin%>
+ <div id="preview" class="my-4 flex">
+    <template x-for="(image, index) in images" :key="index">
+      <div class="relative w-32 h-32 object-cover rounded ">
+        <div x-show="image.preview" class="relative w-32 h-32 object-cover rounded">
+          <img :src="image.url" class="w-32 h-32 object-cover rounded">
+          <button @click="images.splice(index, 1)" class="w-6 h-6 absolute text-center flex items-center top-0 right-0 m-2 text-white text-lg bg-red-500 hover:text-red-700 hover:bg-gray-100 rounded-full p-1"><span class="mx-auto">×</span></button>
+          <div x-text="image.size" class="text-xs text-center p-2"></div>
+        </div>
+        <div class="relative w-32 h-32 object-cover rounded">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 fill-white stroke-indigo-500" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg> -->
+              <svg class="fill-current  w-32 h-32 ml-auto pt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z" />
+          </svg>
+            <button class="w-6 h-6 absolute text-center flex items-center top-0 right-0 m-2 text-white text-lg bg-red-500 hover:text-red-700 hover:bg-gray-100 rounded-full p-1"><span class="mx-auto">×</span></button>
+            <div x-text="image.size" class="text-xs text-center p-2"></div>
+        </div>
+      </div>
+    </template>
+  </div> 
+<%
+=end%>
+
+  <!-- Buttons with select -->
+  <div class="flex p-1 justify-end">
+    <% flg_options = {"投稿を公開する": 0, "下書きとして保存する": 1} %>
+    <%= f.select :draft_flg, flg_options, {}, class: "border-2 border-gray-300 border-r p-2" %>
+    <%= f.submit "OK", class: "w-3/12 p-3 bg-blue-500 text-white hover:bg-blue-400"%>
   </div>
 
-  <div>
-    <%= f.label :images, style: "display: block" %>
-    <%= f.text_field :images %>
-  </div>
-
-  <div>
-    <%= f.label :title, style: "display: block" %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div>
-    <%= f.label :content, style: "display: block" %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div>
-    <%= f.label :draft_flg, style: "display: block" %>
-    <%= f.check_box :draft_flg %>
-  </div>
-
-  <div>
-    <%= f.submit %>
-  </div>
+  <!-- form_end -->
 <% end %>
+
+
+    <!-- <script>
+        function isImage(file) { 
+        const acceptedImageTypes = ['jpg', 'jpeg', 'png', 'gif'].includes(file.name.split('.').pop().toLowerCase());
+        const extension = file.name.split('.').pop().toLowerCase();
+        return acceptedImageTypes.includes(extension);
+    } 
+        </script> -->

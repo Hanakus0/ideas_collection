@@ -35,6 +35,8 @@ class Post < ApplicationRecord
   # 列挙型
   # column: post_genre
   enumerize :post_genre_type, in: PostGenre.pluck(:name), default: PostGenre.first.name
+  # column: draft_flg
+  # enumerize :selected_flg, in: %w(publish draft), predicates: true
 
   private ###################################################################
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する

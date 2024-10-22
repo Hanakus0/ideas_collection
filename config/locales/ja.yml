@@ -1,4 +1,7 @@
 ja:
+  title:
+    post:
+      new: '新規投稿'
   header:
     see_posts: 'みんなの投稿を見る'
     signup: '新規会員登録'
@@ -7,14 +10,16 @@ ja:
     privacy_policy: 'プライバシーポリシー'
     terms_of_service: '利用規約'
     contact_form: 'お問い合わせフォーム'
+  form:
+    post:
+      new: '新しいアイデアの投稿'
+      warning_textarea: '※本文は最大 200 文字です'
+      draft_flg:
+        public: 投稿を公開する
+        draft: 下書きとして保存する
   enumerize:
-    user:
-      gender:
-        other: 未回答
-        male: 男性
-        female: 女性
     post_genre_type:
-      funny: ネタ・適当なアイデア・未完のアイデア
+      funny: アイデアのタネ・適当なアイデア・未完のアイデア
       technology: サイエンス・テクノロジー
       entertainment: 芸能・エンタメ
       lifestyle: 暮らし・健康・料理
@@ -29,3 +34,6 @@ ja:
       music: 音楽
       travel: 旅行
       other: その他
+    draft_flg:
+      publish: 投稿を公開する
+      draft: 下書きとして保存する

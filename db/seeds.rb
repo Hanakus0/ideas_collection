@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# ポストジャンル用に必須
 PostGenre.create([
     { name: 'funny' },
     { name: 'technology' },

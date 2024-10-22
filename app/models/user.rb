@@ -67,6 +67,29 @@ class User < ApplicationRecord
   # column: gender
   enumerize :gender, in: { other: 0, male: 1, female: 2 }, default: :other
 
+  # devise for omniauth-google-oauth2
+  # https://github.com/heartcombo/devise/wiki/OmniAuth%3A-Overview
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0, 20]
+    user.name = auth.info.name   # assuming the user model has a name
+    user.image = auth.info.image # assuming the user model has an image
+    # If you are using confirmable and the provider(s) you use validate emails,
+    # uncomment the line below to skip the confirmation emails.
+    # user.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    provider = 'google'
+    super.tap do |user|
+      if data = session["devise.#{ provider }_data"] && session["devise.#{ provider }_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
   private ###################################################################
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
     def check_secure_id

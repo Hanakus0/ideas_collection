@@ -6,6 +6,10 @@
   <%= link_to new_user_registration_path do %>
     <div class="px-2 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit"><%= t 'header.signup' %></div>
   <% end %>
+  <%= render 'layouts/google_button' %>
+  <%= button_to "Sign in with Google", user_google_oauth2_omniauth_callback_path	, data: { turbo: false } %>
+  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
+  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
 </div>
 
 <!-- Mobile menu, show/hide based on menu open state. -->

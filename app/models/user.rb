@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable,
-         :timeoutable
+         :timeoutable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
   # For `gem Enumerize`
   extend Enumerize
   # TODO:以下不要か？

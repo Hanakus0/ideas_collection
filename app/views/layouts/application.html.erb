@@ -20,10 +20,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= javascript_include_tag "application", defer: true %>
   </head>
-    <!-- ログイン有無での表示内容の切り替え -->
-    <%= render 'layouts/header' %>
+  <!-- ログイン有無での表示内容の切り替え -->
   <body>
+  <%= render 'layouts/header' %>
     <%# deivseのフラッシュメッセージを表示 %>
     <%= yield %>
+  <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -3,6 +3,10 @@ ja:
     see_posts: 'みんなの投稿を見る'
     signup: '新規会員登録'
     signin: 'ログイン'
+  footer:
+    privacy_policy: 'プライバシーポリシー'
+    terms_of_service: '利用規約'
+    contact_form: 'お問い合わせフォーム'
   enumerize:
     user:
       gender:

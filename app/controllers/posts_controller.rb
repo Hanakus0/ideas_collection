@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        # raise
+        # Create record `PostRecord`
         PostRecord.create(post_id: @post.id)
 
         format.html { redirect_to @post, notice: "Post was successfully created." }

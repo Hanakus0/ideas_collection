@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # 以下 Gem 導入に際して必要になった記述
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
@@ -10,9 +11,12 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
   # For `gem Enumerize`
   extend Enumerize
+  # carrierwave → users > profile_image:string
+  mount_uploader :profile_image, ProfileImageUploader
+
+  #################################################################################
   # TODO:以下不要か？
   require 'securerandom'
-
   # Table name: users
   # 保存前処理
   before_save :check_secure_id

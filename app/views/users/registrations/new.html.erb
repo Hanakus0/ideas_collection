@@ -5,7 +5,7 @@
         <%= t 'header.signup' %>
       </h4>
       <!-- START of <form> element -->
-      <%= form_with model: @user, url: registration_path(resource_name), id: "new_user", class:"new_user  mt-8 mb-2 w-80 max-w-screen-lg sm:w-96", locale: true do |f| %>
+      <%= form_with model: @user, url: registration_path(resource_name), id: "new_user", class:"new_user mt-8 mb-2 w-80 max-w-screen-lg sm:w-96", locale: true do |f| %>
         <div class="mb-4 flex flex-col gap-6">
         <%= render "users/shared/error_messages", resource: resource %>
           <!-- Email -->

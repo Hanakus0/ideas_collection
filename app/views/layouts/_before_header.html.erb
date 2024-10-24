@@ -1,15 +1,15 @@
-<div class="hidden lg:flex lg:gap-x-4">
-  <%= link_to t('header.see_posts'), posts_path, class: "p-2.5 text-sm font-semibold leading-6 text-gray-900" %>
+<div class="hidden lg:flex lg:gap-x-4 z-10">
+  <%= link_to t('header.see_posts'), posts_path, class: "p-2.5 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+
+
   <%= link_to new_user_session_path do %>
-    <div class="px-6 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit"><%= t 'header.signin' %></div>
+    <div class="px-6 py-2 border-2 rounded-full border-slate-300 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6"><%= t 'header.signin' %></div>
   <% end %>
+
   <%= link_to new_user_registration_path do %>
-    <div class="px-2 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit"><%= t 'header.signup' %></div>
+    <div class="px-3 py-2 border-2 rounded-full border-slate-300 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6""><%= t 'header.signup' %></div>
   <% end %>
   <%= render 'layouts/google_button' %>
-  <%= button_to "Sign in with Google", user_google_oauth2_omniauth_callback_path	, data: { turbo: false } %>
-  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
-  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
 </div>
 
 <!-- Mobile menu, show/hide based on menu open state. -->

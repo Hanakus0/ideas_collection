@@ -1,15 +1,21 @@
 <header class="bg-slate-100">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
-    <div class="flex lg:flex-1">
-      <%= link_to root_path class: "-m-1.5 p-1.5" do %>
-        <span class="sr-only">Your Company</span>
-        <img class="h-8 w-auto" src="" alt="【TODO】アイコン">
+    <button class="btn btn-square bg-slate-100 rounded-full bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100">
+      <%= link_to root_path ,class: "-m-1.5 p-1.5" do %>
+        <%= image_tag 'app_logo.png', class: "h-8 w-auto", alt: "アプリアイコン" %>
       <% end %>
-    </div>
+    </button>
+
+
+    <!-- ログイン有無でヘッダーを切り替え -->
     <% if user_signed_in? %>
+      <!-- ログイン済み -->
       <%= render 'layouts/after_header' %>
     <% else %>
+      <!-- ログイン前 -->
       <%= render 'layouts/before_header' %>
     <% end %> 
   </nav>
 </header>
+
+ border-2 rounded-full border-slate-300

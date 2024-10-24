@@ -2,7 +2,7 @@
   <div class="relative flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
     <div class="p-4 border-2 rounded-lg  border-slate-300">
       <h4 class="mb-3 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-        <%= t 'header.signin' %>
+      <%= t 'header.signin' %>
       </h4>
       <!-- START of <form> element -->
       <%= form_with model: @user, url: session_path(resource_name), class: "new_user mt-8 mb-2 w-80 max-w-screen-lg sm:w-96", id: "new_user", locale: true do |f| %>
@@ -32,23 +32,26 @@
           </div>
         </div>
         <!-- Remember_me -->
-        <div class="mb-3 inline-flex items-center">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, class: "ml-1 mt-px cursor-pointer select-none font-light text-gray-700",
-            for: "user_remember_me" do %>
-            <p class="flex items-center font-sans text-sm font-normal leading-normal text-gray-700 antialiased", for= "user_remember_me">
-              ログイン状態を保存する
-            </p>
-          <% end %>
+        <div class="py-2 mb-3 inline-flex items-center">
+          <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, class: "ml-1 mt-px cursor-pointer select-none font-light text-gray-700",
+              for: "user_remember_me" do %>
+              <p class="flex items-center font-sans text-sm font-normal leading-normal text-gray-700 antialiased", for= "user_remember_me">
+                ログイン状態を保存する
+              </p>
+            <% end %>
+          <% end %> 
         </div>
+
         <!-- submit -->
-        <%= f.submit "Sign in", class: "block w-full select-none rounded-lg bg-stone-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-stone-300/20 transition-all hover:shadow-lg hover:shadow-stone-900/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
+        <%= f.submit t('.sign_in'), class: "block w-full select-none rounded-lg bg-stone-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-stone-300/20 transition-all hover:shadow-lg hover:shadow-stone-900/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
         data: { ripple: { light: true } }
         %>
       <% end %>
       <!-- END of <form> element -->
       <!-- registration link -->
-      <div class="border-1 border-t"></div>
+      <div class="py-3 border-1 border-t"></div>
       <span class="text-stone-900 font-bold underline">
         <%= render "users/shared/links" %>
       </span>

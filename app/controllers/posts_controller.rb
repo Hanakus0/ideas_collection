@@ -25,13 +25,11 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    post_genre = PostGenre.find(Post.post_genre_ids[params.require(:post)[:post_genre_id].to_sym])
+    # 親クラスからインスタンスを取得しレコードを保存
+    post_genre = PostGenre.find(set_post_genre)
     @post = post_genre.posts.build(post_params)
-    # @post.post_genre << PostGenre.new(name: params.require(:post)[:post_genre_id])
 
-    # raise
     if @post.save
-      # Create record `PostRecord`
       PostRecord.create(post_id: @post.id)
       redirect_to post_path(@post.post_uid), notice: "Post was successfully created."
     else
@@ -64,10 +62,13 @@ class PostsController < ApplicationController
       @post = Post.find_by(post_uid: params[:post_uid])
     end
 
+    # params から post_genre の id を割り出す
+    def set_post_genre
+      Post.post_genre_ids[params.require(:post)[:post_genre_id].to_sym]
+    end
+
     # Only allow a list of trusted parameters through.
     def post_params
-      draft_flg_val = params.require(:post)[:draft_flg].to_sym
-
-      params.require(:post).permit(:images, :title, :content).merge(user_id: current_user.id)
+      params.require(:post).permit(:images, :title, :content, :draft_flg).merge(user_id: current_user.id)
     end
   end

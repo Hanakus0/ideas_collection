@@ -8,8 +8,6 @@ class User < ApplicationRecord
          :validatable,
          :timeoutable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  # For `gem Enumerize`
-  extend Enumerize
   # TODO:以下不要か？
   require 'securerandom'
 
@@ -65,7 +63,7 @@ class User < ApplicationRecord
 
   # 列挙型
   # column: gender
-  enumerize :gender, in: { other: 0, male: 1, female: 2 }, default: :other
+  # enumerize :gender, in: { other: 0, male: 1, female: 2 }, default: :other
 
   # devise for omniauth-google-oauth2
   # https://github.com/heartcombo/devise/wiki/OmniAuth%3A-Overview

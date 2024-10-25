@@ -25,12 +25,14 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    post_genre = PostGenre.find(Post.post_genre_ids[params.require(:post)[:post_genre_id].to_sym])
+    @post = post_genre.posts.build(post_params)
+    # @post.post_genre << PostGenre.new(name: params.require(:post)[:post_genre_id])
 
+    # raise
     if @post.save
       # Create record `PostRecord`
       PostRecord.create(post_id: @post.id)
-
       redirect_to post_path(@post.post_uid), notice: "Post was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -64,9 +66,21 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      genre = PostGenre.find_by(name: params.require(:post)[:post_genre_type])
-      # submit_flg = Post.findparams.require(:post)[:draft_flg]
+      # post_genre_val = PostGenre.find_by(name: params.require(:post)[:post_genre_id])
+      # draft_flg_val = Post.draft_flgs[params.require(:post)[:draft_flg].to_sym]
+      # post_genre_val =  Post.post_genre_ids[params.require(:post)[:post_genre_id].to_sym]
+      draft_flg_val = Post.draft_flgs[ params.require(:post)[:draft_flg].to_sym ]
 
-      params.require(:post).permit(:post_uid, :images, :title, :content, :draft_flg).merge(user_id: current_user.id, post_genre_id: genre.id);
+
+      # params.require(:post).permit(:post_genre_id, :draft_flg, :images, :title, :content).merge(user_id: current_user.id)
+      # logger.debug "Post.new() => #{ params.require(:post).permit(:images, :title, :content).merge(user_id: current_user.id, post_genre_id: post_genre_val, draft_flg: draft_flg_val) }"
+
+      # logger.debug "Post.new() => #{Post.new(params.require(:post).permit(:images, :title, :content).merge(user_id: current_user.id, post_genre_id: post_genre_val, draft_flg: draft_flg_val)).inspect }"
+
+
+      # params.require(:post).permit(:images, :title, :content).merge(user_id: current_user.id, post_genre_id: post_genre_val, draft_flg: draft_flg_val)
+
+      params.require(:post).permit(:images, :title, :content).merge(user_id: current_user.id, draft_flg: draft_flg_val)
+
     end
-end
+  end

@@ -5,5 +5,5 @@
   <!-- title -->
   <div class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"><%= t('form.post.new') %></div>
   <!-- form section -->
-  <%= render "form", post: @post %>
+  <%= render "form", post: @post, draft_flgs: @draft_flgs, post_genre_types: @post_genre_types %>
 </div>

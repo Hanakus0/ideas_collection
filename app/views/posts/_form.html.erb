@@ -1,8 +1,7 @@
-<%= form_with model: post, url: post_path(post.post_uid), class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
+<%= form_with model: post, class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
   <% if post.errors.any? %>
     <div style="color: red" class="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,8 +11,8 @@
   <% end %>
 
   <!-- PostGenre -->
-  <%= f.label :post_genre_type, class: "text-lg text-gray-600" %>
-  <%= f.select :post_genre_type, Post.post_genre_type.options, {}, class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" %>
+  <%= f.label :post_genre_id, class: "text-lg text-gray-600" %>
+  <%= f.select :post_genre_id, Post.post_genre_ids_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
 
   <!-- Title -->
   <%= f.label :title, class: "text-lg text-gray-600" %>
@@ -24,131 +23,12 @@
   <%= f.text_area :content, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
   <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
 
-  <!-- Preview image here -->
-
-  <div class="flex w-full h-screen items-center justify-center bg-grey-lighter">
-    <%= f.label :images, class: "w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white" %>
-    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-    </svg>
-    <span class="mt-2 text-base leading-normal">Select a file</span>
-    <input type='file' class="hidden" />
-    <%= f.file_field :images, name: "post[images][]", id: "input_post_image_-1" %>
-  </div>
-
 
   <!-- Buttons with select -->
-  <div class="flex p-1 justify-end">
-    <% flg_options = {"投稿を公開する": 0, "下書きとして保存する": 1} %>
-    <%= f.select :draft_flg, flg_options, {}, class: "border-2 border-gray-300 border-r p-2" %>
-    <%= f.submit "OK", class: "w-3/12 p-3 bg-blue-500 text-white hover:bg-blue-400"%>
+  <div class="flex my-3 justify-end">
+    <%= f.select :draft_flg, Post.draft_flgs_i18n.invert, {}, class: "py-3 bg-gray-100 border border-gray-300 p-2 outline-none" %>
+    <%= f.submit "OK", class: "py-3 w-3/12 bg-blue-500 text-white hover:bg-blue-400"%>
   </div>
 
   <!-- form_end -->
 <% end %>
-
-
-<script>
-//⓪　全体の処理を行う条件と要素を取得
-if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
-  document.addEventListener('DOMContentLoaded', function(){
-    const body = document.querySelector('body');
-    const imageList = document.getElementById("image-list");
-    const inputList = document.getElementById("input-list");
-    const firstInput = document.getElementById("input_post_image_-1");
-    firstInput.setAttribute('class', 'focus_input');
-    const dropText = document.getElementById('drop-text');
-
-//②　ドロップされた画像のプレビューと、次の画像に対応するinput要素の生成
-//②-1　div要素の生成
-    const createImageHTML = (blob) => {
-      const imageElement = document.createElement('div');
-      imageElement.setAttribute('class', 'image-element');
-      let imageElementNum = document.querySelectorAll('.image-element').length
-
-//②-2　プレビュー(img要素)の生成
-      const blobImage = document.createElement('img');
-      blobImage.setAttribute('src', blob);
-      blobImage.setAttribute('class', 'blob-image');
-      if (document.getElementsByClassName('article_image_input').length == 0 ) {
-        blobImage.setAttribute('id', 'article_image_-1');
-       } else {
-        blobImage.setAttribute('id', `article_image_${imageElementNum - 1}`);
-      }
-
-//②-3　input要素の生成
-      const inputHTML = document.createElement('input');
-      inputHTML.setAttribute('id', `input_post_image_${imageElementNum}`);
-      inputHTML.setAttribute('name', 'article[images][]');
-      inputHTML.setAttribute('class', 'article_image_input')
-      inputHTML.setAttribute('type', 'file');
-      inputHTML.classList.add('focus_input');
-
-//②-4　生成した各要素を挿入
-      imageElement.appendChild(blobImage);
-      inputList.appendChild(inputHTML)
-      imageList.appendChild(imageElement);
-
-//②-5 入力済みのinput要素を非表示
-      if (document.getElementsByClassName('article_image_input').length == 1 ) {
-        firstInput.setAttribute('style', 'visibility: hidden; color: rgba(0,0,0,0);');
-        firstInput.classList.remove('focus_input');
-      } else {
-        document.getElementById(`input_post_image_${imageElementNum - 1}`).setAttribute('style', 'visibility: hidden; color: rgba(0,0,0,0);');
-        document.getElementById(`input_post_image_${imageElementNum - 1}`).classList.remove('focus_input');
-      }
-
-//③　プレビューに対するアクション
-//③-1　カーソルを乗せた時の処理
-      blobImage.addEventListener('mouseover', () => {
-        blobImage.setAttribute('style', "opacity: 0.4;")
-      });
-
-      blobImage.addEventListener('mouseout', () => {
-        blobImage.removeAttribute('style', "opacity: 0.4;")
-      });
-
-//③-2　クリックした時の処理
-      blobImage.addEventListener('click', (e) => {
-        const targetInput = document.getElementById(`input_${blobImage.id}`);
-        console.log(targetInput.id)
-        targetInput.value = "";
-        if (!(targetInput.id == 'input_post_image_-1')) {
-          targetInput.remove();
-        };
-        blobImage.parentNode.setAttribute('style', 'display: none;')
-        blobImage.remove();
-        if (document.getElementsByClassName('article_image_input').length == 1 && firstInput.value == "" ) {
-          firstInput.nextElementSibling.remove();
-          firstInput.removeAttribute('style', 'visibility: hidden;');
-          firstInput.setAttribute('class', 'focus_input');
-          dropText.removeAttribute('style', 'display: none;');
-        }
-      });
-     };
-
-//①　画像をドラッグ&ドロップした際の処理
-//①-1　ドラッグしている時の処理
-    body.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      imageList.setAttribute('style', 'background-color: rgba(206, 207, 196, 0.4); border: 3px solid lightblue;')
-    });
-    
-    body.addEventListener('dragleave', (e) => {
-      e.preventDefault();
-      imageList.removeAttribute('style', 'background-color: rgba(206, 207, 196, 0.4); border: 3px solid lightblue;')
-    });
-
-//①-2　ドロップした時の処理
-      body.addEventListener('drop', (e) => {
-        e.preventDefault();
-        imageList.removeAttribute('style', 'background-color: rgba(206, 207, 196, 0.4); border: 3px solid lightblue;')
-        dropText.setAttribute('style', 'display: none;');
-        const input = document.querySelector("input[class*='focus_input']");
-        input.files = e.dataTransfer.files;
-        const blob = window.URL.createObjectURL(input.files[0]);
-        createImageHTML(blob);
-      });
-  });
-};
-</script>

@@ -9,8 +9,6 @@ class User < ApplicationRecord
          :validatable,
          :timeoutable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  # For `gem Enumerize`
-  extend Enumerize
   # carrierwave → users > profile_image:string
   mount_uploader :profile_image, ProfileImageUploader
 

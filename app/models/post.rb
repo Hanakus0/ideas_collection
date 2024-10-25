@@ -1,7 +1,4 @@
 class Post < ApplicationRecord
-  # For `gem Enumerize`
-  extend Enumerize
-
   # 保存前処理
   before_save :check_secure_id
   # アトリビュート
@@ -24,19 +21,35 @@ class Post < ApplicationRecord
   # column: post_uid
   validates :post_uid, presence: true, length: { is: 16 }, uniqueness: true
   # column: post_genre_id
-  validates :post_genre_id, presence: true
+  # validates :post_genre_id, presence: true
   # column: images
   validates :images, presence: true, allow_blank: true
   # column: title
-  validates :title, presence: true, length: { minimum: 1 , maximum: 30 }
+  validates :title, presence: true, length: { minimum: 1 , maximum: 50 }
   # column: content
   validates :content, presence: true, length: { minimum: 1 , maximum: 500 }
 
   # 列挙型
   # column: post_genre
-  enumerize :post_genre_type, in: PostGenre.pluck(:name), default: PostGenre.first.name
+  enum post_genre_id: {
+                        funny: 1,
+                        technology: 2,
+                        entertainment: 3,
+                        lifestyle: 4,
+                        business: 5,
+                        art: 6,
+                        history_geography: 7,
+                        social: 8,
+                        ideology: 9,
+                        hobby: 10,
+                        development: 11,
+                        sports: 12,
+                        music: 13,
+                        travel: 14,
+                        other: 15
+                      }, _prefix: true
   # column: draft_flg
-  # enumerize :selected_flg, in: %w(publish draft), predicates: true
+  enum draft_flg: { publish:0, draft: 1 }, _prefix: true
 
   private ###################################################################
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する

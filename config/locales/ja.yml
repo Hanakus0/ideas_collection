@@ -15,9 +15,6 @@ ja:
     post:
       new: '新しいアイデアの投稿'
       warning_textarea: '※本文は最大 500 文字です'
-      draft_flg:
-        public: 投稿を公開する
-        draft: 下書きとして保存する
   enums:
     user:
       gender:
@@ -34,23 +31,23 @@ ja:
         male: 男性
         female: 女性
         other: 該当なし
-  enumerize:
-    post_genre_type:
-      funny: アイデアのタネ・適当なアイデア・未完のアイデア
-      technology: サイエンス・テクノロジー
-      entertainment: 芸能・エンタメ
-      lifestyle: 暮らし・健康・料理
-      business: ビジネス・経済
-      art: アート・建築・デザイン
-      history_geography: 歴史・地理
-      social: 社会・政治
-      ideology: 人文・思想・宗教
-      hobby: 趣味・実用
-      development: 教育・自己啓発
-      sports: スポーツ・アウトドア
-      music: 音楽
-      travel: 旅行
-      other: その他
-    draft_flg:
-      publish: 投稿を公開する
-      draft: 下書きとして保存する
+    post:
+      post_genre_id:
+        funny: アイデアのタネ・適当なアイデア・未完のアイデア
+        technology: サイエンス・テクノロジー
+        entertainment: 芸能・エンタメ
+        lifestyle: 暮らし・健康・料理
+        business: ビジネス・経済
+        art: アート・建築・デザイン
+        history_geography: 歴史・地理
+        social: 社会・政治
+        ideology: 人文・思想・宗教
+        hobby: 趣味・実用
+        development: 教育・自己啓発
+        sports: スポーツ・アウトドア
+        music: 音楽
+        travel: 旅行
+        other: その他
+      draft_flg:
+        publish: 投稿を公開する
+        draft: 下書きとして保存する

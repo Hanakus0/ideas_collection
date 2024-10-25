@@ -49,7 +49,7 @@ class Post < ApplicationRecord
                         other: 15
                       }, _prefix: true
   # column: draft_flg
-  enum draft_flg: { publish:0, draft: 1 }, _prefix: true
+  enum draft_flg: { publish: true, draft: false }, _prefix: true
 
   private ###################################################################
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する

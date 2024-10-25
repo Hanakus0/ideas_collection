@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_22_134124) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_25_112503) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_134124) do
     t.json "images"
     t.string "title"
     t.text "content"
-    t.boolean "draft_flg"
+    t.integer "draft_flg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_genre_id"], name: "index_posts_on_post_genre_id"

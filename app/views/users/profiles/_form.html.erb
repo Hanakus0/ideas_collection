@@ -1,0 +1,45 @@
+<%= form_with model: current_user, url: users_profile_path(current_user.user_uid), class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
+  <% if current_user.errors.any? %>
+    <div style="color: red" class="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
+      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this current_user from being saved:</h2>
+
+      <ul>
+        <% current_user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- user_ID -->
+  <%= f.label :screen_name, class: "text-lg text-gray-600" %>
+  <%= f.text_field :screen_name,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "screen_name" %>
+
+  <!-- user_name -->
+  <%= f.label :account_name, class: "text-lg text-gray-600" %>
+  <%= f.text_field :account_name,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "account_name" %>
+
+
+  <!-- Preview image here -->
+
+
+  <!-- introduction -->
+  <%= f.label :introduction, class: "text-lg text-gray-600" %>
+  <%= f.text_area :introduction, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
+  <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
+
+  <!-- Buttons with select -->
+  <div class="">
+    <% User.genders.each_with_index  do |(k, v), i| %>
+      <%= f.radio_button :gender, v %>
+      <%= f.label User.genders_i18n[k.to_sym] %>
+    <% end %>
+  </div>
+
+    <!-- Buttons with select -->
+  <div class="flex p-1 justify-end">
+    <%= f.submit t('form.ok'), class: "w-3/12 p-3 bg-blue-500 text-white hover:bg-blue-400"%>
+  </div>
+
+  <!-- form_end -->
+<% end %>

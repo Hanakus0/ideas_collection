@@ -11,12 +11,29 @@ ja:
     terms_of_service: '利用規約'
     contact_form: 'お問い合わせフォーム'
   form:
+    ok: OK
     post:
       new: '新しいアイデアの投稿'
-      warning_textarea: '※本文は最大 200 文字です'
+      warning_textarea: '※本文は最大 500 文字です'
       draft_flg:
         public: 投稿を公開する
         draft: 下書きとして保存する
+  enums:
+    user:
+      gender:
+        unkown: 未回答
+        teens: 10代未満 or 10代
+        twenties: 20代
+        therties: 30代
+        fourties: 40代
+        fifties: 50代
+        sixties: 60代
+        morethan: 70代以上
+      age:
+        unkown: 未回答
+        male: 男性
+        female: 女性
+        other: 該当なし
   enumerize:
     post_genre_type:
       funny: アイデアのタネ・適当なアイデア・未完のアイデア

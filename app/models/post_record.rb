@@ -2,8 +2,8 @@ class PostRecord < ApplicationRecord
   # アソシエーション
   belongs_to :post
 
-  private ######################################
-    def countup_view
-      self.view_count += 1
-    end
+  # 閲覧数のカウント処理
+  def countup_view
+    self.increment!(:view_count)
+  end
 end

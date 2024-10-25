@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  namespace :users do
-    get "user_profiles/index"
-    get "user_profiles/show"
-    get "user_profiles/edit"
-    get "user_profiles/update"
-  end
   root "home#index"
+
   # by devise
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -34,7 +29,10 @@ Rails.application.routes.draw do
     resources :tags
   end
 
-  # general routes
-  resources :users, except: %i(index show edit update), param: :user_uid
+  # not devise user routes
+  namespace :users do
+    resources :profiles, only: %i(show edit update), param: :user_uid
+  end
+  # table: posts
   resources :posts, param: :post_uid
 end

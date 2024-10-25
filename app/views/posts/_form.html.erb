@@ -1,4 +1,4 @@
-<%= form_with model: post, class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
+<%= form_with model: post, url: post_path(post.post_uid), class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
   <% if post.errors.any? %>
     <div style="color: red" class="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -24,36 +24,18 @@
   <%= f.text_area :content, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
   <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
 
-  <!-- Images -->
-  <%= f.label :images, style: "display: block" %>
-  <%= f.text_field :images, class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "TODO:まだ未実装" %>
-  
   <!-- Preview image here -->
-  <%
-=begin%>
- <div id="preview" class="my-4 flex">
-    <template x-for="(image, index) in images" :key="index">
-      <div class="relative w-32 h-32 object-cover rounded ">
-        <div x-show="image.preview" class="relative w-32 h-32 object-cover rounded">
-          <img :src="image.url" class="w-32 h-32 object-cover rounded">
-          <button @click="images.splice(index, 1)" class="w-6 h-6 absolute text-center flex items-center top-0 right-0 m-2 text-white text-lg bg-red-500 hover:text-red-700 hover:bg-gray-100 rounded-full p-1"><span class="mx-auto">×</span></button>
-          <div x-text="image.size" class="text-xs text-center p-2"></div>
-        </div>
-        <div class="relative w-32 h-32 object-cover rounded">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 fill-white stroke-indigo-500" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg> -->
-              <svg class="fill-current  w-32 h-32 ml-auto pt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z" />
-          </svg>
-            <button class="w-6 h-6 absolute text-center flex items-center top-0 right-0 m-2 text-white text-lg bg-red-500 hover:text-red-700 hover:bg-gray-100 rounded-full p-1"><span class="mx-auto">×</span></button>
-            <div x-text="image.size" class="text-xs text-center p-2"></div>
-        </div>
-      </div>
-    </template>
-  </div> 
-<%
-=end%>
+
+  <div class="flex w-full h-screen items-center justify-center bg-grey-lighter">
+    <%= f.label :images, class: "w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white" %>
+    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+    </svg>
+    <span class="mt-2 text-base leading-normal">Select a file</span>
+    <input type='file' class="hidden" />
+    <%= f.file_field :images, name: "post[images][]", id: "input_post_image_-1" %>
+  </div>
+
 
   <!-- Buttons with select -->
   <div class="flex p-1 justify-end">
@@ -66,10 +48,107 @@
 <% end %>
 
 
-    <!-- <script>
-        function isImage(file) { 
-        const acceptedImageTypes = ['jpg', 'jpeg', 'png', 'gif'].includes(file.name.split('.').pop().toLowerCase());
-        const extension = file.name.split('.').pop().toLowerCase();
-        return acceptedImageTypes.includes(extension);
-    } 
-        </script> -->
+<script>
+//⓪　全体の処理を行う条件と要素を取得
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
+  document.addEventListener('DOMContentLoaded', function(){
+    const body = document.querySelector('body');
+    const imageList = document.getElementById("image-list");
+    const inputList = document.getElementById("input-list");
+    const firstInput = document.getElementById("input_post_image_-1");
+    firstInput.setAttribute('class', 'focus_input');
+    const dropText = document.getElementById('drop-text');
+
+//②　ドロップされた画像のプレビューと、次の画像に対応するinput要素の生成
+//②-1　div要素の生成
+    const createImageHTML = (blob) => {
+      const imageElement = document.createElement('div');
+      imageElement.setAttribute('class', 'image-element');
+      let imageElementNum = document.querySelectorAll('.image-element').length
+
+//②-2　プレビュー(img要素)の生成
+      const blobImage = document.createElement('img');
+      blobImage.setAttribute('src', blob);
+      blobImage.setAttribute('class', 'blob-image');
+      if (document.getElementsByClassName('article_image_input').length == 0 ) {
+        blobImage.setAttribute('id', 'article_image_-1');
+       } else {
+        blobImage.setAttribute('id', `article_image_${imageElementNum - 1}`);
+      }
+
+//②-3　input要素の生成
+      const inputHTML = document.createElement('input');
+      inputHTML.setAttribute('id', `input_post_image_${imageElementNum}`);
+      inputHTML.setAttribute('name', 'article[images][]');
+      inputHTML.setAttribute('class', 'article_image_input')
+      inputHTML.setAttribute('type', 'file');
+      inputHTML.classList.add('focus_input');
+
+//②-4　生成した各要素を挿入
+      imageElement.appendChild(blobImage);
+      inputList.appendChild(inputHTML)
+      imageList.appendChild(imageElement);
+
+//②-5 入力済みのinput要素を非表示
+      if (document.getElementsByClassName('article_image_input').length == 1 ) {
+        firstInput.setAttribute('style', 'visibility: hidden; color: rgba(0,0,0,0);');
+        firstInput.classList.remove('focus_input');
+      } else {
+        document.getElementById(`input_post_image_${imageElementNum - 1}`).setAttribute('style', 'visibility: hidden; color: rgba(0,0,0,0);');
+        document.getElementById(`input_post_image_${imageElementNum - 1}`).classList.remove('focus_input');
+      }
+
+//③　プレビューに対するアクション
+//③-1　カーソルを乗せた時の処理
+      blobImage.addEventListener('mouseover', () => {
+        blobImage.setAttribute('style', "opacity: 0.4;")
+      });
+
+      blobImage.addEventListener('mouseout', () => {
+        blobImage.removeAttribute('style', "opacity: 0.4;")
+      });
+
+//③-2　クリックした時の処理
+      blobImage.addEventListener('click', (e) => {
+        const targetInput = document.getElementById(`input_${blobImage.id}`);
+        console.log(targetInput.id)
+        targetInput.value = "";
+        if (!(targetInput.id == 'input_post_image_-1')) {
+          targetInput.remove();
+        };
+        blobImage.parentNode.setAttribute('style', 'display: none;')
+        blobImage.remove();
+        if (document.getElementsByClassName('article_image_input').length == 1 && firstInput.value == "" ) {
+          firstInput.nextElementSibling.remove();
+          firstInput.removeAttribute('style', 'visibility: hidden;');
+          firstInput.setAttribute('class', 'focus_input');
+          dropText.removeAttribute('style', 'display: none;');
+        }
+      });
+     };
+
+//①　画像をドラッグ&ドロップした際の処理
+//①-1　ドラッグしている時の処理
+    body.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      imageList.setAttribute('style', 'background-color: rgba(206, 207, 196, 0.4); border: 3px solid lightblue;')
+    });
+    
+    body.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      imageList.removeAttribute('style', 'background-color: rgba(206, 207, 196, 0.4); border: 3px solid lightblue;')
+    });
+
+//①-2　ドロップした時の処理
+      body.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imageList.removeAttribute('style', 'background-color: rgba(206, 207, 196, 0.4); border: 3px solid lightblue;')
+        dropText.setAttribute('style', 'display: none;');
+        const input = document.querySelector("input[class*='focus_input']");
+        input.files = e.dataTransfer.files;
+        const blob = window.URL.createObjectURL(input.files[0]);
+        createImageHTML(blob);
+      });
+  });
+};
+</script>

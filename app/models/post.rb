@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   # column: title
   validates :title, presence: true, length: { minimum: 1 , maximum: 30 }
   # column: content
-  validates :content, presence: true, length: { minimum: 1 , maximum: 200 }
+  validates :content, presence: true, length: { minimum: 1 , maximum: 500 }
 
   # 列挙型
   # column: post_genre

@@ -8,6 +8,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+
+    # ビューをカウント
+    postRecord = PostRecord.find_by(post_id: @post)
+    postRecord.countup_view
   end
 
   # GET /posts/new
@@ -23,30 +27,22 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        # Create record `PostRecord`
-        PostRecord.create(post_id: @post.id)
+    if @post.save
+      # Create record `PostRecord`
+      PostRecord.create(post_id: @post.id)
 
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+      redirect_to post_path(@post.post_uid), notice: "Post was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to post_path(@post.post_uid), notice: "Post was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -63,7 +59,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by(post_uid: params[:post_uid])
     end
 
     # Only allow a list of trusted parameters through.

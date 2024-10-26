@@ -68,10 +68,21 @@ class User < ApplicationRecord
 
   # 列挙型
   # column: gender
-  enum gender: { unkown: 0, teens: 1, twenties: 2, therties: 3, fourties: 4, fifties: 5, sixties: 6, morethan: 99, other: 100 }, _prefix: true
+  enum gender: { unkown: 0, male: 1, female: 2, other: 99 }, _prefix: true
 
   # column: age
-  enum age: { unkown: 0, male: 1, female: 2, other: 99 }, _prefix: true
+  enum age: {
+                  unkown: 0,
+                  teens: 1,
+                  twenties: 2,
+                  therties: 3,
+                  fourties: 4,
+                  fifties: 5,
+                  sixties: 6,
+                  morethan: 99,
+                  other: 100
+                }, _prefix: true
+
 
   # devise for omniauth-google-oauth2
   # https://github.com/heartcombo/devise/wiki/OmniAuth%3A-Overview
@@ -95,6 +106,11 @@ class User < ApplicationRecord
       end
     end
   end
+
+    # URL の :id の部分に id 以外を指定
+    def to_param
+      screen_name
+    end
 
   private ###################################################################
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する

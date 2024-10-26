@@ -9,7 +9,6 @@ class Users::ProfilesController < ApplicationController
   end
 
   def update
-    raise
     if @user.update(profile_params)
       redirect_to users_profile_path(@user.user_uid), notice: "Post was successfully updated."
     else

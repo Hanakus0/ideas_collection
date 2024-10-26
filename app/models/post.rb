@@ -1,9 +1,4 @@
 class Post < ApplicationRecord
-  # 保存前処理
-  before_save :check_secure_id
-  # アトリビュート
-  attribute :post_uid, :string, default: -> { SecureRandom.alphanumeric }
-
   # アソシエーション
   # table: users
   belongs_to :user
@@ -51,12 +46,8 @@ class Post < ApplicationRecord
   # column: draft_flg
   enum draft_flg: { publish: 0, draft: 1 }, _prefix: true
 
-  private ###################################################################
-    # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
-    def check_secure_id
-      loop do
-        break if Post.find_by(post_uid: self.post_uid) == nil
-        self.post_uid = SecureRandom.alphanumeric
-      end
-    end
+  # URL の :id の部分に id 以外を指定
+  def to_param
+    post_uid
+  end
 end

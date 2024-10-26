@@ -28,15 +28,19 @@
   <%= f.text_area :introduction, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
   <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
 
-  <!-- Buttons with select -->
-  <div class="">
-    <% User.genders.each_with_index  do |(k, v), i| %>
-      <%= f.radio_button :gender, v %>
-      <%= f.label User.genders_i18n[k.to_sym] %>
-    <% end %>
+  <!-- age -->
+  <div sm:w-full sm:mx-auto>
+    <%= f.label :age, class: "text-lg text-gray-600" %>
+    <%= f.select :age, User.ages_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
   </div>
 
-    <!-- Buttons with select -->
+    <!-- gender -->
+  <div sm:w-full sm:mx-auto>
+    <%= f.label :gender, class: "text-lg text-gray-600" %>
+    <%= f.select :gender, User.genders_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
+  </div>
+
+    <!-- submit Button -->
   <div class="flex p-1 justify-end">
     <%= f.submit t('form.ok'), class: "w-3/12 p-3 bg-blue-500 text-white hover:bg-blue-400"%>
   </div>

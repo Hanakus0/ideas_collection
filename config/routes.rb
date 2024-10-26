@@ -34,5 +34,6 @@ Rails.application.routes.draw do
     resources :profiles, only: %i(show edit update), param: :user_uid
   end
   # table: posts
-  resources :posts, param: :post_uid
+  # resources :posts, param: :post_uid
+  resources :posts
 end

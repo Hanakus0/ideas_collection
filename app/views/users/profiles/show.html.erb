@@ -12,23 +12,23 @@
                     <%= @user.account_name %>
                 </p>
             </div>
-                <div class="flex items-center space-x-2 mt-4">
-                    <p class="text-xl text-slate-400">
-                        <%= "＠" + @user.screen_name %>
+            <div class="flex items-center space-x-2 mt-4">
+                <p class="text-xl text-slate-400">
+                    <%= "＠" + @user.screen_name %>
+                </p>
+            </div>
+            <div class="mt-4">
+                <div class="flex justify-between items-center space-x-4 mt-4">
+                    <p class="text-md text-slate-400">
+                        <%=  t('profile.age') %>
                     </p>
-                </div>
-            <div class>
-                <div class="flex space-x-4 items-center space-x-2 mt-4">
                     <p class="text-md text-slate-400">
                         <%= @user.age_i18n %>
                     </p>
-                    <p class="text-md text-slate-400">
-                        <%= @user.age_i18n %>
-                    </p>
                 </div>
-                <div class="flex space-x-4 items-center space-x-2 mt-4">
+                <div class="flex  justify-between items-center space-x-4 mt-4">
                     <p class="text-md text-slate-400">
-                        <%= @user.gender_i18n %>
+                        <%=  t('profile.gender') %>
                     </p>
                     <p class="text-md text-slate-400">
                         <%= @user.gender_i18n %>

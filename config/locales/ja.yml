@@ -15,6 +15,9 @@ ja:
     post:
       new: '新しいアイデアの投稿'
       warning_textarea: '※本文は最大 500 文字です'
+  profile:
+    age: '年齢'
+    gender: 性別
   enums:
     user:
       age:

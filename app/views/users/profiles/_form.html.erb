@@ -21,21 +21,29 @@
 
 
   <!-- Preview image here -->
-
+  <%= f.label :profile_image, class: "text-lg text-gray-600" %>
+  <%= f.label :profile_image, class: "mb-4" do %>
+    <div class="avatar mb-4">
+      <div class="rounded-full w-40">
+        <%= image_tag current_user.profile_image.url %>
+        <%= f.file_field :profile_image, class: "hidden" %>
+      </div>
+    </div>
+  <% end %>
 
   <!-- introduction -->
   <%= f.label :introduction, class: "text-lg text-gray-600" %>
   <%= f.text_area :introduction, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
-  <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
+  <div class="mb-4 count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
 
   <!-- age -->
-  <div sm:w-full sm:mx-auto>
+  <div class="sm:w-full sm:mx-auto">
     <%= f.label :age, class: "text-lg text-gray-600" %>
     <%= f.select :age, User.ages_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
   </div>
 
     <!-- gender -->
-  <div sm:w-full sm:mx-auto>
+  <div class="sm:w-full sm:mx-auto">
     <%= f.label :gender, class: "text-lg text-gray-600" %>
     <%= f.select :gender, User.genders_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
   </div>

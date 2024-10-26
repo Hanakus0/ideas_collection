@@ -41,3 +41,5 @@
 
 # Original
 /works
+# carrierwave default
+/public/uploads

@@ -41,7 +41,9 @@ gem "devise", "~> 4.9"
 gem 'rails-i18n', '~> 7.0.0'
 gem 'devise-i18n', '~> 1.12', '>= 1.12.1'
 gem 'enum_help'
+# aws s3 with carrierwave
 gem 'carrierwave', '~> 3.0'
+gem 'fog-aws', '~> 3.29'
 # For GoogleOauth2 gems
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'

@@ -21,7 +21,10 @@
       </li>
       <li class="border-1 border-t-neutral-950"></li>
       <li class="mb-4">
-          <%= link_to "ログアウト", destroy_user_session_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+          <%= link_to t('header.user_setting'), edit_user_registration_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+      </li>
+      <li>
+          <%= link_to t('header.signout'), destroy_user_session_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
       </li>
     </ul>
   </details>
@@ -66,7 +69,10 @@
         </li>
         <li class="border-1 border-t-neutral-950"></li>
         <li class="mb-4">
-            <%= link_to "ログアウト", destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            <%= link_to t('header.user_setting'), destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li class="mb-4">
+            <%= link_to t('header.signout'), destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
       </ul>
     </div>

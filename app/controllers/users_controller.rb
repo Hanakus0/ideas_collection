@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  private #####################################################################
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -66,5 +66,13 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:user_uid, :screen_name, :account_name, :profile_image, :name, :gender, :age, :introduction)
+    end
+
+    # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
+    def gen_secure_id
+      loop do
+        gen_uid = SecureRandom.alphanumeric
+        return gen_uid if User.find_by(user_uid: gen_uid) == nil
+      end
     end
 end

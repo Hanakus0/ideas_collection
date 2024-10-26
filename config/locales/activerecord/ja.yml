@@ -12,6 +12,8 @@ ja:
         account_name: 'ユーザー名'
         gender: '性別'
         age: '年齢'
+        profile_image: 'プロフィール画像'
+        introduction: 'プロフィール文'
       post:
         post_genre_id: '投稿ジャンル'
         title: 'タイトル'

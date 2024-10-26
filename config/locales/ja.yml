@@ -6,6 +6,8 @@ ja:
     see_posts: 'みんなの投稿を見る'
     signup: '新規会員登録'
     signin: 'ログイン'
+    user_setting: '設定'
+    signout: 'ログアウト'
   footer:
     privacy_policy: 'プライバシーポリシー'
     terms_of_service: '利用規約'
@@ -18,6 +20,10 @@ ja:
   profile:
     age: '年齢'
     gender: 性別
+    profile_edit: プロフィール編集
+    following: フォローする
+    unfollowing: フォロー解除する
+    warning_introduce: '※自己紹介文は最大 160 文字です'
   enums:
     user:
       age:

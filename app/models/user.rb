@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # carrierwave → users > profile_image:string
   mount_uploader :profile_image, ProfileImageUploader
 
-  #################################################################################
+  ##############################################################################
   # TODO:以下不要か？
   require 'securerandom'
   # Table name: users
@@ -113,16 +113,19 @@ class User < ApplicationRecord
     end
 
   private ###################################################################
-    # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
+    # 新規会員登録時および更新時にuser_idに重複が無いかをチェックした上で保存する
     def check_secure_id
+      return if User.find_by(user_uid: self.user_uid) != nil
+      # 初回設定時
       loop do
         break if User.find_by(user_uid: self.user_uid) == nil
         self.user_uid = SecureRandom.alphanumeric(20)
       end
     end
 
-    # 新規会員登録時および、screen_idに重複が無いかをチェックした上で保存する
+    # 新規会員登録時および更新時にscreen_idに重複が無いかをチェックした上で保存する
     def check_screen_id
+      return if User.find_by(screen_name: self.screen_name) != nil
       loop do
         break if User.find_by(screen_name: self.screen_name) == nil
         self.screen_name = SecureRandom.alphanumeric

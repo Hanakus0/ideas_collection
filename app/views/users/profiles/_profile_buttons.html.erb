@@ -2,14 +2,14 @@
   <%= link_to edit_users_profile_path(current_user.user_uid) do %>
     <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
         <%= image_tag 'setting.svg', class: "w-4 h-4" %>
-        <span>設定</span>
+        <span><%= t('profile.profile_edit') %></span>
     </button>
   <% end %>
 <% else %>
   <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-      <span>フォローする</span>
+      <span><%= t('profile.following') %></span>
   </button>
   <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-      <span>フォロー解除する</span>
+      <span><%= t('profile.unfollowing') %></span>
   </button>
 <% end %>

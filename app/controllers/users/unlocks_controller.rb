@@ -1,6 +1,5 @@
 # frozen_string_literal: true
   # deviseによるログイン済みかの判定
-  before_action :authenticate_user!
 
 class Users::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new

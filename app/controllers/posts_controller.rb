@@ -30,7 +30,6 @@ class PostsController < ApplicationController
     # 親クラスからインスタンスを取得しレコードを保存
     @post = get_post_genre.posts.build(post_params)
 
-    # raise
     if @post.save
       @post.create_post_record(post_id: @post.id)
       redirect_to post_path(@post), notice: "Post was successfully created."
@@ -80,7 +79,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:images, :title, :content, :draft_flg).merge(post_uid: gen_secure_id, user_id: current_user.id)
+      params.require(:post).permit(:title, :content, { images: [] }, :draft_flg).merge(post_uid: gen_secure_id, user_id: current_user.id)
     end
 
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
@@ -93,6 +92,6 @@ class PostsController < ApplicationController
 
     # 更新対象のカラムのみ
     def update_params
-      params.require(:post).permit(:title, :content, :images, :draft_flg)
+      params.require(:post).permit(:title, :content, { images: [] }, :draft_flg)
     end
   end

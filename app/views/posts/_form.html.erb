@@ -25,7 +25,7 @@
   
   <!-- images -->
   <% post.images.each do |image| %>
-    <%= hidden_field :post, :images, multiple: true, value: images.identifier %>
+    <%= hidden_field :post, :images, multiple: true, value: image.identifier %>
   <% end %>
   <%= f.file_field :images, multiple: true %>
 

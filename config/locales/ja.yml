@@ -1,4 +1,7 @@
 ja:
+  errors:
+    messages:
+      extension_allowlist_error: "は jpg jpeg png 以外は投稿できません"
   title:
     post:
       new: '新規投稿'

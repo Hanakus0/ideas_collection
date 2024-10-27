@@ -22,6 +22,9 @@ class Post < ApplicationRecord
   # validates :post_genre_id, presence: true
   # column: images
   validates :images, presence: true, allow_blank: true
+  # validate :image_type
+  validate :image_size
+  validate :image_length
   # column: title
   validates :title, presence: true, length: { minimum: 1 , maximum: 50 }
   # column: content
@@ -53,4 +56,21 @@ class Post < ApplicationRecord
   def to_param
     post_uid
   end
+
+  private ################################################################
+  # ポストに添付するファイルの総数のバリデーション
+  def image_size
+    images.each do |image|
+      if image.size > 5.megabytes
+        errors.add(:images, "は1つのファイル5MB以内にしてください")
+      end
+    end
+  end
+
+  def image_length
+    if images.length > 3
+      errors.add(:images, "は 4 枚以内にしてください")
+    end
+  end
+
 end

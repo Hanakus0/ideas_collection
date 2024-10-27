@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def create
     # 親クラスからインスタンスを取得しレコードを保存
     @post = get_post_genre.posts.build(post_params)
-
+    
     if @post.save
       @post.create_post_record(post_id: @post.id)
       redirect_to post_path(@post), notice: "Post was successfully created."

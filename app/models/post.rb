@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  # carrierwave
+  mount_uploaders :images, ImageUploader
+
   # アソシエーション
   # table: users
   belongs_to :user

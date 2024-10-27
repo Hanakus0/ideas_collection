@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  # deviseによるログイン済みかの判定
+  before_action :authenticate_user!, except: %i[ index show ]
 
   # GET /posts or /posts.json
   def index
@@ -39,6 +41,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
+    # raise
     @post.post_genre = get_post_genre
     if @post.update(update_params)
       redirect_to post_path(@post.post_uid), notice: "Post was successfully updated."

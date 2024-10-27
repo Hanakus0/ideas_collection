@@ -1,8 +1,4 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Post uid:</strong>
-    <%= post.post_uid %>
-  </p>
 
   <p>
     <strong>Account_name:</strong>
@@ -15,13 +11,20 @@
   </p>
 
   <p>
+    <strong>Post uid:</strong>
+    <%= post.post_uid %>
+  </p>
+
+  <p>
     <strong>Genre:</strong>
     <%= post.post_genre_id_i18n %>
   </p>
 
   <p>
     <strong>Images:</strong>
-    <%= post.images %>
+    <% post.images.each do |image| %>
+      <%= image_tag image.url %>
+    <% end %>
   </p>
 
   <p>

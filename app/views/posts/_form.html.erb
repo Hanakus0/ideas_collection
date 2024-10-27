@@ -22,7 +22,12 @@
   <%= f.label :content, class: "text-lg text-gray-600" %>
   <%= f.text_area :content, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
   <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
-
+  
+  <!-- images -->
+  <% post.images.each do |image| %>
+    <%= hidden_field :post, :images, multiple: true, value: images.identifier %>
+  <% end %>
+  <%= f.file_field :images, multiple: true %>
 
   <!-- Buttons with select -->
   <div class="flex my-3 justify-end">

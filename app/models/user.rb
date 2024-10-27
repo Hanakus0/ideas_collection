@@ -9,7 +9,8 @@ class User < ApplicationRecord
          :validatable,
          :timeoutable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  # carrierwave → users > profile_image:string
+  # carrierwave関連
+  attr_accessor :profile_image_cache
   mount_uploader :profile_image, ProfileImageUploader
 
   ##############################################################################
@@ -57,7 +58,7 @@ class User < ApplicationRecord
   # column: screen_name
   validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true
   # column: account_name
-  validates :account_name, presence: true, length: { minimum: 1 , maximum: 20 }, allow_blank: true
+  validates :account_name, presence: true, length: { minimum: 1 , maximum: 20 }
   #######################
   # TODO: profile_image #
   #######################

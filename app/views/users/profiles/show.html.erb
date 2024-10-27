@@ -1,12 +1,18 @@
 <!-- page parent -->
 <div class="h-full lg:w-1/2 mx-auto p-8">
     <!-- Profile header -->
-    <div class="bg-white rounded-lg shadow-xl pb-8">
+    <div class="bg-slate-100 rounded-lg shadow-xl pb-8">
         <!-- profile header back image -->
         <div class="w-full h-[100px]"></div>
         <!-- user profile image -->
         <div class="flex flex-col items-center -mt-20">
-            <%= image_tag @user.profile_image.url, class: "w-40 border-4 border-white rounded-full" %>
+            <!-- profile_image -->
+            <% if current_user.profile_image? %>
+                <%= image_tag @user.profile_image.url, class: "bg-white w-40 h-40 border-4 border-white rounded-full" %>
+            <% else %>
+                <%= image_tag 'tokumeisan.png', class: "w-40 h-40 border-4 border-white rounded-full" %>
+            <% end %>
+            <!-- account_name -->
             <div class="flex items-center space-x-2 mt-4">
                 <p class="text-4xl">
                     <%= @user.account_name %>

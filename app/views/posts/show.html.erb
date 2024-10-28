@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
+<% if @post.decorate.post_owner?(current_user) %>
+  <div class="pt-4 mx-auto flex justify-center items-center gap-4">
+    <!-- 編集ボタン -->
+    <%= link_to edit_post_path(@post.post_uid) do %>
+    <button class="btn btn-active btn-primary">
+      <%= t('.edit_post') %>
+    </button>
+    <% end %>
+    <!-- 削除ボタン -->
+    <%= button_to t('.delete_post'), @post, class: "btn btn-active btn-neutral", method: :delete, data: { turbo_confirm: t('.delete_confirm') } %>
+  </div>
+<% end %>
+
 <div class="pt-4 w-screen flex justify-center items-center">
   <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem]  space-y-6 p-10">
     <%= render 'detail_post', post: @post %>
   </div>
-</div>
-
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post.post_uid) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
 </div>

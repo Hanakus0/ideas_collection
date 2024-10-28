@@ -57,7 +57,6 @@ class Post < ApplicationRecord
     post_uid
   end
 
-  def
 
   private ################################################################
   # ポストに添付するファイルの総数のバリデーション
@@ -73,5 +72,6 @@ class Post < ApplicationRecord
     if images.length > 3
       errors.add(:images, "は 4 枚以内にしてください")
     end
+  end
 
 end

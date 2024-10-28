@@ -56,7 +56,7 @@ class User < ApplicationRecord
   # column: user_uid
   validates :user_uid, presence: true, length: { is: 20 }, uniqueness: true
   # column: screen_name
-  validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true
+  validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   # column: account_name
   validates :account_name, presence: true, length: { minimum: 1 , maximum: 20 }
   #######################

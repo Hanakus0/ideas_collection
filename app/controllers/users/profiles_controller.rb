@@ -11,7 +11,6 @@ class Users::ProfilesController < ApplicationController
   end
 
   def update
-    # raise
     if @user.update(profile_params)
       redirect_to users_profile_path(@user.screen_name), notice: "Post was successfully updated."
     else
@@ -30,6 +29,12 @@ class Users::ProfilesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def profile_params
-    params.require(:user).permit(:screen_name, :account_name, :profile_image, :profile_image_cache, :gender, :age, :introduction)
+    profile_params = params.require(:user).permit(:screen_name, :account_name, :profile_image, :profile_image_cache, :gender, :age, :introduction)
+
+    # チェックされていれば匿名画像を適用
+    check_box_val = params.require(:user)[:profile_image_flg]
+    profile_params[:profile_image] = nil if check_box_val == "1"
+
+    return profile_params
   end
 end

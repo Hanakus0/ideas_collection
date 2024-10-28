@@ -28,7 +28,13 @@ ja:
     profile_edit: プロフィール編集
     following: フォローする
     unfollowing: フォロー解除する
+    not_use_image: 'プロフィール画像を使用しない'
     warning_introduce: '※自己紹介文は最大 160 文字です'
+  posts:
+    show:
+      edit_post: この投稿を編集する
+      delete_post: この投稿を削除する
+      delete_confirm: この投稿を削除しますがよろしいですか？
   enums:
     user:
       age:

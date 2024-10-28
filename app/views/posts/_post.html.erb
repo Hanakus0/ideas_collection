@@ -1,45 +1,18 @@
-<div id="<%= dom_id post %>">
-
-  <p>
-    <strong>Account_name:</strong>
-    <%= post.user.account_name %>
-  </p>
-
-  <p>
-    <strong>Screen_name:</strong>
-    <%= post.user.screen_name %>
-  </p>
-
-  <p>
-    <strong>Post uid:</strong>
-    <%= post.post_uid %>
-  </p>
-
-  <p>
-    <strong>Genre:</strong>
-    <%= post.post_genre_id_i18n %>
-  </p>
-
-  <p>
-    <strong>Images:</strong>
-    <% post.images.each do |image| %>
-      <%= image_tag image.url %>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= post.content %>
-  </p>
-
-  <p>
-    <strong>Draft flg:</strong>
-    <%= post.draft_flg %>
-  </p>
-
+<div class="flex justify-between items-center">
+    <span class="font-light text-gray-600">mar 10, 2019</span>
+    <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">Design</a>
 </div>
+<div class="mt-2">
+    <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">Accessibility tools for designers and developers</a>
+    <p class="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p>
+</div>
+<div class="flex justify-between items-center mt-4">
+  <div>
+      <a class="flex items-center" href="#">
+          <img class="mx-4 w-10 h-10 object-cover rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
+          <h1 class="text-gray-700 font-bold">Khatab wedaa</h1>
+      </a>
+  </div>
+</div>
+
+

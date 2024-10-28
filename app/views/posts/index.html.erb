@@ -1,21 +1,18 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Posts" %>
 
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%
-=begin%>
- <%= render 'post_card', post: post %> 
-<%
-=end%>
-    <%= render post %>
-  <%= link_to "Show this post", post_path(post.post_uid) %>
-  <% end %>
+<!-- Posts layouts -->
+<div class="container px-6 py-10 mx-auto">
+  <div class="w-full">
+    <!-- Posts start -->
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post.post_uid) do %>
+        <div class="mx-auto max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md">
+          <%= render post %>
+        </div>
+      <% end %>
+    <% end %>
+    <!-- Posts end -->
+  </div>
 </div>
-
-<p>
-</p>
-<%= link_to "New post", new_post_path %>
+  <!-- Posts layouts end -->

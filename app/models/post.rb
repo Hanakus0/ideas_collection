@@ -74,5 +74,4 @@ class Post < ApplicationRecord
       errors.add(:images, "は 4 枚以内にしてください")
     end
 
-
 end

@@ -2,12 +2,12 @@
 <% content_for :title, "Posts" %>
 
 <!-- Posts layouts -->
-<div class="container px-6 py-10 mx-auto">
+<div class="px-6 py-10 mx-auto">
   <div class="w-full">
     <!-- Posts start -->
     <% @posts.each do |post| %>
-      <%= link_to post_path(post.post_uid) do %>
-        <div class="mx-auto max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md">
+      <%= link_to (post_path(post.post_uid)), class: 'list-content' do %>
+        <div class="mx-auto max-w-4xl px-10 my-2 py-6 bg-white rounded-lg shadow-md">
           <%= render post %>
         </div>
       <% end %>

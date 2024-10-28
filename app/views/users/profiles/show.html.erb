@@ -7,7 +7,7 @@
         <!-- user profile image -->
         <div class="flex flex-col items-center -mt-20">
             <!-- profile_image -->
-            <% if current_user.profile_image? %>
+            <% if @user.profile_image? %>
                 <%= image_tag @user.profile_image.url, class: "bg-white w-40 h-40 border-4 border-white rounded-full" %>
             <% else %>
                 <%= image_tag 'tokumeisan.png', class: "w-40 h-40 border-4 border-white rounded-full" %>
@@ -45,7 +45,7 @@
         <!-- profile buttons -->
         <div class="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
             <div class="flex items-center space-x-4 mt-2">
-                <%= render 'profile_buttons', current_user: current_user %>
+                <%= render 'profile_buttons', user: @user %>
             </div>
         </div>
     </div>

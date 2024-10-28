@@ -1,17 +1,52 @@
-<div class="flex justify-between items-center">
-    <span class="font-light text-gray-600">mar 10, 2019</span>
-    <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">Design</a>
+<div class="lg:flex justify-between items-center">
+    <span class="font-light text-gray-600">
+      <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </span>
+    <p class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
+      <%= post.post_genre_id_i18n %>
+    </p>
+</div>
+<div class="mt-2 flex justify-end items-center">
+    <p class="px-2 py-1 bg-red-600 text-gray-100 font-bold rounded hover:bg-gray-500">
+      <%= 'TODO: タグ' %>
+    </p>
 </div>
 <div class="mt-2">
-    <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">Accessibility tools for designers and developers</a>
-    <p class="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p>
+    <p class="text-2xl text-gray-700 font-bold hover:text-gray-600">
+      <%= post.title %>
+    </p>
+    <p class="mt-2 text-gray-600">
+      <%= post.content %>
+    </p>
 </div>
-<div class="flex justify-between items-center mt-4">
+<div class="lg:flex justify-between items-center mt-4">
+  <div class="m-4 flex items-center">
+
+    <div class="flex mr-2 text-gray-700 text-sm mr-8">
+        <%= image_tag 'post_view.svg', class: "w-4 h-4" %>
+        <span class="ml-2">
+          <%= post.post_record.view_count %>
+        </span>
+    </div>
+  </div>
   <div>
-      <a class="flex items-center" href="#">
-          <img class="mx-4 w-10 h-10 object-cover rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
-          <h1 class="text-gray-700 font-bold">Khatab wedaa</h1>
-      </a>
+    <%= link_to users_profile_path(post.user.screen_name), class:"lg:flex items-center" do %>
+      <div class="flex">
+        <% if post.user.profile_image? %>
+          <%= image_tag post.user.profile_image.url, class: "mx-4 w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+        <% else %>
+          <%= image_tag 'tokumeisan.png', class: "mx-4 w-10 h-10 object-cover  border-2 border-slate-300 rounded-full sm:block" %>
+        <% end %>
+        <div>
+          <h1 class="text-gray-700 font-bold">
+            <%= post.user.account_name %>
+          </h1>
+          <h1 class="text-gray-400">
+            ＠<%= post.user.screen_name %>
+          </h1>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 

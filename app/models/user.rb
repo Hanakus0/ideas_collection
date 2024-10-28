@@ -113,6 +113,10 @@ class User < ApplicationRecord
       screen_name
     end
 
+    def has_image?
+      self.profile_image.blank? ? 'tokumeisan.png' : self.profile_image
+    end
+
   private ###################################################################
     # 新規会員登録時および更新時にuser_idに重複が無いかをチェックした上で保存する
     def check_secure_id

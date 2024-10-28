@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
+<div class="pt-4 w-screen flex justify-center items-center">
+  <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem]  space-y-6 p-10">
+    <%= render 'detail_post', post: @post %>
+  </div>
+</div>
 
 <div>
   <%= link_to "Edit this post", edit_post_path(@post.post_uid) %> |

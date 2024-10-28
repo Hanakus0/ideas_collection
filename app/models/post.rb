@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   # table: post_genres
   belongs_to :post_genre
   # table: post_records
-  has_one :post_record
+  has_one :post_record, dependent: :destroy
 
   # バリデーション
   # column: post_uid
@@ -57,6 +57,8 @@ class Post < ApplicationRecord
     post_uid
   end
 
+  def
+
   private ################################################################
   # ポストに添付するファイルの総数のバリデーション
   def image_size
@@ -71,6 +73,6 @@ class Post < ApplicationRecord
     if images.length > 3
       errors.add(:images, "は 4 枚以内にしてください")
     end
-  end
+
 
 end

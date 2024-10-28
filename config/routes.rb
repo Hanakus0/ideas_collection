@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # not devise user routes
   namespace :users do
-    resources :profiles, only: %i(show edit update), param: :user_uid
+    resources :profiles, only: %i(show edit update), param: :screen_name
   end
   # table: posts
   # resources :posts, param: :post_uid

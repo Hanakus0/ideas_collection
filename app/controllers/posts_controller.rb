@@ -20,6 +20,8 @@ class PostsController < ApplicationController
     # ビューをカウント
     postRecord = PostRecord.find_by(post_id: @post)
     postRecord.countup_view unless postRecord.blank?
+    # コメントフォーム用
+    @comment = Comment.new
   end
 
   # GET /posts/new

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "comment/create"
   root "home#index"
 
   # by devise
@@ -35,5 +36,7 @@ Rails.application.routes.draw do
   end
   # table: posts
   # resources :posts, param: :post_uid
-  resources :posts
+  resources :posts do
+    resources :comments, only: %i(new create)
+  end
 end

@@ -11,6 +11,9 @@ ja:
     signin: 'ログイン'
     user_setting: '設定'
     signout: 'ログアウト'
+    post: 投稿する
+    new_post: 新規投稿
+    draft_post: 下書きから投稿
   footer:
     privacy_policy: 'プライバシーポリシー'
     terms_of_service: '利用規約'
@@ -32,6 +35,8 @@ ja:
     warning_introduce: '※自己紹介文は最大 160 文字です'
   posts:
     show:
+      draft_info: この投稿は下書きとして保存しています
+      draft_info_sub: この投稿を公開するには「この投稿を編集する」より公開に変更してください
       edit_post: この投稿を編集する
       delete_post: この投稿を削除する
       delete_confirm: この投稿を削除しますがよろしいですか？

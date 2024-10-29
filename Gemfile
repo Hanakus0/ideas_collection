@@ -42,6 +42,7 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'devise-i18n', '~> 1.12', '>= 1.12.1'
 gem 'enum_help'
 gem 'draper'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 # aws s3 with carrierwave
 gem 'carrierwave', '~> 3.0'
 gem 'fog-aws', '~> 3.29'

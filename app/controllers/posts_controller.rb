@@ -5,7 +5,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    if params[:my_draft] && user_signed_in?
+      # 下書きフラグがありログイン済みの場合
+      @posts = Post.where(draft_flg: 1, user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
+    else
+      # フラグ無し
+      @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   # GET /posts/1 or /posts/1.json

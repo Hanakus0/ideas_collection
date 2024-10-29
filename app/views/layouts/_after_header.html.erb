@@ -1,7 +1,20 @@
 <div class="hidden lg:flex lg:gap-x-4">
   <%= link_to "みんなの投稿を見る", posts_path, class: "p-2.5 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
-  <%= link_to "投稿する", new_post_path, class: "py-2.5 px-6 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+  <details class="dropdown dropdown-bottom dropdown-end ">
+    <summary class="drawer-button py-2.5 px-6 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6">
+      <%= t('header.post') %>
+    </summary>
+    <ul class="menu dropdown-content rounded-box z-[1] w-52 p-2 shadow bg-slate-100 leading-6 text-gray-900 border-2 border-slate-300">
+      <li>
+        <%= link_to t('header.new_post'), new_post_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+      </li>
+      <li>
+        <%= link_to t('header.draft_post'), posts_path(my_draft: true), class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+      </li>
+    </ul>
+  </details>
   <%= link_to "マイページ", users_profile_path(current_user.screen_name), class: "py-2.5 px-6 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+
   <!-- Menu button -->
   <details class="dropdown dropdown-bottom dropdown-end">
     <summary class="btn drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
@@ -15,9 +28,6 @@
       </li>
       <li>
         <%= link_to "フォロー", posts_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
-      </li>
-      <li>
-        <%= link_to "下書き", posts_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
       </li>
       <li class="border-1 border-t-neutral-950"></li>
       <li class="mb-4">
@@ -69,7 +79,7 @@
         </li>
         <li class="border-1 border-t-neutral-950"></li>
         <li class="mb-4">
-            <%= link_to t('header.user_setting'), destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+            <%= link_to t('header.user_setting'), edit_user_registration_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li class="mb-4">
             <%= link_to t('header.signout'), destroy_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>

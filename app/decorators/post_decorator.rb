@@ -16,7 +16,7 @@ class PostDecorator < Draper::Decorator
   end
 
   def post_owner?(current_user)
-    object.user.id == current_user.id
+    object.user.id == current_user.id unless current_user.blank?
   end
 
 end

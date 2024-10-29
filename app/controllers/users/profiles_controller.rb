@@ -1,10 +1,9 @@
 class Users::ProfilesController < ApplicationController
   before_action :set_user, only: %i[ show edit update ]
   # deviseによるログイン済みかの判定
-  before_action :authenticate_user!, except: %i[ show ]
+  before_action :authenticate_user!
 
   def show
-    # raise
   end
 
   def edit

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   # deviseによるログイン済みかの判定
-  before_action :authenticate_user!, except: %i[ index show ]
+  before_action :authenticate_user!, except: %i[ index ]
 
   # GET /posts or /posts.json
   def index
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     postRecord.countup_view unless postRecord.blank?
     # コメントフォーム用
     @comment = Comment.new
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   # GET /posts/new

@@ -1,0 +1,52 @@
+<% if comment.user_id == post.user_id %>
+<!-- 投稿者意外からのコメント -->
+  <div class="chat chat-start">
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
+        <%= link_to users_profile_path(comment.user) do %>
+          <%= image_tag comment.decorate.comment_user_image %>
+        <% end %>
+      </div>
+    </div>
+    <div class="chat-header">
+      <%= link_to users_profile_path(comment.user) do %>
+        <p class="text-xs">
+          <%= comment.decorate.get_account_name %>
+        </p>
+        <p class="text-xs text-slate-400">
+          ＠<%= comment.decorate.get_screen_name %>
+        </p>
+      <% end %>
+    </div>
+    <div class="chat-bubble break-words"><%= comment.content %></div>
+    <div class="chat-footer opacity-50">
+      <%= comment.decorate.created_date %>
+      <%#= link_to "削除", post_comment_path(post.id, comment), data: { turbo_method: :delete } %>
+    </div>
+  </div>
+<% else %>
+<!-- 投稿者本人のコメント -->
+  <div class="chat chat-end">
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
+        <%= link_to users_profile_path(comment.user) do %>
+          <%= image_tag comment.decorate.comment_user_image %>
+        <% end %>
+      </div>
+    </div>
+    <div class="chat-header break-words">
+      <%= link_to users_profile_path(comment.user) do %>
+        <p class="text-xs">
+          <%= comment.decorate.get_account_name %>
+        </p>
+        <p class="text-xs text-slate-400">
+          ＠<%= comment.decorate.get_screen_name %>
+        </p>
+      <% end %>
+    </div>
+    <div class="chat-bubble"><%= comment.content %></div>
+    <div class="chat-footer opacity-50">
+      <%= comment.decorate.created_date %>
+    </div>
+  </div>
+<% end %>

@@ -53,9 +53,9 @@
   </div>
   <!-- comment form -->
   <%= form_with model: [post, @comment], class: "flex items-center justify-between mt-4" do |f| %>
-    <%= image_tag post.user.decorate.has_image?, class: "bg-white rounded-full w-10 h-10 object-cover border" %>
-    <div class="flex items-center	justify-between	bg-gray-50 h-11 w-11/12 border rounded-2xl	 overflow-hidden px-4 ">
-      <%= f.text_field :comment, class:"h-full w-full bg-gray-50 outline-none ", placeholder: t('form.post.post_comment') %>
+    <%= image_tag current_user.decorate.has_image?, class: "bg-white rounded-full w-10 h-10 object-cover border" %>
+    <div class="flex items-center	justify-between	bg-gray-50 h-11 w-11/12 border rounded-2xl overflow-hidden px-4 ">
+      <%= f.text_field :content, class:"h-full w-full bg-gray-50 outline-none", minlength: "1", maxlength: "140", placeholder: t('form.post.post_comment') %>
     </div>
     <%= f.submit "OK", class: "py-3 w-12 bg-blue-500 text-white hover:bg-blue-400 rounded-full "%>
   <% end %>

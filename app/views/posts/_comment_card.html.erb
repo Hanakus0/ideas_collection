@@ -1,6 +1,6 @@
 <% if comment.user_id == post.user_id %>
-<!-- 投稿者意外からのコメント -->
-  <div class="chat chat-start">
+<!-- 投稿者以外からのコメント -->
+  <div  id="comment-<%= comment.id %>" class="chat chat-start">
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
         <%= link_to users_profile_path(comment.user) do %>
@@ -26,7 +26,7 @@
   </div>
 <% else %>
 <!-- 投稿者本人のコメント -->
-  <div class="chat chat-end">
+  <div id="comment-<%= comment.id %>" class="chat chat-end">
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
         <%= link_to users_profile_path(comment.user) do %>

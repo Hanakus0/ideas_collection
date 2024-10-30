@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    render turbo_stream: turbo_stream.remove(@comment)
   end
 
   private #######################################################

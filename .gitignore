@@ -43,3 +43,7 @@
 /works
 # carrierwave default
 /public/uploads
+
+/config/credentials/development.key
+
+/config/credentials/production.key

@@ -28,6 +28,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    # 引用投稿か否か
+    if quote_post_flg
+      @quote_post = Post.find_by((post_id: @post.id)
+    end
   end
 
   # GET /posts/1/edit

@@ -40,8 +40,15 @@ class User < ApplicationRecord
   # table: comment_likes
   has_many :comment_likes, dependent: :destroy
   # table: follows
-  has_many :follows, foreign_key: "follower_id", inverse_of: :follower, dependent: :destroy
-  has_many :follows, foreign_key: "followee_id", inverse_of: :followee, dependent: :destroy
+  has_many :follower_relationships, class_name:  "Follow",
+                                foreign_key: "follower_id",
+                                dependent: :destroy
+  has_many :following, through: :follower_relationships, source: :followee
+  # table: follows
+  has_many :followee_relationships, class_name:  "Follow",
+                                foreign_key: "followee_id",
+                                dependent: :destroy
+  has_many :followee, through: :followee_relationships, source: :follower
 
   # hmt型
   # ユーザーが削除されてもコメントは残す

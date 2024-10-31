@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "comment/create"
   root "home#index"
 
   # by devise
@@ -32,6 +31,7 @@ Rails.application.routes.draw do
 
   # not devise user routes
   namespace :users do
+    get "follows/index"
     resources :profiles, only: %i(show edit update), param: :screen_name
   end
   # table: posts

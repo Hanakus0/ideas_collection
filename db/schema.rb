@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_25_112503) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_31_022518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,11 +44,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_25_112503) do
 
   create_table "follows", force: :cascade do |t|
     t.bigint "follower_id", null: false
-    t.bigint "followew_id", null: false
+    t.bigint "followee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
     t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["followew_id"], name: "index_follows_on_followew_id"
   end
 
   create_table "post_genres", force: :cascade do |t|
@@ -139,8 +139,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_25_112503) do
   add_foreign_key "comment_likes", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
-  add_foreign_key "follows", "users", column: "followew_id"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "post_records", "posts"

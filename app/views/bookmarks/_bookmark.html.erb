@@ -1,4 +1,4 @@
-<%= link_to bookmarks_path(post_uid: post.post_uid), id: "bookmark-button-for-post-#{post.id}", data: { turbo_method: :post } ,class: "flex" do %>
+<%= link_to bookmarks_path(post_uid: post.post_uid), id: "unbookmark-button-for-post-#{post.post_uid}", data: { turbo_method: :post } ,class: "flex" do %>
   <%= image_tag 'unbookmarked', class: "w-6 h-6 mr-1" %>
   <div class="text-sm">ブックマークする</div>
 <% end %> 

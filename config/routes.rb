@@ -31,12 +31,16 @@ Rails.application.routes.draw do
 
   # not devise user routes
   namespace :users do
-    get "follows/index"
+    resources :follows, only: %i(index create destroy)
     resources :profiles, only: %i(show edit update), param: :screen_name
   end
   # table: posts
   # resources :posts, param: :post_uid
   resources :posts do
     resources :comments, only: %i(create update destroy)
+    collection do
+      get :bookmarks
+    end
   end
+  resources :bookmarks, only: %i(create destroy)
 end

@@ -1,0 +1,5 @@
+<%= link_to bookmark_path, id: "bookmark-button-for-post-#{post.id}", data: { turbo_method: :delete } ,class: "flex" do %>
+  <%= image_tag 'bookmarked', class: "w-6 h-6 mr-1" %>
+  <div class="text-sm">ブックマーク済み</div>
+<% end %> 
+

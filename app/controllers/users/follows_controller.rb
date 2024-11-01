@@ -1,7 +1,18 @@
 class Users::FollowsController < ApplicationController
-  def index
+  before_action :authenticate_user!
 
-    # フラグ無し
-    # @posts = User.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
+  def index
+    @followees = current_user.followees.order(created_at: :desc).page(params[:page]).per(5)
   end
+
+  def create
+    @followee = User.find(params[:id])
+    current_user.follow(@followee)
+  end
+
+  def destroy
+    @followee = User.find(params[:id])
+    current_user.unfollow(@followee)
+  end
+
 end

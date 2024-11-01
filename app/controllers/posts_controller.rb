@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # deviseによるログイン済みかの判定
   before_action :authenticate_user!, except: %i[ index ]
 
-  # GET /posts or /posts.json
+  # GET /posts
   def index
     if params[:my_draft] && user_signed_in?
       # 下書きフラグがありログイン済みの場合
@@ -14,9 +14,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1 or /posts/1.json
+  # GET
   def show
-
     # ビューをカウント
     postRecord = PostRecord.find_by(post_id: @post)
     postRecord.countup_view unless postRecord.blank?
@@ -38,7 +37,7 @@ class PostsController < ApplicationController
   def edit
   end
 
-  # POST /posts or /posts.json
+  # POST /posts
   def create
     # 親クラスからインスタンスを取得しレコードを保存
     @post = get_post_genre.posts.build(post_params)
@@ -51,7 +50,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
+  # PATCH/PUT
   def update
     # raise
     @post.post_genre = get_post_genre
@@ -62,11 +61,16 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
+  # DELETE
   def destroy
     @post.destroy!
 
     redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed."
+  end
+
+  # GET bookmarks
+  def bookmarks
+    @bookmark_posts = current_user.bookmark_posts.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private ###################################################################

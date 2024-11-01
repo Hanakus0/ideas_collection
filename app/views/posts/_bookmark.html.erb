@@ -1,0 +1,63 @@
+<%= link_to (post_path(post.post_uid)), class: 'list-content', data: { turbo: false } do %>
+  <div class="mx-auto max-w-4xl px-10 my-2 py-6 bg-white rounded-lg shadow-md">
+    <div class="lg:flex justify-between items-center">
+        <span class="font-light text-gray-600">
+          <%= post.decorate.created_date %>
+        </span>
+        <p class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
+          <%= post.post_genre_id_i18n %>
+        </p>
+    </div>
+    <div class="mt-2 flex justify-end items-center">
+        <p class="px-2 py-1 bg-red-600 text-gray-100 font-bold rounded hover:bg-gray-500">
+          <%= 'TODO: タグ' %>
+        </p>
+    </div>
+    <div class="mt-2">
+        <p class="text-2xl text-gray-700 font-bold hover:text-gray-600 truncate">
+          <%= post.title %>
+        </p>
+        <p class="mt-2 text-gray-600 truncate">
+          <%= post.content %>
+        </p>
+    </div>
+    <div class="lg:flex justify-between items-center mt-4">
+      <div class="m-4 flex items-center">
+        <!-- icons -->
+        <div class="flex mr-2 text-gray-700 text-sm mr-8">
+          <%= image_tag 'post_view.svg', class: "w-4 h-4" %>
+          <span class="ml-2">
+            <%= post.post_record.view_count %>
+          </span>
+        </div>
+        <div class="flex mr-2 text-gray-700 text-sm mr-8">
+          <%= image_tag 'post_view.svg', class: "w-4 h-4" %>
+          <span class="ml-2">
+            <%= post.post_record.view_count %>
+          </span>
+        </div>
+        <div class="flex mr-2 text-gray-700 text-sm mr-8">
+          <%= image_tag 'post_view.svg', class: "w-4 h-4" %>
+          <span class="ml-2">
+            <%= post.post_record.view_count %>
+          </span>
+        </div>
+      </div>
+      <div>
+        <%= link_to users_profile_path(post.user.screen_name), class:"lg:flex items-center", data: { turbo: false } do %>
+          <div class="flex">
+              <%= image_tag post.decorate.has_image?, class: "mx-4 w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+            <div>
+              <h1 class="text-gray-700 font-bold">
+                <%= post.user.account_name %>
+              </h1>
+              <h1 class="text-gray-400">
+                ＠<%= post.user.screen_name %>
+              </h1>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

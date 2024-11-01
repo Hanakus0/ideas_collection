@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   # table: quote_relations
   has_many :post_id, foreign_key: "follower_id", inverse_of: :follower
   has_many :quote_post_id, foreign_key: "follower_id", inverse_of: :follower
+  # table: bookmarks
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
   # table: comments
   has_many :comments
   # table: post_tags

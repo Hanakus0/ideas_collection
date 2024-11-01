@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Posts" %>
+
+<!-- Posts layouts -->
+<div class="px-6 py-10 mx-auto">
+  <div class="w-full">
+    <!-- Posts start -->
+<%= turbo_frame_tag "bookmark_posts-page-#{@bookmark_posts.current_page}" do %>
+    <%# 今のページで取得したTweet一覧 %>
+  <%= render @bookmark_posts %>
+
+    <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
+  <%= turbo_frame_tag "bookmark_posts-page-#{@bookmark_posts.next_page}", loading: :lazy, src: path_to_next_page(@bookmark_posts) %>
+<% end %>
+    <!-- Posts end -->
+  </div>
+</div>
+  <!-- Posts layouts end -->
+
+

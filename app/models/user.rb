@@ -43,12 +43,12 @@ class User < ApplicationRecord
   has_many :follower_relationships, class_name:  "Follow",
                                 foreign_key: "follower_id",
                                 dependent: :destroy
-  has_many :following, through: :follower_relationships, source: :followee
+  has_many :followees, through: :follower_relationships, source: :followee
   # table: follows
   has_many :followee_relationships, class_name:  "Follow",
                                 foreign_key: "followee_id",
                                 dependent: :destroy
-  has_many :followee, through: :followee_relationships, source: :follower
+  has_many :followers, through: :followee_relationships, source: :follower
 
   # hmt型
   # ユーザーが削除されてもコメントは残す
@@ -115,14 +115,45 @@ class User < ApplicationRecord
     end
   end
 
-    # URL の :id の部分に id 以外を指定
-    def to_param
-      screen_name
-    end
+  # URL の :id の部分に id 以外を指定
+  def to_param
+    screen_name
+  end
 
-    def has_image?
-      self.profile_image.blank? ? 'tokumeisan.png' : self.profile_image
-    end
+  #############################
+  ## クラスメソッド: bookmark ##
+  #############################
+  # クラスメソッド: bookmarks
+  def bookmark(post)
+    bookmark_posts << post
+  end
+
+  def unbookmark(post)
+    bookmark_posts.destroy(post)
+  end
+
+  # ブックマークした投稿に含まれるか否か
+  def bookmark?(post)
+    bookmark_posts.include?(post)
+  end
+
+  #############################
+  ### クラスメソッド: follow ###
+  #############################
+  # ユーザーをフォローする
+  def follow(other_user)
+    follower_relationships.create(followee_id: other_user.id)
+  end
+
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    follower_relationships.find_by(followee_id: other_user.id).destroy
+  end
+
+  # 現在のユーザーがフォローしているか判定
+  def following?(other_user)
+    followees.include?(other_user)
+  end
 
   private ###################################################################
     # 新規会員登録時および更新時にuser_idに重複が無いかをチェックした上で保存する

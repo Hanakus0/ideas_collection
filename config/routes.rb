@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # not devise user routes
   namespace :users do
-    resources :follows, only: %i(index create destroy)
+    resources :follows, only: %i(index create destroy), param: :screen_name
     resources :profiles, only: %i(show edit update), param: :screen_name
   end
   # table: posts

@@ -1,1 +1,1 @@
-<%= link_to t('profile.following'), users_follows_path(user.id), class: "flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100", data: { turbo_method: :post }, id: "follow-btn-#{user.id}" %>
+<%= link_to t('profile.following'), users_follows_path(screen_name: user.screen_name), class: "flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100", data: { turbo_method: :post }, id: "follow-btn-#{ user.screen_name }" %>

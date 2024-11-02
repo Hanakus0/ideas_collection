@@ -120,41 +120,6 @@ class User < ApplicationRecord
     screen_name
   end
 
-  #############################
-  ## クラスメソッド: bookmark ##
-  #############################
-  # クラスメソッド: bookmarks
-  def bookmark(post)
-    bookmark_posts << post
-  end
-
-  def unbookmark(post)
-    bookmark_posts.destroy(post)
-  end
-
-  # ブックマークした投稿に含まれるか否か
-  def bookmark?(post)
-    bookmark_posts.include?(post)
-  end
-
-  #############################
-  ### クラスメソッド: follow ###
-  #############################
-  # ユーザーをフォローする
-  def follow(other_user)
-    follower_relationships.create(followee_id: other_user.id)
-  end
-
-  # ユーザーをフォロー解除する
-  def unfollow(other_user)
-    follower_relationships.find_by(followee_id: other_user.id).destroy
-  end
-
-  # 現在のユーザーがフォローしているか判定
-  def following?(other_user)
-    followees.include?(other_user)
-  end
-
   private ###################################################################
     # 新規会員登録時および更新時にuser_idに重複が無いかをチェックした上で保存する
     def check_secure_id

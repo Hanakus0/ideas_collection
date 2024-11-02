@@ -1,6 +1,5 @@
 class BookmarksController < ApplicationController
   def create
-    # raise
     @post = Post.find_by(post_uid: params[:post_uid])
     current_user.bookmark_posts << @post
     redirect_to post_path(@post), success: t('.success')

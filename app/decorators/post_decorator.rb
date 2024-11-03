@@ -25,4 +25,16 @@ class PostDecorator < Draper::Decorator
     object.user.id == current_user.id unless current_user.blank?
   end
 
+  # 引用投稿の有無判定
+  def has_quote_post?(quote_post)
+    @quote_post = object.quote_relations.find_by(post_id: object.id)
+    @quote_post.present?
+  end
+
+  # 引用投稿の取得
+  def get_quote_post(quote_post)
+    quote_relation = object.quote_relations.find_by(post_id: object.id)
+    Post.find(quote_relation.quote_post_id)
+  end
+
 end

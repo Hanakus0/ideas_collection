@@ -25,14 +25,15 @@ class Post < ApplicationRecord
   has_many :post_tags
   # table: post_genres
   belongs_to :post_genre
+  # column: post_tags, tags
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
   # table: post_records
   has_one :post_record, dependent: :destroy
 
   # バリデーション
   # column: post_uid
   validates :post_uid, presence: true, length: { is: 16 }, uniqueness: true
-  # column: post_genre_id
-  # validates :post_genre_id, presence: true
   # column: images
   validates :images, presence: true, allow_blank: true
   # validate :image_type

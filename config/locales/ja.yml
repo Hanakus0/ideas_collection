@@ -45,6 +45,8 @@ ja:
       edit_post: この投稿を編集する
       delete_post: この投稿を削除する
       delete_confirm: この投稿を削除しますがよろしいですか？
+      quote: 引用・参考にした投稿
+      tag_enter: ［Enter］キーで区切って入力してください
   enums:
     user:
       age:

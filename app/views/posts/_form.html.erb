@@ -30,6 +30,15 @@
   <%= f.label :content, class: "text-lg text-gray-600" %>
   <%= f.text_area :content, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
   <div class="count ml-auto text-gray-400 text-xs font-semibold"><%= t('form.post.warning_textarea') %></div>
+
+  <!-- PostTags -->
+  <%= f.label :post_tags, class: "text-lg text-gray-600" %>
+  <%= f.text_area :post_tags, 
+    value: @post.tags.map(&:name).join(", "), 
+    placeholder: t('posts.show.tag_enter'),
+    id: "tags-input",
+    class: "tagify",
+    data: { controller: "tag" } %>
   
   <!-- images -->
   <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>

@@ -14,6 +14,11 @@ class PostsController < ApplicationController
     end
   end
 
+  # 検索時
+  def search
+    @posts = PostSearchForm.new
+  end
+
   # GET
   def show
     # ビューをカウント
@@ -44,7 +49,7 @@ class PostsController < ApplicationController
     # 親クラスからインスタンスを取得しレコードを保存
     @post = get_post_genre.posts.build(post_params)
     @quote_post = Post.find(params.require(:post)[:quote_post]) if params.require(:post)[:quote_post]
-    
+
     if @post.save
       @post.create_post_record(post_id: @post.id)
       @post.quote_posts << @quote_post if @quote_post

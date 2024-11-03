@@ -41,13 +41,13 @@ class User < ApplicationRecord
   has_many :comment_likes, dependent: :destroy
   # table: follows
   has_many :follower_relationships, class_name:  "Follow",
-                                foreign_key: "follower_id",
-                                dependent: :destroy
+                                    foreign_key: "follower_id",
+                                    dependent: :destroy
   has_many :followees, through: :follower_relationships, source: :followee
   # table: follows
   has_many :followee_relationships, class_name:  "Follow",
-                                foreign_key: "followee_id",
-                                dependent: :destroy
+                                    foreign_key: "followee_id",
+                                    dependent: :destroy
   has_many :followers, through: :followee_relationships, source: :follower
 
   # hmt型
@@ -66,6 +66,7 @@ class User < ApplicationRecord
   validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   # column: account_name
   validates :account_name, presence: true, length: { minimum: 1 , maximum: 20 }
+
   #######################
   # TODO: profile_image #
   #######################
@@ -98,11 +99,6 @@ class User < ApplicationRecord
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      # user.account_name = auth.info.name   # assuming the user model has a name
-      # user.profile_image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
     end
   end
 

@@ -25,6 +25,7 @@ ja:
     ok: OK
     post:
       new: '新しいアイデアの投稿'
+      quote_post: '引用・参考にするアイデア'
       warning_textarea: '※本文は最大 500 文字です'
       info_image_upload: '画像を選択してください'
       warn_image_upload: '※'

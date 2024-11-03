@@ -1,5 +1,5 @@
 <!-- header -->
-
+<div class="flex justify-between">
   <%= link_to users_profile_path(post.user), class: "flex space-x-4 items-center" do %>
     <div class="w-12 h-12">
       <%= image_tag post.user.decorate.has_image?, class: "rounded-full w-full h-full object-cover" %>
@@ -7,11 +7,16 @@
     <div class="space-y-2">
       <div class="flex space-x-2 items-center">
         <h2 class="text-base"><%= post.user.account_name %></h2>
-        <div class="  text-xs">＠<%= post.user.screen_name %></div>
+        <div class="text-xs">＠<%= post.user.screen_name %></div>
       </div>
-      <p class=" text-xs"><%= post.decorate.created_date %></p>
+      <p class="text-xs"><%= post.decorate.created_date %></p>
     </div>
   <% end %>
+  <%= link_to new_post_path(quote_post_id: post.post_uid), class:"p-1 my-auto border border-slate-400 rounded-2xl align-center" do %>
+    <%= image_tag 'quote_post', class: "mx-auto w-4 h-4" %>
+    <p class="text-xs">quote</p>
+  <% end %>
+</div>
 
 <!--content-->
 <div>
@@ -33,7 +38,7 @@
 </div>
 
 <!-- comments-->
-  <div class=" h-16 border-b  flex items-center justify-around	">
+  <div class=" h-16 border-b flex items-center justify-around	">
     <div class="flex items-center	gap-3	">
 
       <div class="text-sm	">10 Comments</div>

@@ -15,6 +15,12 @@ class PostDecorator < Draper::Decorator
     end
   end
 
+  # 閲覧者 == 投稿者本人か
+  def post_status?
+    object.draft_flg == "draft"
+  end
+
+  # 閲覧者 == 投稿者本人か
   def post_owner?(current_user)
     object.user.id == current_user.id unless current_user.blank?
   end

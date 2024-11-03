@@ -6,13 +6,21 @@ class Post < ApplicationRecord
   # table: users
   belongs_to :user
   # table: quote_relations
-  has_many :post_id, foreign_key: "follower_id", inverse_of: :follower
-  has_many :quote_post_id, foreign_key: "follower_id", inverse_of: :follower
+  has_many :quote_relations, class_name: "QuoteRelation",
+                             foreign_key: "post_id",
+                             dependent: :destroy
+
+  has_many :quote_posts, through: :quote_relations, source: :quote_post
+  # has_many :quote_relations, class_name: "QuoteRelation",
+  #                            foreign_key: "quote_post_id",
+  #                            dependent: :destroy
+  # has_many :followees, through: :follower_relationships, source: :followee
+
   # table: bookmarks
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
   # table: comments
-  has_many :comments
+  has_many :comments, dependent: :destroy
   # table: post_tags
   has_many :post_tags
   # table: post_genres
@@ -61,7 +69,6 @@ class Post < ApplicationRecord
   def to_param
     post_uid
   end
-
 
   private ################################################################
   # ポストに添付するファイルの総数のバリデーション

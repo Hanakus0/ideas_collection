@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     # 親クラスからインスタンスを取得しレコードを保存
-    # @post = get_post_genre.posts.build(post_params)
-    # set_comment
+    set_comment
     @post_comment = @post.comments.new(set_comment)
     @post_comment.user_id = current_user.id
 

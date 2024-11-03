@@ -27,10 +27,11 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @quote_post = Post.find_by(post_uid: params[:quote_post_id])
     # 引用投稿か否か
-    # if quote_post_flg
-    #   @quote_post = Post.find_by((post_id: @post.id)
-    # end
+    if !!(@quote_post)
+      @quote_post.quote_relations.new
+    end
   end
 
   # GET /posts/1/edit
@@ -39,11 +40,14 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
+    # raise
     # 親クラスからインスタンスを取得しレコードを保存
     @post = get_post_genre.posts.build(post_params)
-
+    @quote_post = Post.find(params.require(:post)[:quote_post]) if params.require(:post)[:quote_post]
+    
     if @post.save
       @post.create_post_record(post_id: @post.id)
+      @post.quote_posts << @quote_post if @quote_post
       redirect_to post_path(@post), notice: "Post was successfully created."
     else
       render :new, status: :unprocessable_entity

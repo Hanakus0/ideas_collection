@@ -9,6 +9,15 @@
     </div>
   <% end %>
 
+  <!-- QuotePost -->
+  <% if @quote_post.present? %>
+    <div class="mb-4 p-2 bg-slate-200 rounded-lg shadow-md">
+      <%= t('form.post.quote_post') %>
+      <%= render 'quote_post' ,post: @quote_post %>
+    </div>
+    <%= f.hidden_field :quote_post, value: @quote_post.id %>
+  <% end %>
+
   <!-- PostGenre -->
   <%= f.label :post_genre_id, class: "text-lg text-gray-600" %>
   <%= f.select :post_genre_id, Post.post_genre_ids_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>

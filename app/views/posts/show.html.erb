@@ -43,6 +43,10 @@
 <!-- post detail -->
 <div class="pt-4">
   <!-- post card -->
+  <div class="rounded-lg w-full mx-5 md:w-[40rem] mx-auto">
+  <%= t('.post_views') %>
+  <%= @post.post_record.view_count %>
+  </div>
   <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem]  space-y-6 p-10 mx-auto">
     <%= render 'detail_post', post: @post %>
   </div>

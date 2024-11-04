@@ -8,10 +8,15 @@
           <%= post.post_genre_id_i18n %>
         </p>
     </div>
-    <div class="mt-2 flex justify-end items-center">
-        <p class="px-2 py-1 bg-red-600 text-gray-100 font-bold rounded hover:bg-gray-500">
-          <%= 'TODO: タグ' %>
-        </p>
+    <div class="mt-2 lg:flex justify-end items-center">
+    <!--post genre-->
+    <% if post.tags.present? %>
+      <% post.tags.each do |tag| %>
+          <%= link_to '#', class:"ml-2 link link-info" do %>
+            <%= tag.name %>
+          <% end %>
+      <% end %>
+    <% end %>
     </div>
     <div class="mt-2">
         <p class="text-2xl text-gray-700 font-bold hover:text-gray-600 truncate">
@@ -31,15 +36,15 @@
           </span>
         </div>
         <div class="flex mr-2 text-gray-700 text-sm mr-8">
-          <%= image_tag 'post_view.svg', class: "w-4 h-4" %>
+          <%= image_tag 'comment.svg', class: "w-4 h-4" %>
           <span class="ml-2">
-            <%= post.post_record.view_count %>
+            <%= post.comments.count %>
           </span>
         </div>
         <div class="flex mr-2 text-gray-700 text-sm mr-8">
-          <%= image_tag 'post_view.svg', class: "w-4 h-4" %>
+          <%= image_tag 'heart_fill.svg', class: "w-4 h-4" %>
           <span class="ml-2">
-            <%= post.post_record.view_count %>
+            <%= post.post_likes.count %>
           </span>
         </div>
       </div>

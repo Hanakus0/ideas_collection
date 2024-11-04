@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "comment_likes/create"
+  get "comment_likes/destroy"
   root "home#index"
 
   # by devise

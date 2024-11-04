@@ -52,9 +52,9 @@
     </li>
     <% post.tags.each do |tag| %>
       <li>
-        <a class="link link-info">
+        <%= link_to '#', class:"link link-info" do %>
           <%= tag.name %>
-        </a>
+        <% end %>
       </li>
     <% end %>
 </ul>

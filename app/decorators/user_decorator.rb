@@ -1,9 +1,14 @@
 class UserDecorator < Draper::Decorator
   delegate_all
 
-  # profile_iamgeが無ければデフォルトの画像を表示
+  # 対象の投稿をブックマークしているか判定
   def bookmark?(post)
     object.bookmark_posts.include?(post)
+  end
+
+  # 対象の投稿にいいねしているか判定
+  def liked?(post)
+    object.like_posts.include?(post)
   end
 
   # profile_iamgeが無ければデフォルトの画像を表示
@@ -15,7 +20,7 @@ class UserDecorator < Draper::Decorator
     end
   end
 
-  # profile_iamgeが無ければデフォルトの画像を表示
+  # 対象のユーザーをフォローしているか判定
   def following?(other_user)
     object.followees.include?(other_user)
   end

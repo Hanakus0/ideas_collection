@@ -9,20 +9,16 @@ class Post < ApplicationRecord
   has_many :quote_relations, class_name: "QuoteRelation",
                              foreign_key: "post_id",
                              dependent: :destroy
-
   has_many :quote_posts, through: :quote_relations, source: :quote_post
-  # has_many :quote_relations, class_name: "QuoteRelation",
-  #                            foreign_key: "quote_post_id",
-  #                            dependent: :destroy
-  # has_many :followees, through: :follower_relationships, source: :followee
 
   # table: bookmarks
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
   # table: comments
   has_many :comments, dependent: :destroy
-  # table: post_tags
-  has_many :post_tags
+  # table: post_genres
+  has_many :post_likes, dependent: :destroy
+  has_many :liked_users, through: :post_likes, source: :user
   # table: post_genres
   belongs_to :post_genre
   # column: post_tags, tags
@@ -73,6 +69,7 @@ class Post < ApplicationRecord
 
   private ################################################################
   # ポストに添付するファイルの総数のバリデーション
+  # ファイルサイズについての制限
   def image_size
     images.each do |image|
       if image.size > 5.megabytes
@@ -80,11 +77,18 @@ class Post < ApplicationRecord
       end
     end
   end
-
+  # ファイル数についての制限
   def image_length
     if images.length > 3
-      errors.add(:images, "は 4 枚以内にしてください")
+      errors.add(:images, "は 3 枚以内にしてください")
     end
   end
 
+  # タグの入力内容の保存前修正
+  def modify_tag_name
+    before_str = '０-９ａ-ｚＡ-Ｚ'
+    after_str = '0-9a-zA-Z'
+    # 全角を半角に変換＆小文字を大文字に変換
+    self.name = name.tr(before_str, after_str).upcase if name.present?
+  end
 end

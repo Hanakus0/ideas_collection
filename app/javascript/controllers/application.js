@@ -7,3 +7,10 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+
+// tagify
+import Tagify from "@yaireo/tagify"
+
+// document.addEventListener('turbo:load', (event) => {
+//   new Tagify(document.querySelector('#recipe_tags'));
+// });

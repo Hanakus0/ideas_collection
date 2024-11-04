@@ -4,9 +4,7 @@ class Tag < ApplicationRecord
   ################
   # アソシエーション
   has_many :post_tags, dependent: :destroy
-  
-  # hmt型
-  has_many :posts, through: :post_tags
+  has_many :posts, through: :post_tags # hmt型
 
   # バリデーション
   # column: name

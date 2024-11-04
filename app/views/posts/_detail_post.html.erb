@@ -18,6 +18,13 @@
   <% end %>
 </div>
 
+<!--post genre-->
+<div>
+  <span class="mb-3 px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
+    <%= post.post_genre_id_i18n %>
+  </span>
+</div>
+
 <!--content-->
 <div>
   <p class="mb-3 text-2xl leading-6">
@@ -37,16 +44,34 @@
   <% end %>
 </div>
 
+<!--post genre-->
+<% if post.tags.present? %>
+  <ul>
+    <li>
+      ＃タグ
+    </li>
+    <% post.tags.each do |tag| %>
+      <li>
+        <a class="link link-info">
+          <%= tag.name %>
+        </a>
+      </li>
+    <% end %>
+</ul>
+<% end %>
+
 <!-- comments-->
   <div class=" h-16 border-b flex items-center justify-around	">
-    <div class="flex items-center	gap-3	">
-
-      <div class="text-sm	">10 Comments</div>
+    <div class="flex items-center">
+      <div class="text-sm	"><%= post.comments.count %> コメント</div>
     </div>
-    <div class="flex items-center	gap-3">
-      <div class="text-sm">5 Likes</div>
+    <div class="flex items-center">
+      <%= render 'like_buttons', { post: post } %>
+      <span>
+        x<%= post.post_likes.count %>
+      </span>
     </div>
-    <div class="flex items-center	gap-3">
+    <div class="flex items-center">
       <%= render 'bookmark_buttons', { post: post } %>
     </div>
   </div>

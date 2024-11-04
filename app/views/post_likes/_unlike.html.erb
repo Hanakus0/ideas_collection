@@ -1,0 +1,4 @@
+<%= link_to post_like_path, id: "bookmark-button-#{post.post_uid}", data: { turbo_method: :delete } ,class: "flex" do %>
+  <%= image_tag 'heart_fill', class: "w-6 h-6 mr-1" %>
+<% end %> 
+

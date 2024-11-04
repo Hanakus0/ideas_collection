@@ -33,10 +33,15 @@ class User < ApplicationRecord
   has_many :posts
   # table: post_likes
   has_many :post_likes, dependent: :destroy
+  has_many :like_posts, through: :post_likes, source: :post, dependent: :destroy
   # table: bookmarks
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post, dependent: :destroy
   # table: comments
   has_many :comments, dependent: :destroy
+  # hmt型
+  # ユーザーが削除されてもコメントは残す
+  has_many :comment_posts, through: :comments, source: :post
   # table: comment_likes
   has_many :comment_likes, dependent: :destroy
   # table: follows
@@ -49,12 +54,6 @@ class User < ApplicationRecord
                                     foreign_key: "followee_id",
                                     dependent: :destroy
   has_many :followers, through: :followee_relationships, source: :follower
-
-  # hmt型
-  # ユーザーが削除されてもコメントは残す
-  has_many :comment_posts, through: :comments, source: :post
-  has_many :bookmark_posts, through: :bookmarks, source: :post, dependent: :destroy
-  has_many :like_posts, through: :post_likes, source: :post, dependent: :destroy
 
   # バリデーション
   # devise field

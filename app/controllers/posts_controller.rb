@@ -95,10 +95,10 @@ class PostsController < ApplicationController
       @post = Post.find_by(post_uid: params[:id])
     end
 
-    def set_post_genre
-      post = Post.find_by(post_uid: params[:id])
-      @post_genre = PostGenre.find(post_genre_id: post.post_genre_id)
-    end
+    # def set_post_genre
+    #   post = Post.find_by(post_uid: params[:id])
+    #   @post_genre = PostGenre.find(post_genre_id: post.post_genre_id)
+    # end
 
     # params から post_genre の id を割り出す
     def get_post_genre

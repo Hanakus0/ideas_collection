@@ -1,6 +1,6 @@
 <% if comment.user_id == post.user_id %>
-<!-- 投稿者以外からのコメント -->
-  <div  id="comment-<%= comment.id %>" class="chat chat-start">
+<%# 投稿者以外からのコメント %>
+  <div id="comment-<%= comment.id %>" class="chat chat-start">
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
         <%= link_to users_profile_path(comment.user) do %>
@@ -25,7 +25,7 @@
     </div>
   </div>
 <% else %>
-<!-- 投稿者本人のコメント -->
+<%# 投稿者本人のコメント %>
   <div id="comment-<%= comment.id %>" class="chat chat-end">
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
@@ -44,7 +44,16 @@
         </p>
       <% end %>
     </div>
-    <div class="chat-bubble"><%= comment.content %></div>
+    <div class="chat-bubble">
+      <%= comment.content %>
+    </div>
+    <%= link_to post_likes_path(post_uid: post.post_uid), id: "unbookmark-button-#{post.post_uid}", data: { turbo_method: :post } ,class: "flex mx-auto my-auto" do %>
+      <%= image_tag 'heart_blank', class: "w-3 h-3" %>
+      <span class="text-sm">
+        <%= 123 %>
+        <%# Comment.all.count %>
+      </span>
+    <% end %> 
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
     </div>

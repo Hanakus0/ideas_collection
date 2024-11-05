@@ -1,1 +1,39 @@
-ログイン前
+<section class="bg-white">
+  <div class="container px-3 py-5 mx-auto">
+    <div class="carousel w-full">
+      <div class="pt-10 carousel-item w-full">
+        <div class="w-full">
+          <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
+            <% @posts.each do |post| %>
+              <div class="w-full">
+                <div class="w-full h-auto bg-gray-300 rounded-lg bg-slate-200">
+                  <div class="p-2 justify-between">
+                    <div class="mt-2">
+                        <p class="text-2xl text-slate-700 font-bold hover:text-gray-600 truncate">
+                          <%= post.title %>
+                        </p>
+                        <p class="mt-2 text-gray-600 truncate">
+                          <%= post.content %>
+                        </p>
+                    </div>
+                    <div class="mt-2 flex justify-end">
+                      <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+                      <div>
+                        <h1 class="text-gray-700 font-bold">
+                          <%= post.user.account_name %>
+                        </h1>
+                        <h1 class="text-gray-400">
+                          ＠<%= post.user.screen_name %>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

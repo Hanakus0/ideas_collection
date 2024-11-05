@@ -38,6 +38,11 @@ ja:
     unfollowing: フォロー解除する
     not_use_image: 'プロフィール画像を使用しない'
     warning_introduce: '※自己紹介文は最大 160 文字です'
+  home:
+    randpm_posts: ランダム
+    good_posts: いいね数
+    comment_posts: コメント数
+    latest_posts: 最新の投稿
   posts:
     show:
       post_views: この投稿の閲覧数：

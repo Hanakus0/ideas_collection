@@ -1,0 +1,96 @@
+<% if post.id != nil %>
+  <%= link_to (post_path(post.post_uid)), data: { turbo: false } do %>
+    <div class="w-full">
+      <div class="w-full h-auto bg-slate-50 rounded-lg">
+        <div class="p-2 justify-between">
+          <div class="mt-2">
+              <p class="text-2xl text-slate-700 font-bold hover:text-gray-600 truncate">
+                <%= post.title %>
+              </p>
+              <p class="mt-2 text-gray-600 truncate">
+                <%= post.content %>
+              </p>
+          </div>
+          <% if flg == "good" %>
+          <%# 表示内容の分岐-いいね %>
+          <div class="flex justify-between mr-2 text-gray-700 text-sm">
+            <div class="mt-6 flex">
+              <%= image_tag 'heart_fill.svg', class: "w-4 h-4" %>
+              <span class="ml-2">
+                <%= post.post_likes.count %>
+              </span>
+            </div>
+            <div class="flex">
+              <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+              <div>
+                <h1 class="text-gray-700 font-bold">
+                  <%= post.user.account_name %>
+                </h1>
+                <h1 class="text-gray-400">
+                  ＠<%= post.user.screen_name %>
+                </h1>
+              </div>
+            </div>
+          </div>
+          <%# 表示内容の分岐-コメント %>
+          <% elsif flg == "comment" %>
+            <div class="flex justify-between mr-2 text-gray-700 text-sm">
+              <div class="mt-6 flex">
+                <%= image_tag 'comment.svg', class: "w-4 h-4" %>
+                <span class="ml-2">
+                  <%= post.comments.count %>
+                </span>
+              </div>
+              <div class="flex">
+                <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+                <div>
+                  <h1 class="text-gray-700 font-bold">
+                    <%= post.user.account_name %>
+                  </h1>
+                  <h1 class="text-gray-400">
+                    ＠<%= post.user.screen_name %>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          <%# 表示内容の分岐-ランダムor最新投稿 %>
+          <% else %>
+            <div class="mt-6 flex justify-end">
+              <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+              <div>
+                <h1 class="text-gray-700 font-bold">
+                  <%= post.user.account_name %>
+                </h1>
+                <h1 class="text-gray-400">
+                  ＠<%= post.user.screen_name %>
+                </h1>
+              </div>
+            </div>
+          <% end %>
+          <%# 表示内容の分岐-END %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="w-full">
+    <div class="w-full h-auto bg-slate-50 rounded-lg">
+      <div class="p-2 justify-between">
+        <div class="mt-2">
+            <p class="text-2xl text-slate-700 font-bold hover:text-gray-600 truncate">
+            </p>
+            <p class="mt-2 text-gray-600 truncate">
+            </p>
+        </div>
+        <div class="mt-6 flex justify-end">
+          <div>
+            <h1 class="text-gray-700 font-bold">
+            </h1>
+            <h1 class="text-gray-400">
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

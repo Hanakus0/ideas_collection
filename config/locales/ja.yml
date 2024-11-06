@@ -39,9 +39,9 @@ ja:
     not_use_image: 'プロフィール画像を使用しない'
     warning_introduce: '※自己紹介文は最大 160 文字です'
   home:
-    randpm_posts: ランダム
-    good_posts: いいね数
-    comment_posts: コメント数
+    random_posts: ランダム
+    good_posts: いいね数順
+    comment_posts: コメント数順
     latest_posts: 最新の投稿
   posts:
     show:

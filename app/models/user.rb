@@ -44,6 +44,7 @@ class User < ApplicationRecord
   has_many :comment_posts, through: :comments, source: :post
   # table: comment_likes
   has_many :comment_likes, dependent: :destroy
+  has_many :liked_comments, through: :comment_likes, source: :comment
   # table: follows
   has_many :follower_relationships, class_name:  "Follow",
                                     foreign_key: "follower_id",

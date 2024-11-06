@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "ログインに成功しました"
       root_url  #　指定したいパスに変更
     else
-      flash[:notice] = "新規登録完了しました。次に名前を入力してください"
+      flash[:notice] = "新規登録完了しました"
       edit_user_registration_path  #　指定したいパスに変更
     end
   end

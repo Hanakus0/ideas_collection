@@ -10,6 +10,10 @@ class Post < ApplicationRecord
                              foreign_key: "post_id",
                              dependent: :destroy
   has_many :quote_posts, through: :quote_relations, source: :quote_post
+  has_many :quoted_relations, class_name: "QuoteRelation",
+                             foreign_key: "quote_post_id",
+                             dependent: :destroy
+  has_many :quoted_posts, through: :quoted_relations, source: :quote_post
 
   # table: bookmarks
   has_many :bookmarks, dependent: :destroy

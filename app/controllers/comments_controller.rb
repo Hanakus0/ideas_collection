@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @post_comment.user_id = current_user.id
 
     if @post_comment.save
-      redirect_to post_path(@post), notice: "Cooment was successfully created."
+      redirect_to post_path(@post), notice: "Comment was successfully created."
     else
       redirect_to  post_path(@post), status: :unprocessable_entity
     end
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    render turbo_stream: turbo_stream.remove(@comment)
+    redirect_to post_path(@post.post_uid), notice: "Cooment was successfully created."
   end
 
   private #######################################################

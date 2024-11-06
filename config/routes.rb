@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   # table: posts
   # resources :posts, param: :post_uid
   resources :posts do
-    resources :comments, only: %i(create update destroy)
+    resources :comments, only: %i(create update)
+    resources :comments, only: %i(destroy)
     collection do
       get :bookmarks
     end

@@ -12,9 +12,9 @@
     <!--post genre-->
     <% if post.tags.present? %>
       <% post.tags.each do |tag| %>
-          <%= link_to '#', class:"ml-2 link link-info" do %>
+          <%#= link_to '#', class:"ml-2 link link-info" do %>
             <%= tag.name %>
-          <% end %>
+          <%# end %>
       <% end %>
     <% end %>
     </div>
@@ -49,7 +49,8 @@
         </div>
       </div>
       <div>
-        <%= link_to users_profile_path(post.user.screen_name), class:"lg:flex items-center", data: { turbo: false } do %>
+        <%#  %>
+        <%#= link_to users_profile_path(post.user.screen_name), class:"lg:flex items-center", data: { turbo: false } do %>
           <div class="flex">
               <%= image_tag post.decorate.has_image?, class: "mx-4 w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
             <div>
@@ -61,7 +62,7 @@
               </h1>
             </div>
           </div>
-        <% end %>
+        <%# end %>
       </div>
     </div>
   </div>

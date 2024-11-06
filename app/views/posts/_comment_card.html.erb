@@ -21,7 +21,10 @@
     <div class="chat-bubble break-words"><%= comment.content %></div>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
-      <%#= link_to "削除", post_comment_path(post.id, comment), data: { turbo_method: :delete } %>
+      <%# コメント削除ボタン %>
+      <% if comment.user_id == post.user_id %>
+        <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
+      <% end %>
     </div>
   </div>
 <% else %>
@@ -46,6 +49,10 @@
     </div>
     <div class="chat-bubble">
       <%= comment.content %>
+      <%# コメント削除ボタン %>
+      <% if comment.user_id == post.user_id %>
+        <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
+      <% end %>
     </div>
     <%= link_to post_likes_path(post_uid: post.post_uid), id: "unbookmark-button-#{post.post_uid}", data: { turbo_method: :post } ,class: "flex mx-auto my-auto" do %>
       <%= image_tag 'heart_blank', class: "w-3 h-3" %>
@@ -53,7 +60,7 @@
         <%= 123 %>
         <%# Comment.all.count %>
       </span>
-    <% end %> 
+    <% end %>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
     </div>

@@ -18,7 +18,11 @@
         </p>
       <% end %>
     </div>
-    <div class="chat-bubble break-words"><%= comment.content %></div>
+    <div class="chat-bubble break-words">
+      <%= comment.content %>
+    </div>
+    <%# コメントへのいいね %>
+    <%= render 'comment_like_buttons', { comment: comment } %>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
       <%# コメント削除ボタン %>
@@ -54,13 +58,8 @@
         <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
       <% end %>
     </div>
-    <%= link_to post_likes_path(post_uid: post.post_uid), id: "unbookmark-button-#{post.post_uid}", data: { turbo_method: :post } ,class: "flex mx-auto my-auto" do %>
-      <%= image_tag 'heart_blank', class: "w-3 h-3" %>
-      <span class="text-sm">
-        <%= 123 %>
-        <%# Comment.all.count %>
-      </span>
-    <% end %>
+    <%# コメントへのいいね %>
+    <%= render 'comment_like_buttons', { comment: comment } %>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
     </div>

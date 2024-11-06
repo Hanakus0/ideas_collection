@@ -1,13 +1,9 @@
 class CommentLikeDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  # 対象の投稿にいいねしているか判定
+  def liked?(comment)
+    object.like_comments.include?(comment)
+  end
 
 end

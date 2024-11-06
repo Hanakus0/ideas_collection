@@ -11,6 +11,11 @@ class UserDecorator < Draper::Decorator
     object.like_posts.include?(post)
   end
 
+  # 対象の投稿にいいねしているか判定
+  def comment_liked?(comment)
+    object.liked_comments.include?(comment)
+  end
+
   # profile_iamgeが無ければデフォルトの画像を表示
   def has_image?
     if object.profile_image?

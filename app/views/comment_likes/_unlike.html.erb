@@ -1,0 +1,7 @@
+<%= link_to comment_like_path(comment_id: comment.id), id: "unlike-comment-button-#{comment.id}", data: { turbo_method: :delete } ,class: "flex w-3 h-3" do %>
+  <%= image_tag 'heart_fill', class: "m-auto w-3 h-3" %>
+  <span class="text-sm">
+    <%= comment.comment_likes.count %>
+  </span>
+<% end %> 
+

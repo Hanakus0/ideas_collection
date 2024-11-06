@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "comment_likes/create"
-  get "comment_likes/destroy"
   root "home#index"
 
   # by devise
@@ -39,12 +37,12 @@ Rails.application.routes.draw do
   # table: posts
   # resources :posts, param: :post_uid
   resources :posts do
-    resources :comments, only: %i(create update)
-    resources :comments, only: %i(destroy)
+    resources :comments, only: %i(create update destroy)
     collection do
       get :bookmarks
     end
   end
   resources :bookmarks, only: %i(create destroy)
   resources :post_likes, only: %i(create destroy)
+  resources :comment_likes, only: %i(create destroy)
 end

@@ -1,7 +1,7 @@
-<%= link_to comment_likes_path(comment_id: comment.id), id: "like-comment-button-#{comment.id}", data: { turbo_method: :post }, class: "flex" do %>
+<%= link_to comment_likes_path(id: comment.id), id: "like-comment-button-#{ comment.id }", data: { turbo_method: :post }, class: "flex" do %>
   <%= image_tag 'heart_blank', class: "m-auto w-3 h-3" %>
   <span class="text-sm">
-    <%= comment.comment_likes.count %>
+    x<%= comment.comment_likes.count %>
   </span>
 <% end %> 
 

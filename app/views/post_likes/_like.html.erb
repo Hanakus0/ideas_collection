@@ -1,4 +1,7 @@
-<%= link_to post_likes_path(post_uid: post.post_uid), id: "like-button-#{post.post_uid}", data: { turbo_method: :post } ,class: "flex" do %>
+<%= link_to post_likes_path(id: post.post_uid), id: "like-button-#{post.post_uid}", data: { turbo_method: :post } ,class: "flex" do %>
   <%= image_tag 'heart_blank', class: "w-6 h-6 mr-1" %>
+  <span>
+    x<%= post.post_likes.count %>
+  </span>
 <% end %> 
 

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "like-button-#{@post.post_uid}" do %>
+  <%= render 'post_likes/unlike', post: @post %>
+<% end %>

@@ -1,5 +1,5 @@
-<%= link_to (post_path(post.post_uid)), class: 'list-content', data: { turbo: false } do %>
-  <div class="mx-auto max-w-4xl px-10 my-2 py-6 bg-white rounded-lg shadow-md">
+<div class="mx-auto max-w-4xl px-10 my-2 py-6 bg-white rounded-lg shadow-md">
+  <%= link_to (post_path(post.post_uid)), class: 'list-content', data: { turbo: false } do %>
     <div class="lg:flex justify-between items-center">
         <span class="font-light text-gray-600">
           <%= post.decorate.created_date %>
@@ -65,5 +65,5 @@
         <%# end %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

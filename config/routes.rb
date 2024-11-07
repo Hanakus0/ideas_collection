@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       get :bookmarks
     end
   end
-  resources :bookmarks, only: %i(create destroy)
+  resources :bookmarks, only: %i(create destroy), param: :post_uid
   resources :post_likes, only: %i(create destroy)
   resources :comment_likes, only: %i(create destroy)
 end

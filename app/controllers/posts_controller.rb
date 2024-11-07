@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
   # 検索時
   def search
-    @posts = PostSearchForm.new
+    @posts = PostSearchForm.new(search_post_params)
   end
 
   # GET
@@ -45,11 +45,12 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    # raise
-    # 親クラスからインスタンスを取得しレコードを保存
+    # 親クラスからインスタンスを取得しレコードを生成
     @post = get_post_genre.posts.build(post_params)
+    # 引用投稿のパラメータ
+    quote_post_param = params.require(:post)[:quote_post]
     # 引用投稿した投稿の取得
-    @quote_post = Post.find(params.require(:post)[:quote_post]) if params.require(:post)[:quote_post]
+    @quote_post = Post.find(quote_post_param) if quote_post_param
     # 引用投稿した投稿の取得
     @post_tags = modify_post_tags
 
@@ -84,7 +85,7 @@ class PostsController < ApplicationController
     redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed."
   end
 
-  # GET bookmarks
+  # ブックマークした投稿のみを一覧表示
   def bookmarks
     @bookmark_posts = current_user.bookmark_posts.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -141,6 +142,10 @@ class PostsController < ApplicationController
         tag = Tag.find_or_create_by(name: tag)
         post.tags << tag
       end
+    end
+
+    def search_post_params
+      params[:q]
     end
 ##########
 end

@@ -26,10 +26,12 @@ ja:
     post:
       new: '新しいアイデアの投稿'
       quote_post: '引用・参考にするアイデア'
+      post_comment: 'この投稿にコメントする'
       warning_textarea: '※本文は最大 500 文字です'
       info_image_upload: '画像を選択してください'
+      warning_tags1: '※タグは 5 つまで設定可能です'
+      warning_tags2: '※各タグは 10 文字以内に収めてください'
       warn_image_upload: '※'
-      post_comment: 'この投稿にコメントする'
   profile:
     age: '年齢'
     gender: 性別

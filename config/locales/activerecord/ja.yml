@@ -18,6 +18,7 @@ ja:
         post_genre_id: '投稿ジャンル'
         title: 'タイトル'
         content: 'アイデアの内容など'
+        post_tags: '投稿タグ'
         images: 'アイデアの画像'
       post_genre_id:
         funny: アイデアのタネ・適当なアイデア・未完のアイデア

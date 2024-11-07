@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "@yaireo/tagify/dist/tagify.css";
-@import "@yaireo/tagify/src/tagify.scss";
+/* @import "./tagify"; */
+/* @import "@yaireo/tagify/dist/tagify.css"; */

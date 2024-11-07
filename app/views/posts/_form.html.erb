@@ -35,9 +35,19 @@
 
   <!-- PostTags -->
   <%= f.label :post_tags, class: "text-lg text-gray-600" %>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning_tags1') %>
+  </span>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning_tags2') %>
+  </span>
   <%= f.text_area :input_post_tags, 
-  class: "mb-4 w-full bg-gray-100 p-3 border border-gray-300 outline-none",
-  placeholder: t('posts.show.tag_enter'), rows: 1 %>
+    id: "tags-input",
+    data: { controller: "tag" },
+    class: "mb-4 w-full bg-gray-100 p-3 border border-gray-300 outline-none",
+    placeholder: t('posts.show.tag_enter'), 
+    rows: 1 
+  %>
 
   <!-- images -->
   <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>

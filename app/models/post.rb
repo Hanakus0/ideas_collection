@@ -66,6 +66,7 @@ class Post < ApplicationRecord
   # column: draft_flg
   enum draft_flg: { publish: 0, draft: 1 }, _prefix: true
 
+
   # URL の :id の部分に id 以外を指定
   def to_param
     post_uid

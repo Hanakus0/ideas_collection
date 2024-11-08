@@ -1,22 +1,22 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_q_order, only: %i[ index ]
   # deviseによるログイン済みかの判定
   before_action :authenticate_user!, except: %i[ index ]
 
   # GET /posts
   def index
-    if params[:my_draft] && user_signed_in?
+    # フラグ無し
+    @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
+
+    # フラグによる分岐
+    if params[:q].present? && params[:q][:search_flg].present?
+      # 検索時
+      @posts = PostSearchForm.new(search_post_params).search.page(params[:page]).per(10)
+    elsif params[:my_draft] && user_signed_in?
       # 下書きフラグがありログイン済みの場合
       @posts = Post.where(draft_flg: 1, user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
-    else
-      # フラグ無し
-      @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
     end
-  end
-
-  # 検索時
-  def search
-    @posts = PostSearchForm.new(search_post_params)
   end
 
   # GET
@@ -91,15 +91,24 @@ class PostsController < ApplicationController
   end
 
   private ###################################################################
-    # Use callbacks to share common setup or constraints between actions.
+    # 投稿一覧の取得
     def set_post
       @post = Post.find_by(post_uid: params[:id])
     end
 
-    # def set_post_genre
-    #   post = Post.find_by(post_uid: params[:id])
-    #   @post_genre = PostGenre.find(post_genre_id: post.post_genre_id)
-    # end
+    # 検索時のパラメータの並び替えの選択肢を渡す
+    def set_q_order
+      @q_order = {
+                    "最新順": "latest",
+                    "古い順": "oldest",
+                    "いいね数": "post_likes",
+                    "コメント数": "post_comments"
+                 }
+    end
+
+    def search_post_params
+      params[:q].permit(:post_genre_id, :how_order, :contents, :tags)
+    end
 
     # params から post_genre の id を割り出す
     def get_post_genre
@@ -142,10 +151,6 @@ class PostsController < ApplicationController
         tag = Tag.find_or_create_by(name: tag)
         post.tags << tag
       end
-    end
-
-    def search_post_params
-      params[:q]
     end
 ##########
 end

@@ -55,6 +55,13 @@ ja:
       delete_confirm: この投稿を削除しますがよろしいですか？
       quote: 引用・参考にした投稿
       tag_enter: ［Enter］キーで区切って入力してください
+    search:
+      genre: ジャンル
+      order: 並び替え
+      content: タイトル／投稿内容
+      tag: タグ
+      search_words: ［Enter］キーで区切って入力してください
+      btn: 検索
   enums:
     user:
       age:

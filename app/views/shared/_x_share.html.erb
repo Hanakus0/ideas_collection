@@ -1,0 +1,20 @@
+<% 
+  tweet_title = post.title.slice(0..30)
+  tweet_sentence = post.content.slice(0..50)
+  # tweet_tags = post.content.slice(0..50) if post.tags
+%>
+<%= link_to "https://twitter.com/share?url=#{post_url(post)}&text=
+【タイトル】
+%0a#{ tweet_title }
+%0a
+%0a【投稿内容】
+%0a#{ tweet_sentence }
+%0a
+%0a%20%23ハッシュタグ%0a", 
+title: 'Twitter',
+class:'fab fa-twitter', 
+target: '_blank' do %>
+  <button class="btn btn-neutral py-0 px-3">
+    <%= image_tag 'x_logo', class: "w-4 h-4 w-auto", alt: "アプリアイコン" %>
+  </button>
+<% end %>

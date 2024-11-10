@@ -12,23 +12,6 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  # admin routes
-  # namespace :admin do
-  #   get '/', to: 'admins#index'
-  #   resources :users
-  #   resources :bookmarks
-  #   resources :comment_likes
-  #   resources :comments
-  #   resources :follows
-  #   resources :post_genres
-  #   resources :post_likes
-  #   resources :post_records
-  #   resources :post_tags
-  #   resources :posts
-  #   resources :quote_relations
-  #   resources :tags
-  # end
-
   # not devise user routes
   namespace :users do
     resources :follows, only: %i(index create destroy), param: :screen_name
@@ -40,6 +23,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i(create update destroy)
     collection do
       get :bookmarks
+      get :drafts
     end
   end
   resources :bookmarks, only: %i(create destroy)

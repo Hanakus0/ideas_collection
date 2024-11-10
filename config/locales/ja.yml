@@ -3,8 +3,16 @@ ja:
     messages:
       extension_allowlist_error: "は jpg jpeg png 以外は投稿できません"
   title:
+    home: home
+    users:
+      index: 'フォローしたユーザー一覧'
     post:
+      index: 投稿一覧
       new: '新規投稿'
+      edit: '投稿の編集'
+    bookmarks: ブックマーク
+    draft: 下書きの投稿一覧
+    mypage_posts: このユーザーの投稿
   header:
     see_posts: 'みんなの投稿を見る'
     signup: '新規会員登録'
@@ -35,17 +43,23 @@ ja:
   profile:
     age: '年齢'
     gender: 性別
+    created_date: 登録日
     profile_edit: プロフィール編集
     following: フォローする
     unfollowing: フォロー解除する
-    not_use_image: 'プロフィール画像を使用しない'
-    warning_introduce: '※自己紹介文は最大 160 文字です'
+    num_posts: 投稿数
+    num_likes: 投稿のいいね総数
+    num_views: 投稿の閲覧総数
+    not_use_image: プロフィール画像を使用しない
+    warning_introduce: ※自己紹介文は最大 160 文字です
   home:
     random_posts: ランダム
     good_posts: いいね数順
     comment_posts: コメント数順
     latest_posts: 最新の投稿
   posts:
+    index:
+      search: 投稿の検索をする
     show:
       post_views: この投稿の閲覧数：
       draft_info: この投稿は下書きとして保存しています

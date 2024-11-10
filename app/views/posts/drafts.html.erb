@@ -3,18 +3,18 @@
 <% content_for :title, t('title.bookmarks')  %>
 
 <!-- title -->
-<div class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"><%= t('title.bookmarks') %></div>
+<div class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"><%= t('title.draft') %></div>
 
 <!-- Posts layouts -->
 <div class="px-6 py-10 mx-auto">
   <div class="w-full">
     <!-- Posts start -->
-<%= turbo_frame_tag "bookmark_posts-page-#{@bookmark_posts.current_page}" do %>
+<%= turbo_frame_tag "draft_posts-page-#{@draft_posts.current_page}" do %>
     <%# 今のページで取得したTweet一覧 %>
-  <%= render @bookmark_posts %>
+  <%= render @draft_posts %>
 
     <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
-  <%= turbo_frame_tag "bookmark_posts-page-#{@bookmark_posts.next_page}", loading: :lazy, src: path_to_next_page(@bookmark_posts) %>
+  <%= turbo_frame_tag "draft_posts-page-#{@draft_posts.next_page}", loading: :lazy, src: path_to_next_page(@draft_posts) %>
 <% end %>
     <!-- Posts end -->
   </div>

@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
+  <% content_for :title, "#{t('title.home')}" %>
   <%= render 'after_home' %>
 <% else %> 
+  <% content_for :title, "#{t('title.home')} | ログイン前" %>
   <%= render 'before_home' %>
 <% end %> 

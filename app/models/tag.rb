@@ -8,5 +8,5 @@ class Tag < ApplicationRecord
 
   # バリデーションz
   # column: name
-  validates :name, presence: true, length: { minimum: 1 , maximum: 10, too_long: "タグは 10 文字以内にしてください" }, allow_blank: true, uniqueness: true
+  # validates :name, presence: true, length: { minimum: 1 , maximum: 10, too_long: "タグは 10 文字以内にしてください" }, allow_blank: true, uniqueness: true
 end

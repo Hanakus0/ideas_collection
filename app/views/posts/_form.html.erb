@@ -46,6 +46,7 @@
     data: { controller: "tag" },
     class: "mb-4 w-full bg-gray-100 p-3 border border-gray-300 outline-none",
     placeholder: t('posts.show.tag_enter'), 
+    value: "#{ post.tags.pluck(:name) }",
     rows: 1 
   %>
 

@@ -9,7 +9,7 @@
         <%= link_to t('header.new_post'), new_post_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
       </li>
       <li>
-        <%= link_to t('header.draft_post'), posts_path(my_draft: true), class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
+        <%= link_to t('header.draft_post'), drafts_posts_path, class: "bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
       </li>
     </ul>
   </details>
@@ -65,14 +65,14 @@
           <%= link_to t('header.new_post'), new_post_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li>
-          <%= link_to t('header.draft_post'), posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          <%= link_to t('header.draft_post'), drafts_posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li class="border-1 border-t-neutral-950"></li>
         <li>
           <%= link_to t('header.mypage'), users_profile_path(current_user.screen_name), class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li>
-          <%= link_to t('header.bookmarks'), posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+          <%= link_to t('header.bookmarks'), bookmarks_posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         </li>
         <li>
           <%= link_to t('header.follows'), users_follows_path, class: "text-sm font-semibold leading-6 text-gray-900" %>

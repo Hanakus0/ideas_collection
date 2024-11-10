@@ -7,6 +7,7 @@ class Users::ProfilesController < ApplicationController
   before_action :is_match_login_user, only: %i(edit update)
 
   def show
+    @user_posts = @user.posts
   end
 
   def edit
@@ -17,7 +18,7 @@ class Users::ProfilesController < ApplicationController
       redirect_to users_profile_path(@user.screen_name), notice: "Post was successfully updated."
     else
       # screen_nameを代入しないと遷移先が指定できない問題の措置
-      @user.screen_name = current_user.screen_name
+      @user.screen_name = current_user.screen_name if @user.screen_name.blank?
       render :edit, status: :unprocessable_entity
     end
   end

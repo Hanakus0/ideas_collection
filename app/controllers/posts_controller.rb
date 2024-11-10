@@ -13,13 +13,10 @@ class PostsController < ApplicationController
     # フラグ無し
     @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
 
-    # フラグによる分岐
+    # 検索なら検索を実行
     if params[:q].present? && params[:q][:search_flg].present?
       # 検索時
       @posts = PostSearchForm.new(search_post_params).search.page(params[:page]).per(10)
-    elsif params[:my_draft] && user_signed_in?
-      # 下書きフラグがありログイン済みの場合
-      @posts = Post.where(draft_flg: 1, user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 
@@ -74,8 +71,14 @@ class PostsController < ApplicationController
 
   # PATCH/PUT
   def update
+    # ジャンルの更新
     @post.post_genre = get_post_genre
+    # 引用投稿した投稿の取得
+    @post_tags = modify_post_tags
+
     if @post.update(update_params)
+      # 投稿のタグ設定
+      register_article_tags(@post, @post_tags) if @post_tags
       redirect_to post_path(@post.post_uid), notice: "Post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -92,6 +95,11 @@ class PostsController < ApplicationController
   # ブックマークした投稿のみを一覧表示
   def bookmarks
     @bookmark_posts = current_user.bookmark_posts.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  # 下書き投稿のみを一覧表示
+  def drafts
+    @draft_posts = Post.where(draft_flg: 1, user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private ###################################################################
@@ -140,23 +148,24 @@ class PostsController < ApplicationController
       end
     end
 
-    # 投稿のタグを登録用に加工する
-    def modify_post_tags
-      if params[:post][:input_post_tags].present?
-        tags = params[:post][:input_post_tags].split("\n").map(&:strip).uniq
-      end
-    end
-
     # 更新対象のカラムのみ
     def update_params
       params.require(:post).permit(:title, :content, { images: [] }, :draft_flg)
+    end
+
+    # 投稿のタグを登録用に加工する
+    # tagifyで`,`区切りにしているためここで分割
+    def modify_post_tags
+      if params[:post][:input_post_tags].present?
+        tags = params[:post][:input_post_tags].split(",").uniq
+      end
     end
 
     # タグの登録前
     def register_article_tags(post, tags)
       # 一旦該当投稿のタグを全て削除
       post.tags.destroy_all
-      # 登録済みのタグがあればそれを登録、なければ新規作成
+      # 登録済みのタグがあればそれを登録、なければ新規作成し投稿に関連付け
       tags.each do |tag|
         tag = Tag.find_or_create_by(name: tag)
         post.tags << tag

@@ -63,7 +63,8 @@ class PostsController < ApplicationController
       # 投稿のタグ設定
       register_article_tags(@post, @post_tags) if @post_tags
 
-      redirect_to post_path(@post), notice: "Post was successfully created."
+      flash[:success] = t('messages.post_success')
+      redirect_to post_path(@post)
     else
       render :new, status: :unprocessable_entity
     end
@@ -79,7 +80,8 @@ class PostsController < ApplicationController
     if @post.update(update_params)
       # 投稿のタグ設定
       register_article_tags(@post, @post_tags) if @post_tags
-      redirect_to post_path(@post.post_uid), notice: "Post was successfully updated."
+      flash[:success] = t('messages.update_post_success')
+      redirect_to post_path(@post.post_uid)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -88,8 +90,8 @@ class PostsController < ApplicationController
   # DELETE
   def destroy
     @post.destroy!
-
-    redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed."
+    flash[:success] = t('messages.destroy_post_success')
+    redirect_to posts_path, status: :see_other
   end
 
   # ブックマークした投稿のみを一覧表示

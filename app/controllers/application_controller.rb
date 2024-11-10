@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   # devise でのログイン成功後の遷移先
   def after_sign_in_path_for(resource)
     if current_user
-      flash[:notice] = "ログインに成功しました"
+      flash[:notice] = t('messages.signin_success')
       root_url  #　指定したいパスに変更
     else
-      flash[:notice] = "新規登録完了しました"
+      flash[:notice] = t('messages.signup_success')
       edit_user_registration_path  #　指定したいパスに変更
     end
   end

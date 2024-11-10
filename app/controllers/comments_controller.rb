@@ -8,17 +8,19 @@ class CommentsController < ApplicationController
     @post_comment.user_id = current_user.id
 
     if @post_comment.save
-      redirect_to post_path(@post), notice: "Comment was successfully created."
+      flash[:success] = t('messages.comment_success')
+      redirect_to post_path(@post)
     else
       redirect_to  post_path(@post), status: :unprocessable_entity
     end
   end
 
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to post_path(@post.post_uid), notice: "Cooment was successfully created."
-  end
+  # コメントの削除(未定)
+  # def destroy
+  #   @comment = Comment.find(params[:id])
+  #   @comment.destroy
+  #   redirect_to post_path(@post.post_uid), notice: "Cooment was successfully created."
+  # end
 
   private #######################################################
 

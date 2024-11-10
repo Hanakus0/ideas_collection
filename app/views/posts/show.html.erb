@@ -1,4 +1,3 @@
-<p style="color: green"><%= notice %></p>
 <% if @post.decorate.post_status? %>
   <!-- 下書きアラート -->
   <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-md text-yellow-700 bg-yellow-100 border border-yellow-300 ">
@@ -21,6 +20,7 @@
       </div>
   </div>
 <% end %>
+
 <% if @post.decorate.post_owner?(current_user) %>
   <div class="pt-4 mx-auto flex justify-center items-center gap-4">
     <!-- 編集ボタン -->

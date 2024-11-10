@@ -1,15 +1,22 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'errors.messages.not_saved'))
-       %>
-    </h2>
-    <ul>
+  <div role="alert" class="alert alert-error  lg:flex lg:justify-center" id="error_explanation" data-turbo-cache="false">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 shrink-0 stroke-current"
+      fill="none"
+      viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <div>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p>・<%= message %></p>
       <% end %>
-    </ul>
+    </div>
   </div>
 <% end %>
+
+

@@ -7,7 +7,7 @@ class Users::ProfilesController < ApplicationController
   before_action :is_match_login_user, only: %i(edit update)
 
   def show
-    @user_posts = @user.posts
+    @user_posts = @user.posts.order(created_at: :desc)
   end
 
   def edit
@@ -15,7 +15,8 @@ class Users::ProfilesController < ApplicationController
 
   def update
     if @user.update(profile_params)
-      redirect_to users_profile_path(@user.screen_name), notice: "Post was successfully updated."
+      flash[:success] = t('messages.update_profile_success')
+      redirect_to users_profile_path(@user.screen_name)
     else
       # screen_nameを代入しないと遷移先が指定できない問題の措置
       @user.screen_name = current_user.screen_name if @user.screen_name.blank?
@@ -27,7 +28,10 @@ class Users::ProfilesController < ApplicationController
   # ユーザー本人以外がプロフィール編集しようとした場合の対策
   def is_match_login_user
     check_user = User.find_by(screen_name: params[:screen_name])
-    redirect_to users_profile_path(check_user.screen_name), notice: "編集権限がありません" unless check_user.blank? || check_user == current_user
+    unless check_user.blank? || check_user == current_user
+      flash[:warning] = t('messages.signin_warning')
+      redirect_to users_profile_path(check_user.screen_name)
+    end
   end
 
   # 閲覧するユーザー情報

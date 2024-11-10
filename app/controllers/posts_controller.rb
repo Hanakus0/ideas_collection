@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
+  # 対象ポストの取得
   before_action :set_post, only: %i[ show edit update destroy ]
+  # 検索パラメータの取得
   before_action :set_q_order, only: %i[ index ]
   # deviseによるログイン済みかの判定
   before_action :authenticate_user!, except: %i[ index ]
+  # 編集権限の確認
+  before_action :is_match_login_user, only: %i(edit update destroy)
 
   # GET /posts
   def index
@@ -94,6 +98,12 @@ class PostsController < ApplicationController
     # 投稿一覧の取得
     def set_post
       @post = Post.find_by(post_uid: params[:id])
+    end
+
+    # 投稿者本人以外が操作しようとした場合の対策
+    def is_match_login_user
+      posted_user = Post.find_by(post_uid: params[:id]).user
+      redirect_to post_path(@post) unless posted_user.blank? || posted_user == current_user
     end
 
     # 検索時のパラメータの並び替えの選択肢を渡す

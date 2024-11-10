@@ -12,9 +12,9 @@
     <!--post genre-->
     <% if post.tags.present? %>
       <% post.tags.each do |tag| %>
-          <%#= link_to '#', class:"ml-2 link link-info" do %>
-            <%= tag.name %>
-          <%# end %>
+        <div class="ml-2 link link-info">
+          #<%= tag.name %>
+        </div>
       <% end %>
     <% end %>
     </div>

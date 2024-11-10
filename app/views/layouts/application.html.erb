@@ -18,6 +18,14 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <!-- Tagify -->
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+  <!-- ogp -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="【サイト】" />
+  <meta property="og:title" content="【タイトル】" />
+  <meta property="og:url" content="<%= request.url %>" />
+  <meta property="og:description" content="<%= 'MCバトルの総合サイトです。' %>" />
+  <meta property="og:image" content="<%= '/assets/images/sample.jpg' %>" />
+    <!-- rails default -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= javascript_include_tag "turbo", type: "module" %>

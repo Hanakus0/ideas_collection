@@ -71,6 +71,9 @@
     <div class="flex items-center">
       <%= render 'bookmark_buttons', { post: post } %>
     </div>
+    <div class="flex items-center">
+      <%= render 'shared/x_share', { post: post } %>
+    </div>
   </div>
   <!-- comment form -->
   <%= form_with model: [post, @comment], class: "flex items-center justify-between mt-4" do |f| %>

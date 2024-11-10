@@ -24,7 +24,7 @@ class HomeController < ApplicationController
   # 投稿数が20に満たない場合は空を追加
   def add_blank_post(posts_ary)
     while posts_ary.size < 40
-      posts_ary.push(Post.new)
+      posts_ary << Post.new
     end
   end
 end

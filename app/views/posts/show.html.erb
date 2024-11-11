@@ -1,3 +1,11 @@
+<!-- タブタイトル -->
+<% content_for :title, @post.title %>
+
+<%# OGP用 %>
+<% set_meta_tags title: @post.title, description: @post.content %>
+
+
+<%# 投稿の表示部分 %>
 <% if @post.decorate.post_status? %>
   <!-- 下書きアラート -->
   <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-md text-yellow-700 bg-yellow-100 border border-yellow-300 ">

@@ -1,4 +1,7 @@
 class CommentLikesController < ApplicationController
+  # deviseによるログイン済みかの判定
+  before_action :authenticate_user!
+
   # ブックマーク処理
   def create
     @comment = Comment.find(params[:id])

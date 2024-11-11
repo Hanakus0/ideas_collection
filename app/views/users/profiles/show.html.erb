@@ -1,7 +1,7 @@
 <!-- page parent -->
 <div class="h-full lg:w-1/2 mx-auto p-8">
     <!-- Profile header -->
-    <div class="bg-slate-100 rounded-lg shadow-xl pb-8">
+    <div class="bg-slate-100 rounded-lg shadow-xl pb-8 mb-8">
         <!-- profile header back image -->
         <div class="w-full h-[100px]"></div>
         <!-- user profile image -->
@@ -59,19 +59,21 @@
     </div>
 
     <!-- profile buttons -->
-    <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+    <div class="mb-8 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
         <div class="flex flex-col w-full">
-            <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
-                <h4 class="text-xl text-gray-900 font-bold">About Me</h4>
+            <div class="flex-1 bg-slate-100 rounded-lg shadow-xl p-8">
+                <h4 class="text-xl text-gray-900 font-bold">
+                    <%= t('profile.introduce') %>
+                </h4>
                 <p class="mt-2 text-gray-700">
                     <%= @user.introduction %>
                 </p>
             </div>
         </div>
     </div>
-    <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+    <div class="flex-1 bg-slate-100 rounded-lg shadow-xl mb-8 p-8">
         <h4 class="text-xl text-gray-900 font-bold">
-        <%=  %>
+            <%= t('profile.post_info') %>
         </h4>
         <!-- ユーザーの情報 -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
@@ -141,11 +143,11 @@
         </div>
     </div>
     <%# 投稿一覧 %>
-    <div class="heading text-center font-bold text-2xl mt-16 mb-10 text-gray-800">
-        <%= t('title.mypage_posts') %>
-    </div>
-    <div class="px-6 mx-auto">
+    <div class="px-6 mx-auto bg-slate-100 rounded-lg shadow-xl overflow-y-auto h-96">
         <div class="w-full">
+            <h4 class="text-xl text-gray-900 font-bold my-6">
+                <%= t('title.mypage_posts') %>
+            </h4>
             <% @user_posts.each do |post| %>
                 <%= render 'posts/post', post: post %>
             <% end %>

@@ -1,4 +1,7 @@
 class PostLikesController < ApplicationController
+  # deviseによるログイン済みかの判定
+  before_action :authenticate_user!
+
   # ブックマーク処理
   def create
     @post = Post.find_by(post_uid: params[:id])

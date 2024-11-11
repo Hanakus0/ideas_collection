@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  # deviseによるログイン済みかの判定
+  before_action :authenticate_user!
+  # 対象ポストの取得
   before_action :set_post
 
   def create

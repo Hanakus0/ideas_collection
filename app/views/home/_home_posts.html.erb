@@ -53,17 +53,19 @@
                 </div>
               </div>
             </div>
-          <%# 表示内容の分岐-ランダムor最新投稿 %>
+          <%# 表示内容の分岐-最新投稿 %>
           <% else %>
-            <div class="mt-6 flex justify-end">
-              <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
-              <div>
-                <h1 class="text-gray-700 font-bold">
-                  <%= post.user.account_name %>
-                </h1>
-                <h1 class="text-gray-400">
-                  ＠<%= post.user.screen_name %>
-                </h1>
+            <div class="mt-6 flex justify-end mr-2 text-gray-700 text-sm">
+              <div class="flex">
+                <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+                <div>
+                  <h1 class="text-gray-700 font-bold">
+                    <%= post.user.account_name %>
+                  </h1>
+                  <h1 class="text-gray-400">
+                    ＠<%= post.user.screen_name %>
+                  </h1>
+                </div>
               </div>
             </div>
           <% end %>

@@ -5,16 +5,16 @@ class HomeController < ApplicationController
     # ログイン後
     if user_signed_in?
       # ランダム
-      @random_posts = Post.order("RANDOM()").limit(@posts_num)
+      @random_posts = Post.where(draft_flg: 0).order("RANDOM()").limit(@posts_num)
       add_blank_post(@random_posts)
       # いいね数
-      @good_posts = Post.find(PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      @good_posts = Post.where(draft_flg: 0).find(PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
       add_blank_post(@good_posts)
       # コメント数
-      @comment_posts = Post.find(Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      @comment_posts = Post.where(draft_flg: 0).find(Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id))
       add_blank_post(@comment_posts)
       # 最新の投稿
-      @latest_posts = Post.order(created_at: :desc).limit(@posts_num)
+      @latest_posts = Post.where(draft_flg: 0).order(created_at: :desc).limit(@posts_num)
       add_blank_post(@latest_posts)
     else
       # ログイン前

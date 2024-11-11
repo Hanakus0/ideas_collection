@@ -1,11 +1,10 @@
 <%= form_with model: @user, url: users_profile_path(@user.screen_name), class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
+  <%# エラーメッセージ %>
   <% if @user.errors.any? %>
-    <div style="color: red" class="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
-
+    <div style="color: red" class="bg-red-100 border border-gray-300 py-5 mb-4 outline-none w-full">
       <ul>
         <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li>・<%= error.full_message %></li>
         <% end %>
       </ul>
     </div>

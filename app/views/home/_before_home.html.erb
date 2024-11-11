@@ -1,41 +1,54 @@
-<section class="bg-white">
-  <div class="container px-3 py-5 mx-auto">
-    <div class="carousel w-full">
-      <div class="pt-10 carousel-item w-full">
-        <div class="w-full">
-          <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
-            <%# カード一枚 %>
-            <% @posts.each do |post| %>
-              <div class="w-full">
-                <div class="w-full h-auto bg-gray-300 rounded-lg bg-slate-200">
-                  <div class="p-2 justify-between">
-                    <div class="mt-2">
-                        <p class="text-2xl text-slate-700 font-bold hover:text-gray-600 truncate">
-                          <%= post.title %>
-                        </p>
-                        <p class="mt-2 text-gray-600 truncate">
-                          <%= post.content %>
-                        </p>
-                    </div>
-                    <div class="mt-2 flex justify-end">
-                      <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
-                      <div>
-                        <h1 class="text-gray-700 font-bold">
-                          <%= post.user.account_name %>
-                        </h1>
-                        <h1 class="text-gray-400">
-                          ＠<%= post.user.screen_name %>
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-            <%# カード一枚_END %>
-          </div>
-        </div>
+<!-- Create By Joker Banny - https://www.creative-tim.com/twcomponents/component/page-layout-responsive -->
+<div class="pt-6">
+  <!-- Section Hero -->
+  <div class="container mx-auto h-96 rounded-md flex items-center"  style="background-image: url('<%= asset_path 'hero_image' %>')">
+    <div class="sm:ml-20 text-gray-50 text-center sm:text-left">
+      <h1 class="text-gray-800 text-5xl font-bold mb-4">
+        あなたのアイデアを投稿してみませんか？
+      </h1>
+      <p class="text-gray-800 text-lg inline-block sm:block">
+        今すぐアイデアを投稿して、みんなの反応をみてみましょう
+      </p>
+      <div class="mt-8">
+        <%= link_to t('title.home.home_signup'), posts_path, class: "px-4 py-2 bg-rose-500 text-2xl rounded border border-gray-700 shadow-xl hover:bg-rose-300 hover:text-white hover:border-transparent transition ease-in duration-100" %>
+      </div>
+      <div class="mt-6">
+        <%= link_to t('header.see_posts'), posts_path, class: "px-4 py-2 bg-cyan-500 text-2xl rounded border border-gray-700 shadow-xl hover:bg-cyan-300 hover:text-white hover:border-transparent transition ease-in duration-100" %>
       </div>
     </div>
   </div>
-</section>
+</div>
+<!-- Section introduction -->
+<main class="pt-16 container mx-auto px-6 md:px-0">
+  <section class="py-16">
+    <h1 class="inline-block text-gray-600 font-bold text-3xl">
+      このアプリについて
+    </h1>
+    <div class="grid grid-cols-3 gap-4 mt-10">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-500 mt-2">
+          1. アイデアを投稿して壁打ちできる
+        </h3>
+        <p class="text text-gray-400">
+          あなたの投稿にコメントや反応をもらえます。その反応を参考にしてアイデアをより良いものにしていけるような機会を提供します。
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-500 mt-2">
+          2. 投稿されたアイデアに関する機能
+        </h3>
+        <p class="text text-gray-400">
+          ブックマーク機能で投稿を保存したり、投稿者のフォロー機能、投稿の詳細検索など投稿に関する機能を充実させ情報収集しやすくしています。
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-500 mt-2">
+          3. 引用投稿でアイデアを盛り上げる
+        </h3>
+        <p class="text text-gray-400">
+          引用機能により自分のアイデアだけでなく他のユーザーのアイデアを練ることが可能です。ご自身のアイデアと他の方とのアイデアを掛け合わせてまた違ったアイデアを創出する機会を提供します。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>

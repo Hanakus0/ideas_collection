@@ -12,7 +12,9 @@ ja:
     messages:
       extension_allowlist_error: "は jpg jpeg png 以外は投稿できません"
   title:
-    home: home
+    app: アイデア収集所
+    home:
+      home_signup: アイデアを投稿してみる
     users:
       index: 'フォローしたユーザー一覧'
     post:

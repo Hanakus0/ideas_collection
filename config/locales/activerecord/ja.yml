@@ -9,7 +9,7 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         screen_name: 'ユーザーID'
-        account_name: 'ユーザー名'
+        account_name: 'ユーザーネーム'
         gender: '性別'
         age: '年齢'
         profile_image: 'プロフィール画像'

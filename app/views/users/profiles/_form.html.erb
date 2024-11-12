@@ -1,7 +1,7 @@
 <%= form_with model: @user, url: users_profile_path(@user.screen_name), class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
   <%# エラーメッセージ %>
   <% if @user.errors.any? %>
-    <div style="color: red" class="bg-red-100 border border-gray-300 py-5 mb-4 outline-none w-full">
+    <div style="color: red" class="bg-red-100 border border-gray-300 py-5 mb-6 outline-none w-full">
       <ul>
         <% @user.errors.each do |error| %>
           <li>・<%= error.full_message %></li>
@@ -11,24 +11,39 @@
   <% end %>
 
   <!-- user_ID -->
-  <%= f.label :screen_name, class: "text-lg text-gray-600" %>
-  <%= f.text_field :screen_name,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "screen_name" %>
+  <div class="flex items-center">
+    <%= f.label :screen_name, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('profile.warning.screen_name1') %>
+  </span>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('profile.warning.screen_name2') %>
+  </span>
+  <%= f.text_field :screen_name,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-6 outline-none", placeholder: t('profile.placeholder.screen_name') %>
 
   <!-- user_name -->
-  <%= f.label :account_name, class: "text-lg text-gray-600" %>
-  <%= f.text_field :account_name,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "account_name" %>
+  <div class="flex items-center">
+    <%= f.label :account_name, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('profile.warning.account_name') %>
+  </span>
+  <%= f.text_field :account_name,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-6 outline-none", placeholder: t('profile.placeholder.account_name') %>
 
 
   <!-- image with Preview (JS による制御) -->
   <%= f.label :profile_image, class: "text-lg text-gray-600" %>
   <span class="w-40 h-40">
-    <%= f.label :profile_image, class: "mb-4" do %>
+    <%= f.label :profile_image, class: "mb-6" do %>
       <%= image_tag current_user.decorate.has_image?, class: "w-40 h-40  border-2 border-slate-300 rounded-full", id: "image-preview" %>
       <%= f.file_field :profile_image, class: "hidden" %>
       <%= f.hidden_field :profile_image_cache %>
     <% end %>
   </span>
-  <div class="flex mt-1 mb-4">
+  <div class="flex mt-1 mb-6">
     <%= f.check_box :profile_image_flg, class: "checkbox" %> 
     <span class="ml-1">
     <%= t('profile.not_use_image') %>
@@ -38,19 +53,21 @@
 
   <!-- introduction -->
   <%= f.label :introduction, class: "text-lg text-gray-600" %>
-  <%= f.text_area :introduction, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
-  <div class="mb-4 count ml-auto text-gray-400 text-xs font-semibold"><%= t('profile.warning_introduce') %></div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('profile.warning.introduce') %>
+  </span>
+  <%= f.text_area :introduction, class: "w-full bg-gray-100 sec mb-6 p-3 h-60 border border-gray-300 outline-none", placeholder: t('profile.placeholder.introduce') %>
 
   <!-- age -->
   <div class="sm:w-full sm:mx-auto">
     <%= f.label :age, class: "text-lg text-gray-600" %>
-    <%= f.select :age, User.ages_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
+    <%= f.select :age, User.ages_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-6 outline-none" } %>
   </div>
 
   <!-- gender -->
   <div class="sm:w-full sm:mx-auto">
     <%= f.label :gender, class: "text-lg text-gray-600" %>
-    <%= f.select :gender, User.genders_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
+    <%= f.select :gender, User.genders_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-6 outline-none" } %>
   </div>
 
   <!-- submit Button -->

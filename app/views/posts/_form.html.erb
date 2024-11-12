@@ -1,6 +1,6 @@
 <%= form_with model: @post, class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
   <% if post.errors.any? %>
-    <div style="color: red" class="bg-red-100 border border-gray-300 py-5 mb-4 outline-none w-full">
+    <div style="color: red" class="bg-red-100 border border-gray-300 py-5 mb-6 outline-none w-full">
       <ul>
         <% post.errors.each do |error| %>
           <li>・<%= error.full_message %></li>
@@ -11,7 +11,7 @@
 
   <!-- QuotePost -->
   <% if @quote_post.present? %>
-    <div class="mb-4 p-2 bg-slate-200 rounded-lg shadow-md">
+    <div class="mb-6 p-2 bg-slate-200 rounded-lg shadow-md">
       <%= t('form.post.quote_post') %>
       <%= render 'quote_post' ,post: @quote_post %>
     </div>
@@ -19,39 +19,55 @@
   <% end %>
 
   <!-- PostGenre -->
-  <%= f.label :post_genre_id, class: "text-lg text-gray-600" %>
-  <%= f.select :post_genre_id, Post.post_genre_ids_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" } %>
+  <div class="flex items-center">
+    <%= f.label :post_genre_id, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <%= f.select :post_genre_id, Post.post_genre_ids_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-6 outline-none" } %>
 
   <!-- Title -->
-  <%= f.label :title, class: "text-lg text-gray-600" %>
-  <%= f.text_field :title,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "Title" %>
+  <div class="flex items-center">
+    <%= f.label :title, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.title') %>
+  </span>
+  <%= f.text_field :title,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-6 outline-none", placeholder: t('form.post.placeholder.title') %>
 
   <!-- Content -->
-  <%= f.label :content, class: "text-lg text-gray-600" %>
-  <%= f.text_area :content, class: "w-full bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this post here" %>
-  <div class="count ml-auto text-gray-400 text-xs font-semibold">
-    <%= t('form.post.warning_textarea') %>
+  <div class="flex items-center">
+    <%= f.label :content, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
   </div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.content') %>
+  </span>
+  <%= f.text_area :content, class: "w-full bg-gray-100 sec mb-6 p-3 h-60 border border-gray-300 outline-none", placeholder: t('form.post.placeholder.content') %>
 
   <!-- PostTags -->
   <%= f.label :post_tags, class: "text-lg text-gray-600" %>
   <span class="count text-gray-400 text-xs font-semibold">
-    <%= t('form.post.warning_tags1') %>
+    <%= t('form.post.warning.tags1') %>
   </span>
   <span class="count text-gray-400 text-xs font-semibold">
-    <%= t('form.post.warning_tags2') %>
+    <%= t('form.post.warning.tags2') %>
   </span>
   <%= f.text_area :input_post_tags, 
     id: "tags-input",
     data: { controller: "tag" },
-    class: "mb-4 w-full bg-gray-100 p-3 border border-gray-300 outline-none",
-    placeholder: t('posts.show.tag_enter'), 
+    class: "mb-6 w-full bg-gray-100 p-3 border border-gray-300 outline-none",
+    placeholder: t('form.post.placeholder.tags'), 
     value: "#{ post.tags.pluck(:name) }",
     rows: 1 
   %>
 
   <!-- images -->
-  <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
+  <%= f.label :images, class: "text-lg text-gray-600" %>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.image_upload') %>
+  </span>
+  <%= f.file_field :images, class:"mb-6 file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
 
   <!-- Buttons with select -->
   <div class="flex my-3 justify-end">

@@ -7,7 +7,7 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: 'アイデア収集所では自分のアイデアの投稿や他の方のアイデアの検索・閲覧が可能です',
-      # keywords: 'キーワード１,キーワード2,キーワード3',
+      keywords: '',
       canonical: request.original_url,
       separator: '|',
       icon: [

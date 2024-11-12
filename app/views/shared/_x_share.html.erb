@@ -1,5 +1,16 @@
-
-<%= link_to "https://twitter.com/share?url=#{CGI.escape(post_url(post))}",
+<% 
+  tweet_title = post.title
+  # 50文字以上は省略
+  tweet_content = post.content.slice!(0..49) + "..." 
+%>
+<%= link_to "https://twitter.com/share?url=#{CGI.escape(post_url(post))}&text=
+  【タイトル】
+  #{ tweet_title }
+  %0a
+  %0a
+  【投稿内容】
+  #{ tweet_content }
+  %0a",
   title: 'Twitter',
   class:'fab fa-twitter', 
   target: '_blank' do %>

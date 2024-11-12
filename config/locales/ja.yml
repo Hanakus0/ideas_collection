@@ -10,26 +10,26 @@ ja:
     update_profile_success: プロフィールを更新しました
   errors:
     messages:
-      extension_allowlist_error: "は jpg jpeg png 以外は投稿できません"
+      extension_allowlist_error: は jpg jpeg png 以外は投稿できません
   title:
     app: アイデア収集所
     home:
       home_signup: アイデアを投稿してみる
     users:
-      index: 'フォローしたユーザー一覧'
+      index: フォローしたユーザー一覧
     post:
       index: 投稿一覧
-      new: '新規投稿'
-      edit: '投稿の編集'
+      new: 新規投稿
+      edit: 投稿の編集
     bookmarks: ブックマーク
     draft: 下書きの投稿一覧
     mypage_posts: このユーザーの投稿
   header:
-    see_posts: 'みんなの投稿を見る'
-    signup: '新規会員登録'
-    signin: 'ログイン'
-    user_setting: '設定'
-    signout: 'ログアウト'
+    see_posts: みんなの投稿を見る
+    signup: 新規会員登録
+    signin: ログイン
+    user_setting: 設定
+    signout: ログアウト
     post: 投稿する
     new_post: 新規投稿
     draft_post: 下書きから投稿
@@ -37,28 +37,29 @@ ja:
     bookmarks: ブックマーク
     follows: フォロー
   footer:
-    privacy_policy: 'プライバシーポリシー'
-    terms_of_service: '利用規約'
-    contact_form: 'お問い合わせフォーム'
+    privacy_policy: プライバシーポリシー
+    terms_of_service: 利用規約
+    contact_form: お問い合わせフォーム
   form:
     ok: OK
     post:
-      new: '新しいアイデアの投稿'
-      quote_post: '引用・参考にするアイデア'
-      post_comment: 'この投稿にコメントする'
+      new: 新しいアイデアの投稿
+      quote_post: 引用・参考にするアイデア
+      post_comment: この投稿にコメントする
       placeholder:
         title: 例）ランチスポットをシェアするためのアプリ
         content: 例）ユーザーがランチで訪れたお店やメニューを写真付きでシェアするアプリ。お気に入りのお店などを紹介し合えるSNS機能でユーザーは地図から探したり、エリアやジャンルで絞り込みができるようにする。
         tags: ［Enter］キーで区切って入力してください
       warning:
-        title: '※タイトルは最大 50 文字です'
-        content: '※本文は最大 500 文字です'
-        tags1: '※タグは 5 つまで設定可能です'
-        tags2: '※各タグは 10 文字以内に収めてください'
-        image_upload: '※画像は 3 枚まで選択可能です'
+        title: ※タイトルは最大 50 文字です
+        content: ※本文は最大 500 文字です
+        tags1: ※タグは 5 つまで設定可能です
+        tags2: ※各タグは最大 10 文字です
+        images1: ※画像は 3 枚まで選択可能です
+        images2: ※jpg jpeg png 以外は投稿できません
   profile:
-    screen_name_info: '年齢'
-    age: '年齢'
+    screen_name_info: 年齢
+    age: 年齢
     gender: 性別
     created_date: 登録日
     profile_edit: プロフィール編集

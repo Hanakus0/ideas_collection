@@ -65,7 +65,10 @@
   <!-- images -->
   <%= f.label :images, class: "text-lg text-gray-600" %>
   <span class="count text-gray-400 text-xs font-semibold">
-    <%= t('form.post.warning.image_upload') %>
+    <%= t('form.post.warning.images1') %>
+  </span>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.images2') %>
   </span>
   <%= f.file_field :images, class:"mb-6 file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
 

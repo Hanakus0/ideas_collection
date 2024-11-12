@@ -1,25 +1,25 @@
 ja:
   activerecord:
     models:
-      user: 'ユーザー'
-      post: 'アイデア'
+      user: ユーザー
+      post: アイデア
     attributes:
       user:
-        email: 'メールアドレス'
-        password: 'パスワード'
-        password_confirmation: 'パスワード確認'
-        screen_name: 'ユーザーID'
-        account_name: 'ユーザーネーム'
-        gender: '性別'
-        age: '年齢'
-        profile_image: 'プロフィール画像'
-        introduction: 'プロフィール文'
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        screen_name: ユーザーID
+        account_name: ユーザーネーム
+        gender: 性別
+        age: 年齢
+        profile_image: プロフィール画像
+        introduction: プロフィール文
       post:
-        post_genre_id: '投稿ジャンル'
-        title: 'タイトル'
-        content: 'アイデアの内容など'
-        post_tags: '投稿タグ'
-        images: 'アイデアの画像'
+        post_genre_id: 投稿ジャンル
+        title: タイトル
+        content: アイデアの内容など
+        post_tags: 投稿タグ
+        images: アイデアの画像
       post_genre_id:
         funny: アイデアのタネ・適当なアイデア・未完のアイデア
         technology: サイエンス・テクノロジー

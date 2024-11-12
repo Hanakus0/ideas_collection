@@ -47,21 +47,22 @@ class Post < ApplicationRecord
   # 列挙型
   # column: post_genre
   enum post_genre_id: {
-                        funny: 1,
-                        technology: 2,
-                        entertainment: 3,
-                        lifestyle: 4,
-                        business: 5,
-                        art: 6,
-                        history_geography: 7,
-                        social: 8,
-                        ideology: 9,
-                        hobby: 10,
-                        development: 11,
-                        sports: 12,
-                        music: 13,
-                        travel: 14,
-                        other: 15
+                        funny:             1,
+                        technology:        2,
+                        entertainment:     3,
+                        game:              4,
+                        lifestyle:         5,
+                        business:          6,
+                        art:               7,
+                        history_geography: 8,
+                        social:            9,
+                        ideology:         10,
+                        hobby:            11,
+                        development:      12,
+                        sports:           13,
+                        music:            14,
+                        travel:           15,
+                        other:            16
                       }, _prefix: true
   # column: draft_flg
   enum draft_flg: { publish: 0, draft: 1 }, _prefix: true

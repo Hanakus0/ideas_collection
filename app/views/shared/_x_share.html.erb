@@ -5,15 +5,11 @@
   tweet_content = post.content.slice(0..49) + "..." if tweet_content.length >= 50
 %>
 <%= link_to "https://twitter.com/share?url=#{CGI.escape(post_url(post))}&text=
-  【タイトル】
+  【タイトル】%0a
+  #{ tweet_title }%0a
   %0a
-  #{ tweet_title }
-  %0a
-  %0a
-  【投稿内容】
-  %0a
-  #{ tweet_content }
-  %0a",
+  【投稿内容】%0a
+  #{ tweet_content }%0a",
   title: 'Twitter',
   class:'fab fa-twitter', 
   target: '_blank' do %>

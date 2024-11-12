@@ -13,6 +13,7 @@ PostGenre.create([
     { name: 'funny' },
     { name: 'technology' },
     { name: 'entertainment' },
+    { name: 'game' },
     { name: 'lifestyle' },
     { name: 'business' },
     { name: 'art' },

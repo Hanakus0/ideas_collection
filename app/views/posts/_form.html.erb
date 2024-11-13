@@ -70,7 +70,18 @@
   <span class="count text-gray-400 text-xs font-semibold">
     <%= t('form.post.warning.images2') %>
   </span>
-  <%= f.file_field :images, class:"mb-6 file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
+  <% post.images.each do |image| %>
+    <%= hidden_field :post, :images, multiple: true, value: image.identifier %>
+  <% end %>
+  <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
+  <% if post.images.present? %>
+    <label>
+      <%= f.check_box :remove_images %>
+      <span>
+      投稿の画像を削除する
+      </span>
+    </label>
+  <% end %>
 
   <!-- Buttons with select -->
   <div class="flex my-3 justify-end">

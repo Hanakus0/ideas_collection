@@ -139,7 +139,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, { images: [] }, :draft_flg).merge(post_uid: gen_secure_id, user_id: current_user.id)
+      params.require(:post).permit(:title, :content, { images: [] }, :images_cache, :draft_flg).merge(post_uid: gen_secure_id, user_id: current_user.id)
     end
 
     # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
@@ -152,7 +152,17 @@ class PostsController < ApplicationController
 
     # 更新対象のカラムのみ
     def update_params
-      params.require(:post).permit(:title, :content, { images: [] }, :draft_flg)
+      update_params = params.require(:post).permit(:title, :content, { images: [] }, :remove_images, :draft_flg)
+
+      # アップロードされた画像がある場合
+      new_images_ary = update_params[:images].select { |image| image.class == ActionDispatch::Http::UploadedFile }
+      # 新規にアップロードされた画像だけを投稿画像とする
+      update_params[:images] = new_images_ary if new_images_ary.present?
+
+      # チェックボックスに応じて投稿画像を削除する
+      update_params[:images] = nil if update_params[:remove_images] === 1
+
+      return update_params
     end
 
     # 投稿のタグを登録用に加工する

@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PostImagesController from "./post_images_controller"
+application.register("post-images", PostImagesController)
+
 import SearchTagsController from "./search_tags_controller"
 application.register("search-tags", SearchTagsController)
 

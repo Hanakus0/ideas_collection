@@ -26,7 +26,7 @@ class UserDecorator < Draper::Decorator
     object.like_posts.include?(post)
   end
 
-  # 対象の投稿にいいねしているか判定
+  # 対象の投稿のコメントにいいねしているか判定
   def comment_liked?(comment)
     object.liked_comments.include?(comment)
   end

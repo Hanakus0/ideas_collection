@@ -7,7 +7,7 @@ class Users::ProfilesController < ApplicationController
   before_action :is_match_login_user, only: %i(edit update)
 
   def show
-    @user_posts = @user.posts.order(created_at: :desc)
+    @user_posts = @user.posts.where(draft_flg: 0).order(created_at: :desc)
   end
 
   def edit

@@ -1,0 +1,71 @@
+<!-- Create By Joker Banny - https://www.creative-tim.com/twcomponents/component/page-layout-responsive -->
+<div class="pt-6">
+  <!-- Section Hero -->
+  <div class="container mx-auto h-96 rounded-md flex items-center"  style="background-image: url('<%= asset_path 'hero_image' %>')">
+    <div class="sm:ml-20 text-gray-50 text-center sm:text-left">
+      <h1 class="text-gray-800 text-5xl font-bold mb-4">
+        エンジニアのためのアプリ開発アイデア掲示板
+      </h1>
+      <p class="text-gray-800 text-lg inline-block sm:block">
+        今すぐアプリアイデアを投稿して、みんなの反応をみてアイデアを形にしていきましょう
+      </p>
+      <div class="mt-8">
+        <%= link_to t('title.home.home_signup'), posts_path, class: "px-4 py-2 bg-rose-500 text-2xl rounded border border-gray-700 shadow-xl hover:bg-rose-300 hover:text-white hover:border-transparent transition ease-in duration-100" %>
+      </div>
+      <div class="mt-6">
+        <%= link_to t('header.see_posts'), posts_path, class: "px-4 py-2 bg-cyan-500 text-2xl rounded border border-gray-700 shadow-xl hover:bg-cyan-300 hover:text-white hover:border-transparent transition ease-in duration-100" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Section introduction -->
+<main class="pt-16 container mx-auto px-6 md:px-0">
+  <!-- story -->
+  <section class="py-16">
+    <h1 class="inline-block text-gray-600 font-bold text-3xl">
+      アイデア収集所<span class="text-xl">とは？</span>
+    </h1>
+    <div class=" mt-10">
+      <div>
+        <p class="text text-gray-400">
+        「なにかアプリを作ってみたい！でも、何を作ればいいのかわからない…」そんな悩みをお持ちのエンジニアの方がいらっしゃるのではないでしょうか？</br>
+        多種多様なアイデアに触れるだけで意外とその悩み解決するかもしれません</br>
+        開発アイデアのインスピレーションを得るために使ってみませんか？</br>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- about app -->
+  <section class="py-16">
+    <h1 class="inline-block text-gray-600 font-bold text-3xl">
+      このアプリについて
+    </h1>
+    <div class="grid grid-cols-3 gap-4 mt-10">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-500 mt-2">
+          1. アプリアイデアを投稿して壁打ちできる
+        </h3>
+        <p class="text text-gray-400">
+          あなたの投稿にコメントや反応をもらえます。その反応を参考にしてアイデアをより良いものにしていけるような機会を提供します。
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-500 mt-2">
+          2. 投稿されたアプリアイデアに関する機能
+        </h3>
+        <p class="text text-gray-400">
+          ブックマーク機能で投稿を保存したり、投稿者のフォロー機能、投稿の詳細検索など投稿に関する機能を充実させ情報収集しやすくしています。
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-500 mt-2">
+          3. 引用投稿でアプリアイデアを盛り上げる
+        </h3>
+        <p class="text text-gray-400">
+          引用機能により自分のアイデアだけでなく他のユーザーのアイデアを練ることが可能です。ご自身のアイデアと他の方とのアイデアを掛け合わせてまた違ったアイデアを創出する機会を提供します。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>

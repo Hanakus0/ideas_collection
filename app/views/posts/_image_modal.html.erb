@@ -1,0 +1,12 @@
+<!-- Open the modal using ID.showModal() method -->
+<button class="h-full w-full object-cover" onclick="my_modal_<%= "#{ index }" %>.showModal()">
+  <%= image_tag image.url, class: "h-full w-full object-cover", alt: "投稿の画像" %>
+</button>
+<dialog id="my_modal_<%= "#{ index }" %>" class="modal">
+  <div class="modal-box flex justify-center">
+    <%= image_tag image.url, class: "h-auto w-auto", alt: "アプリアイコン" %>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button></button>
+  </form>
+</dialog>

@@ -1,53 +1,57 @@
-<header class="bg-slate-100">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
-    <div class="flex lg:flex-1">
-      <%= link_to root_path class: "-m-1.5 p-1.5" do %>
-        <span class="sr-only">Your Company</span>
-        <img class="h-8 w-auto" src="" alt="【TODO】アイコン">
-      <% end %>
-    </div>
-    <div class="hidden lg:flex lg:gap-x-4">
-      <%= link_to "みんなの投稿を見る", posts_path, class: "p-2.5 text-sm font-semibold leading-6 text-gray-900" %>
-      <%= link_to new_user_registration_path  do %>
-        <div class="px-6 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit">ログイン</div>
-      <% end %>
-      <%= link_to new_user_session_path do %>
-        <div class="px-2 py-2 bg-slate-200 text-sm font-semibold leading-6 text-gray-900 border-2 rounded-full border-slate-300 hover:bg-white hover:border-inherit">新規会員登録</div>
-      <% end %>
-    </div>
+<div class="hidden lg:flex lg:gap-x-4">
+  <%= link_to t('header.see_posts'), posts_path, class: "p-2.5 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6" %>
 
-      <!-- Mobile menu, show/hide based on menu open state. -->
-  <div class="flex lg:hidden">
-    <!-- Background backdrop, show/hide based on slide-over state. -->
-      <div class="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
-          <!-- Page content here -->
-          <label for="my-drawer-4" class="drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
-            <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </label>
-        </div>
-        <div class="drawer-side">
-          <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-          <ul class="flex menu bg-base-200 text-base-content min-h-full w-80 p-4">
-            <!-- Sidebar content here -->
-            <li>
-              <%= link_to "みんなの投稿を見る", posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-            </li>
-            <li class="border-1 border-t-neutral-950"></li>
-            <li class="mb-4">
-               <%= link_to "ログイン", new_user_session_path, class: "text-sm font-semibold bg-slate-200 leading-6 text-gray-900" %>
-            </li>
-            <li class="mb-4">
-               <%= link_to "新規会員登録", new_user_registration_path, class: "text-sm font-semibold bg-slate-200 leading-6 text-gray-900" %>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <%= link_to new_user_session_path do %>
+    <div class="px-6 py-2 border-2 rounded-full border-slate-300 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6"><%= t 'header.signin' %></div>
+  <% end %>
+
+  <%= link_to new_user_registration_path do %>
+    <div class="px-3 py-2 border-2 rounded-full border-slate-300 bg-transparent text-gray-900 font-semibold rounded hover:bg-slate-500 hover:text-white hover:border-transparent transition ease-in duration-100 leading-6""><%= t 'header.signup' %></div>
+  <% end %>
+  <%= render 'layouts/google_button' %>
+</div>
+
+<!-- #################################################################################################################################### -->
+<!-- Mobile menu, show/hide based on menu open state. -->
+<div class="flex lg:hidden">
+<!-- Background backdrop, show/hide based on slide-over state. -->
+  <div class="drawer drawer-end">
+    <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <!-- Page content here -->
+      <label for="my-drawer-4" class="drawer-button btn btn-primary bg-slate-200 border-inherit hover:bg-white hover:border-inherit">
+        <svg class="h-6 w-6 text-slate-800 outline-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </label>
     </div>
-  </nav>
-</header>
+    <div class="drawer-side">
+      <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="flex menu bg-base-200 text-base-content min-h-full w-60 p-4">
+        <!-- Sidebar content here -->
+        <li>
+          <%= link_to t('header.see_posts'), posts_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li class="border-1 border-t-neutral-950"></li>
+        <li class="mb-4">
+            <%= link_to t('header.signin'), new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+        <li class="mb-4">
+            <%= link_to t('header.signup'), new_user_registration_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </li>
+      <%# そのた %>
+        <li class="mt-auto"></li>
+        <li>
+          <%= link_to t('footer.privacy_policy'), '#', class: "mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500 dark:hover:text-gray-300" %>
+        </li>
+        <li>
+          <%= link_to t('footer.terms_of_service'), '#', class: "mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500 dark:hover:text-gray-300" %>
+        </li>
+        <li>
+          <%= link_to t('footer.contact_form'), '#', class: "mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500 dark:hover:text-gray-300" %>
+        </li>
+      </ul>
+  </div>
+</div>
 
 

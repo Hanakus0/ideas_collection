@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_18_051752) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_31_022518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,11 +44,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_051752) do
 
   create_table "follows", force: :cascade do |t|
     t.bigint "follower_id", null: false
-    t.bigint "followew_id", null: false
+    t.bigint "followee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
     t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["followew_id"], name: "index_follows_on_followew_id"
   end
 
   create_table "post_genres", force: :cascade do |t|
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_051752) do
 
   create_table "post_records", force: :cascade do |t|
     t.bigint "post_id", null: false
-    t.integer "view_count"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_post_records_on_post_id"
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_051752) do
     t.json "images"
     t.string "title"
     t.text "content"
-    t.boolean "draft_flg"
+    t.integer "draft_flg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_genre_id"], name: "index_posts_on_post_genre_id"
@@ -127,6 +127,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_051752) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -137,8 +139,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_051752) do
   add_foreign_key "comment_likes", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
-  add_foreign_key "follows", "users", column: "followew_id"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "post_records", "posts"

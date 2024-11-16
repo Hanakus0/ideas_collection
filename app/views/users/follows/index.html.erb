@@ -1,0 +1,23 @@
+<% content_for :title, t('title.users.index') %>
+
+<!-- title -->
+<div class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"><%= t('title.users.index') %></div>
+
+<!-- Posts layouts -->
+<div class="px-6 pb-5 mx-auto">
+  <div class="w-full">
+    <!-- Posts start -->
+<%= turbo_frame_tag "followees-page-#{@followees.current_page}" do %>
+      <% @followees.each do |followee| %>
+        <%# 今のページで取得したフォロワー一覧 %>
+        <%= render 'follow', followee: followee %>
+      <% end %>
+      <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
+      <%= turbo_frame_tag "followees-page-#{@followees.next_page}", loading: :lazy, src: path_to_next_page(@followees) %>
+    <% end %>
+    <!-- Posts end -->
+  </div>
+</div>
+  <!-- Posts layouts end -->
+
+

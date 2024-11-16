@@ -1,52 +1,93 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with model: @post, class: "mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" do |f| %>
   <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div style="color: red" class="bg-red-100 border border-gray-300 py-5 mb-6 outline-none w-full">
       <ul>
         <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li>・<%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :post_uid, style: "display: block" %>
-    <%= form.text_field :post_uid %>
+  <!-- QuotePost -->
+  <% if @quote_post.present? %>
+    <div class="mb-6 p-2 bg-slate-200 rounded-lg shadow-md">
+      <%= t('form.post.quote_post') %>
+      <%= render 'quote_post' ,post: @quote_post %>
+    </div>
+    <%= f.hidden_field :quote_post, value: @quote_post.id %>
+  <% end %>
+
+  <!-- PostGenre -->
+  <div class="flex items-center">
+    <%= f.label :post_genre_id, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <%= f.select :post_genre_id, Post.post_genre_ids_i18n.invert, {}, { class: "bg-gray-100 border border-gray-300 p-2 mb-6 outline-none" } %>
+
+  <!-- Title -->
+  <div class="flex items-center">
+    <%= f.label :title, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.title') %>
+  </span>
+  <%= f.text_field :title,  class: "w-full bg-gray-100 border border-gray-300 p-2 mb-6 outline-none", placeholder: t('form.post.placeholder.title') %>
+
+  <!-- Content -->
+  <div class="flex items-center">
+    <%= f.label :content, class: "text-lg text-gray-600" %>
+    <div class="badge ml-1 bg-red-500 text-white">必須</div>
+  </div>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.content') %>
+  </span>
+  <%= f.text_area :content, class: "w-full bg-gray-100 sec mb-6 p-3 h-60 border border-gray-300 outline-none", placeholder: t('form.post.placeholder.content') %>
+
+  <!-- PostTags -->
+  <%= f.label :post_tags, class: "text-lg text-gray-600" %>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.tags1') %>
+  </span>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.tags2') %>
+  </span>
+  <%= f.text_area :input_post_tags, 
+    id: "tags-input",
+    data: { controller: "tag" },
+    class: "mb-6 w-full bg-gray-100 p-3 border border-gray-300 outline-none",
+    placeholder: t('form.post.placeholder.tags'), 
+    value: "#{ post.tags.pluck(:name) }",
+    rows: 1
+  %>
+
+  <!-- images -->
+  <%= f.label :images, class: "text-lg text-gray-600" %>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.images1') %>
+  </span>
+  <span class="count text-gray-400 text-xs font-semibold">
+    <%= t('form.post.warning.images2') %>
+  </span>
+  <% post.images.each do |image| %>
+    <%= hidden_field :post, :images, multiple: true, value: image.identifier %>
+  <% end %>
+  <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
+  <% if post.images.present? %>
+    <label>
+      <%= f.check_box :remove_images %>
+      <span>
+      投稿の画像を削除する
+      </span>
+    </label>
+  <% end %>
+
+  <!-- Buttons with select -->
+  <div class="flex my-3 justify-end">
+    <%= f.select :draft_flg, Post.draft_flgs_i18n.invert, {}, class: "py-3 bg-gray-100 border border-gray-300 p-2 outline-none" %>
+    <%= f.submit "OK", class: "py-3 w-3/12 bg-blue-500 text-white hover:bg-blue-400"%>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :post_genre_id, style: "display: block" %>
-    <%= form.text_field :post_genre_id %>
-  </div>
-
-  <div>
-    <%= form.label :images, style: "display: block" %>
-    <%= form.text_field :images %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div>
-    <%= form.label :draft_flg, style: "display: block" %>
-    <%= form.check_box :draft_flg %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <!-- form_end -->
 <% end %>

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# deviseによるログイン済みかの判定
 
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new

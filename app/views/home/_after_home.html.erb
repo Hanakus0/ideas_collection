@@ -1,0 +1,43 @@
+  <div class="pt-5 flex w-full justify-center gap-3 fixed top-100">
+    <%= link_to t('home.random_posts'), '#item1', class: "btn btn-xs", data: { turbo: false } %>
+    <%= link_to t('home.good_posts'), '#item2', class: "btn btn-xs", data: { turbo: false } %>
+    <%= link_to t('home.comment_posts'), '#item3', class: "btn btn-xs", data: { turbo: false } %>
+    <%= link_to t('home.latest_posts'), '#item4', class: "btn btn-xs", data: { turbo: false } %>
+  </div>
+  <div class="container px-3 py-5 mx-auto">
+    <div class="carousel w-full">
+      <%# order random %>
+      <div id="item1" class="pt-10 carousel-item w-full">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
+          <% @random_posts.each do |post| %>
+            <%= render 'home_posts', post: post, flg: nil %>
+          <% end %>
+        </div>
+      </div>
+      <%# order like %>
+      <div id="item2" class="pt-10 carousel-item w-full">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
+          <% @good_posts.each do |post| %>
+            <%= render 'home_posts', post: post, flg: "good" %>
+          <% end %>
+        </div>
+      </div>
+      <%# order comment %>
+      <div id="item3" class="pt-10 carousel-item w-full">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
+          <% @comment_posts.each do |post| %>
+            <%= render 'home_posts', post: post, flg: "comment" %>
+          <% end %>
+        </div>
+      </div>
+      <%# order latest %>
+      <div id="item4" class="pt-10 carousel-item w-full">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
+          <% @latest_posts.each do |post| %>
+            <%= render 'home_posts', post: post, flg: nil %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>

@@ -36,9 +36,21 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# below: added gem
-gem 'enumerize'
+# -- added gem ---
 gem "devise", "~> 4.9"
+gem 'rails-i18n', '~> 7.0.0'
+gem 'devise-i18n', '~> 1.12', '>= 1.12.1'
+gem 'enum_help'
+gem 'draper'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem 'meta-tags', '~> 2.22', '>= 2.22.1'
+# aws s3 with carrierwave
+gem 'carrierwave', '~> 3.0'
+gem 'fog-aws', '~> 3.29'
+# For GoogleOauth2 gems
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-google-oauth2'
 
 
 group :development, :test do
@@ -50,6 +62,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # -- added gem ---
+  gem 'dotenv'
 end
 
 group :development do

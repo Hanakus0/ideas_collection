@@ -1,0 +1,156 @@
+<!-- page parent -->
+<div class="h-full lg:w-1/2 mx-auto p-8">
+    <!-- Profile header -->
+    <div class="bg-slate-100 rounded-lg shadow-xl pb-8 mb-8">
+        <!-- profile header back image -->
+        <div class="w-full h-[100px]"></div>
+        <!-- user profile image -->
+        <div class="flex flex-col items-center -mt-20">
+            <!-- profile_image -->
+            <% if @user.profile_image? %>
+                <%= image_tag @user.profile_image.url, class: "bg-white w-40 h-40 border-4 border-white rounded-full" %>
+            <% else %>
+                <%= image_tag 'tokumeisan.png', class: "w-40 h-40 border-4 border-white rounded-full" %>
+            <% end %>
+            <!-- account_name -->
+            <div class="flex items-center space-x-2 mt-4">
+                <p class="text-4xl">
+                    <%= @user.account_name %>
+                </p>
+            </div>
+            <div class="flex items-center space-x-2 mt-4">
+                <p class="text-xl text-slate-400">
+                    <%= "＠" + @user.screen_name %>
+                </p>
+            </div>
+            <div class="mt-4">
+                <div class="flex justify-between items-center space-x-4 mt-4">
+                    <p class="text-md text-slate-400">
+                        <%=  t('profile.age') %>
+                    </p>
+                    <p class="text-md text-slate-400">
+                        <%= @user.age_i18n %>
+                    </p>
+                </div>
+                <div class="flex  justify-between items-center space-x-4 mt-4">
+                    <p class="text-md text-slate-400">
+                        <%=  t('profile.gender') %>
+                    </p>
+                    <p class="text-md text-slate-400">
+                        <%= @user.gender_i18n %>
+                    </p>
+                </div>
+                <div class="flex  justify-between items-center space-x-4 mt-4">
+                    <p class="text-md text-slate-400">
+                        <%=  t('profile.created_date') %>
+                    </p>
+                    <p class="text-md text-slate-400">
+                        <%= @user.decorate.created_date %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- profile buttons -->
+        <div class="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
+            <div class="flex items-center space-x-4 mt-2">
+                <%= render 'profile_buttons', user: @user %>
+            </div>
+        </div>
+    </div>
+
+    <!-- profile buttons -->
+    <div class="mb-8 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+        <div class="flex flex-col w-full">
+            <div class="flex-1 bg-slate-100 rounded-lg shadow-xl p-8">
+                <h4 class="text-xl text-gray-900 font-bold">
+                    <%= t('profile.introduce') %>
+                </h4>
+                <p class="mt-2 text-gray-700">
+                    <%= @user.introduction %>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="flex-1 bg-slate-100 rounded-lg shadow-xl mb-8 p-8">
+        <h4 class="text-xl text-gray-900 font-bold">
+            <%= t('profile.post_info') %>
+        </h4>
+        <!-- ユーザーの情報 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
+            <!-- 投稿数 -->
+            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-green-600">
+                        <%= t('profile.num_posts') %>
+                    </span>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <div>
+                        <%= image_tag 'post_edit', class: "w-12 h-12 p-2.5 bg-green-400 bg-opacity-20 rounded-full text-green-600 border border-green-600"  %>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-end">
+                            <span class="mr-1 text-2xl 2xl:text-3xl font-bold">
+                                <%= @user.posts.count %>
+                            </span>
+                            投稿
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- いいね数 -->
+            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-red-600">
+                        <%= t('profile.num_likes') %>
+                    </span>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <div>
+                        <%= image_tag 'heart_fill', class: "w-12 h-12 p-2.5 bg-red-400 bg-opacity-20 rounded-full text-red-600 border border-red-600"  %>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-end">
+                            <span class="mr-1 text-2xl 2xl:text-3xl font-bold">
+                                <%= @user.decorate.user_post_likes %>
+                            </span>
+                            いいね
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 投稿閲覧数 -->
+            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-blue-600">
+                        <%= t('profile.num_views') %>
+                    </span>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <div>
+                        <%= image_tag 'post_view', class: "w-12 h-12 p-2.5 bg-blue-400 bg-opacity-20 rounded-full text-blue-600 border border-blue-600"  %>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-end">
+                            <span class="mr-1 text-2xl 2xl:text-3xl font-bold">
+                                <%= @user.decorate.user_post_views %>
+                            </span>
+                            views
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%# 投稿一覧 %>
+    <div class="px-6 mx-auto bg-slate-100 rounded-lg shadow-xl overflow-y-auto h-96">
+        <div class="w-full">
+            <h4 class="text-xl text-gray-900 font-bold my-6">
+                <%= t('title.mypage_posts') %>
+            </h4>
+            <% @user_posts.each do |post| %>
+                <%= render 'posts/post', post: post %>
+            <% end %>
+        </div>
+    </div>
+</div>

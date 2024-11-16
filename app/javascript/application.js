@@ -2,4 +2,4 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 
-import "./user_index"
+import "./profile_image_preview"

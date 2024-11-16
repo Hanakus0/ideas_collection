@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "unbookmark-button-#{@post.post_uid}" do %>
+  <%= render 'bookmarks/bookmark', post: @post %>
+<% end %>

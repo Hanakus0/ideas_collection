@@ -1,0 +1,5 @@
+<% if current_user.decorate.liked?(post) %>
+  <%= render 'post_likes/unlike', { post: post } %>
+<% else %>
+  <%= render 'post_likes/like', { post: post } %>
+<% end %>

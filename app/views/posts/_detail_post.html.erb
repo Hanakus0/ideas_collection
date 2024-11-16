@@ -1,0 +1,87 @@
+<!-- header -->
+<div class="flex justify-between">
+  <%= link_to users_profile_path(post.user), class: "flex space-x-4 items-center" do %>
+    <div class="w-12 h-12">
+      <%= image_tag post.user.decorate.has_image?, class: "rounded-full w-full h-full object-cover" %>
+    </div>
+    <div class="space-y-2">
+      <div class="flex space-x-2 items-center">
+        <h2 class="text-base"><%= post.user.account_name %></h2>
+        <div class="text-xs">＠<%= post.user.screen_name %></div>
+      </div>
+      <p class="text-xs"><%= post.decorate.created_date %></p>
+    </div>
+  <% end %>
+  <%= link_to new_post_path(quote_post_id: post.post_uid), class:"p-1 my-auto border border-slate-400 rounded-2xl align-center" do %>
+    <%= image_tag 'quote_post', class: "mx-auto w-4 h-4" %>
+    <p class="text-xs">quote</p>
+  <% end %>
+</div>
+
+<!--post genre-->
+<div>
+  <span class="mb-3 px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
+    <%= post.post_genre_id_i18n %>
+  </span>
+</div>
+
+<!--content-->
+<div>
+  <p class="mb-3 text-2xl leading-6">
+    <%= post.title %>
+  </p>
+  <p class="text-sm leading-6 break-words">
+    <%= post.content %>
+  </p>
+</div>
+
+<!-- image grid-->
+<div class="grid grid-cols-6 col-span-2  gap-2">
+  <% post.images.each.with_index(1) do |image, index| %>
+    <div class="relative overflow-hidden rounded-xl col-span-2 max-h-[10rem]">
+      <%= render 'image_modal', image: image, index: index %>
+    </div>
+  <% end %>
+</div>
+
+<!--post genre-->
+<% if post.tags.present? %>
+  <ul>
+    <li>
+      ＃タグ
+    </li>
+    <% post.tags.each do |tag| %>
+      <li>
+        <%= link_to '#', class:"link link-info" do %>
+          <%= tag.name %>
+        <% end %>
+      </li>
+    <% end %>
+</ul>
+<% end %>
+
+<!-- post info-->
+  <div class=" h-16 border-b flex items-center justify-around	">
+    <div class="flex items-center">
+      <div class="text-sm	"><%= post.comments.count %> コメント</div>
+    </div>
+    <div class="flex items-center">
+      <%= render 'like_buttons', { post: post } %>
+    </div>
+    <div class="flex items-center">
+      <%= render 'bookmark_buttons', { post: post } %>
+    </div>
+    <div class="flex items-center">
+      <%= render 'shared/x_share', { post: post } %>
+    </div>
+  </div>
+  <!-- comment form -->
+  <%= form_with model: [post, @comment], class: "flex items-center justify-between mt-4" do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= image_tag current_user.decorate.has_image?, class: "bg-white rounded-full w-10 h-10 object-cover border" %>
+    <div class="flex items-center	justify-between	bg-gray-50 h-11 w-11/12 border rounded-2xl overflow-hidden px-4 ">
+      <%= f.text_field :content, class:"h-full w-full bg-gray-50 outline-none", minlength: "1", maxlength: "140", placeholder: t('form.post.post_comment') %>
+    </div>
+    <%= f.submit "OK", class: "py-3 w-12 bg-blue-500 text-white hover:bg-blue-400 rounded-full "%>
+  <% end %>
+</div>

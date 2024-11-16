@@ -1,0 +1,16 @@
+<%# 自分以外はプロフィールの編集は不可 %>
+<% if current_user == user %>
+  <%= link_to edit_users_profile_path(current_user.screen_name) do %>
+    <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+        <%= image_tag 'setting.svg', class: "w-4 h-4" %>
+        <span><%= t('profile.profile_edit') %></span>
+    </button>
+  <% end %>
+<% else %>
+<%# フォロー管理 %>
+  <% if current_user.decorate.following?(user) %>
+    <%= render "unfollow_button", user: user %>
+  <% else %>
+    <%= render "follow_button", user: user %>
+  <% end %>
+<% end %>

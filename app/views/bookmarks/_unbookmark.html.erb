@@ -1,0 +1,4 @@
+<%= link_to bookmark_path(id: post.post_uid), id: "unbookmark-button-#{@post.post_uid}", data: { turbo_method: :delete } ,class: "flex" do %>
+  <%= image_tag 'bookmarked', class: "w-6 h-6 mr-1" %>
+<% end %> 
+

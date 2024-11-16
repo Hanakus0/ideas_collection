@@ -4,6 +4,9 @@
     <title><%= content_for(:title) || "Myapp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <%# ファビコン画像 %>
+    <%= favicon_link_tag '/favicon.ico' %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,17 +16,35 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <!-- Tagify -->
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    <!-- ogp -->
+    <%= display_meta_tags(default_meta_tags) %>
+    <!-- rails default -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <%= javascript_include_tag "application", defer: true %>
+    <%= javascript_include_tag "turbo", type: "module" %>
   </head>
-    <!-- ログイン有無での表示内容の切り替え -->
-    <% if user_signed_in? %>
-      <%= render 'layouts/after_header' %>
-    <% else %>
-      <%= render 'layouts/before_header' %>
+  <!-- ログイン有無での表示内容の切り替え -->
+  <body class="font-mono">
+  <%= render 'layouts/header' %>
+
+  <%# フラッシュメッセージを表示 %>
+  <% flash.each do |key, message| %>
+    <% case key %>
+    <% when "notice" %>
+      <%= render 'shared/info_notice', message: message %>
+    <% when "success" %>
+      <%= render 'shared/success_notice', message: message %>
+    <% when "warning" %>
+      <%= render 'shared/warning_notice', message: message %>
+    <% when "alert" %>
+      <%= render 'shared/error_notice', message: message %>
     <% end %>
-  <body>
+  <% end %>
+
+    <%# main %>
     <%= yield %>
+  <%= render 'layouts/footer' %>
   </body>
 </html>

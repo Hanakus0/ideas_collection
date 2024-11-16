@@ -1,0 +1,32 @@
+<%= link_to (post_path(post)), class: 'list-content', data: { turbo: false } do %>
+  <div class="mx-auto max-w-4xl px-10 my-2 py-6 bg-white border-2 border-cyan-400 rounded-lg shadow-md">
+    <div class="mt-2">
+        <span class="px-2 py-1 bg-cyan-600 text-gray-100 font-bold rounded">
+          <%= t('posts.show.quote') %>
+        </span>
+        <p class="mt-2 text-2xl text-gray-700 font-bold hover:text-gray-600 truncate">
+          <%= post.title %>
+        </p>
+        <p class="mt-2 text-gray-600 truncate">
+          <%= post.content %>
+        </p>
+    </div>
+    <div class="lg:flex justify-between items-center mt-4">
+      <div>
+        <%= link_to users_profile_path(post.user.screen_name), class:"lg:flex items-center", data: { turbo: false } do %>
+          <div class="flex">
+              <%= image_tag post.decorate.has_image?, class: "mx-4 w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+            <div>
+              <h1 class="text-gray-700 font-bold">
+                <%= post.user.account_name %>
+              </h1>
+              <h1 class="text-gray-400">
+                ＠<%= post.user.screen_name %>
+              </h1>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

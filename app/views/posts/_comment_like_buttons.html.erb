@@ -1,0 +1,5 @@
+<% if current_user.decorate.comment_liked?(comment) %>
+  <%= render 'comment_likes/unlike', { comment: comment } %>
+<% else %>
+  <%= render 'comment_likes/like', { comment: comment } %>
+<% end %>

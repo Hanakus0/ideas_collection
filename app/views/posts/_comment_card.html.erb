@@ -1,0 +1,67 @@
+<% if comment.user_id == post.user_id %>
+<%# 投稿者以外からのコメント %>
+  <div id="comment-<%= comment.id %>" class="chat chat-start">
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
+        <%= link_to users_profile_path(comment.user) do %>
+          <%= image_tag comment.decorate.comment_user_image %>
+        <% end %>
+      </div>
+    </div>
+    <div class="chat-header">
+      <%= link_to users_profile_path(comment.user) do %>
+        <p class="text-xs">
+          <%= comment.decorate.get_account_name %>
+        </p>
+        <p class="text-xs text-slate-400">
+          ＠<%= comment.decorate.get_screen_name %>
+        </p>
+      <% end %>
+    </div>
+    <div class="chat-bubble break-words">
+      <%= comment.content %>
+    </div>
+    <%# コメントへのいいね %>
+    <%= render 'comment_like_buttons', { comment: comment } %>
+    <div class="chat-footer opacity-50">
+      <%= comment.decorate.created_date %>
+      <%# コメント削除ボタン %>
+      <% if comment.user_id == post.user_id %>
+        <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+<%# 投稿者本人のコメント %>
+  <div id="comment-<%= comment.id %>" class="chat chat-end">
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
+        <%= link_to users_profile_path(comment.user) do %>
+          <%= image_tag comment.decorate.comment_user_image %>
+        <% end %>
+      </div>
+    </div>
+    <div class="chat-header break-words">
+      <%= link_to users_profile_path(comment.user) do %>
+        <p class="text-xs">
+          <%= comment.decorate.get_account_name %>
+        </p>
+        <p class="text-xs text-slate-400">
+          ＠<%= comment.decorate.get_screen_name %>
+        </p>
+      <% end %>
+    </div>
+    <div class="chat-bubble">
+      <%= comment.content %>
+      <%# コメント削除ボタン %>
+      <% if comment.user_id == post.user_id %>
+        <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
+      <% end %>
+    </div>
+    <%# コメントへのいいね %>
+    <%= render 'comment_like_buttons', { comment: comment } %>
+    <div class="chat-footer opacity-50">
+      <%= comment.decorate.created_date %>
+    </div>
+  </div>
+<% end %>

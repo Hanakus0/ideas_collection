@@ -1,14 +1,132 @@
 ja:
-  enumerize:
+  messages:
+    signin_info: ログインに成功しました
+    signup_info: 新規登録完了しました
+    signin_warning: 編集権限がありません
+    post_success: 新規投稿が作成されました
+    destroy_post_success: 投稿を削除しました
+    comment_success: コメントを投稿しました
+    update_post_success: 投稿を更新しました
+    update_profile_success: プロフィールを更新しました
+  errors:
+    messages:
+      extension_allowlist_error: は jpg jpeg png 以外は投稿できません
+  title:
+    app: アイデア収集所
+    home:
+      home_signup: アイデアを投稿してみる
+    users:
+      index: フォローしたユーザー一覧
+    post:
+      index: 投稿一覧
+      new: 新規投稿
+      edit: 投稿の編集
+    bookmarks: ブックマーク
+    draft: 下書きの投稿一覧
+    mypage_posts: このユーザーの投稿
+  header:
+    see_posts: みんなの投稿を見る
+    signup: 新規会員登録
+    signin: ログイン
+    user_setting: 設定
+    signout: ログアウト
+    post: 投稿する
+    new_post: 新規投稿
+    draft_post: 下書きから投稿
+    mypage: マイページ
+    bookmarks: ブックマーク
+    follows: フォロー
+  footer:
+    privacy_policy: プライバシーポリシー
+    terms_of_service: 利用規約
+    contact_form: お問い合わせフォーム
+  form:
+    ok: OK
+    post:
+      new: 新しいアイデアの投稿
+      quote_post: 引用・参考にするアイデア
+      post_comment: この投稿にコメントする
+      placeholder:
+        title: 例）ランチスポットをシェアするためのアプリ
+        content: 例）ユーザーがランチで訪れたお店やメニューを写真付きでシェアするアプリ。お気に入りのお店などを紹介し合えるSNS機能でユーザーは地図から探したり、エリアやジャンルで絞り込みができるようにする。
+        tags: ［Enter］キーで区切って入力してください
+      warning:
+        title: ※タイトルは最大 50 文字です
+        content: ※本文は最大 500 文字です
+        tags1: ※タグは 5 つまで設定可能です
+        tags2: ※各タグは最大 10 文字です
+        images1: ※画像は 3 枚まで選択可能です
+        images2: ※jpg jpeg png 以外は投稿できません
+  profile:
+    screen_name_info: 年齢
+    age: 年齢
+    gender: 性別
+    created_date: 登録日
+    profile_edit: プロフィール編集
+    following: フォローする
+    unfollowing: フォロー解除する
+    introduce: About Me
+    post_info: 投稿関連情報
+    num_posts: 投稿数
+    num_likes: 投稿のいいね総数
+    num_views: 投稿の閲覧総数
+    not_use_image: プロフィール画像を使用しない
+    placeholder:
+      screen_name: 例）sample12345
+      account_name: 例）サンプルsample12345
+      introduce: 例）よろしくお願いします
+    warning:
+      screen_name1: ※最低 5 文字 / 最大 16 文字以下で設定可能です
+      screen_name2: ※半角英数字のみ
+      account_name: ※最低 1 文字 / 最大 20 文字以下で設定可能です
+      introduce: ※自己紹介文は最大 160 文字です
+  home:
+    random_posts: ランダム
+    good_posts: いいね数順
+    comment_posts: コメント数順
+    latest_posts: 最新の投稿
+  posts:
+    index:
+      search: 投稿の検索をする
+    show:
+      post_views: この投稿の閲覧数：
+      draft_info: この投稿は下書きとして保存しています
+      draft_info_sub: この投稿を公開するには「この投稿を編集する」より公開に変更してください
+      edit_post: この投稿を編集する
+      delete_post: この投稿を削除する
+      delete_confirm: この投稿を削除しますがよろしいですか？
+      quote: 引用・参考にした投稿
+      tag_enter: ［Enter］キーで区切って入力してください
+    search:
+      genre: ジャンル
+      order: 並び替え
+      content: タイトル／投稿内容
+      tag: タグ
+      search_words: ［Enter］キーで区切って入力してください
+      btn: 検索
+  enums:
     user:
+      age:
+        unkown: 回答しない
+        teens: 10代
+        twenties: 20代
+        therties: 30代
+        fourties: 40代
+        fifties: 50代
+        sixties: 60代
+        morethan: 70代以上
+        other: その他
       gender:
-        other: 未回答
+        unkown: 回答しない
         male: 男性
         female: 女性
-    post_genre:
-      genre:
+        other: 該当なし
+    post:
+      post_genre_id:
+        funny: アイデアのタネ・適当なアイデア・未完のアイデア
         technology: サイエンス・テクノロジー
         entertainment: 芸能・エンタメ
+        game: ゲーム
         lifestyle: 暮らし・健康・料理
         business: ビジネス・経済
         art: アート・建築・デザイン
@@ -20,5 +138,7 @@ ja:
         sports: スポーツ・アウトドア
         music: 音楽
         travel: 旅行
-        funny: ネタ・適当なアイデア
         other: その他
+      draft_flg:
+        publish: 投稿を公開する
+        draft: 下書きとして保存する

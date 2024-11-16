@@ -29,4 +29,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i(create destroy)
   resources :post_likes, only: %i(create destroy)
   resources :comment_likes, only: %i(create destroy)
+
+  # for stimulus
+  get "tags/search"
 end

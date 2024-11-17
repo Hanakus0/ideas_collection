@@ -17,7 +17,7 @@ class PostSearchForm
     # タイトルor本文の検索条件指定がある場合
     if self.contents.present?
       # 配列化する
-      words_ary = self.contents.split(',')
+      words_ary = self.contents.split(' ')
 
       search_result_ary = []
       # タイトルor本文でのあいまい検索
@@ -34,9 +34,12 @@ class PostSearchForm
     if self.tags.present?
       # 配列化
       tags_ary = self.tags.split(',')
+      raise
       # タグでの一致検索
       search_result_ary = []
       tags_ary.each do |tag|
+        # 登録されていないタグで検索される場合のnilガード
+        break if Tag.find_by(name: tag).blank?
         search_result_ary += Tag.find_by(name: tag).posts
       end
       # 重複を取り除きidだけにする

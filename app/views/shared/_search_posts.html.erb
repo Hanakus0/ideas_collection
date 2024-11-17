@@ -24,11 +24,9 @@
             <div class="border border-slate-300 rounded">
                 <div class="flex border rounded bg-gray-300 items-center p-2">
                     <%= image_tag 'sentence', class: "fill-current text-gray-800 mr-2 w-5" %>
-                    <%= f.text_area :contents, 
-                        id: "search-words-input",
-                        data: { controller: "search-words" }, 
-                        placeholder: t('posts.search.search_words'), 
-                        class: "bg-gray-300 w-full focus:outline-none text-gray-700" %>
+                    <%= f.text_field :contents, 
+                        class: "bg-gray-300 w-full focus:outline-none text-gray-700 p-2 h-10 border border-zinc-200",
+                        placeholder: t('posts.search.search_words') %>
                 </div>
             </div>
             <%# posts order %>
@@ -41,7 +39,7 @@
                     <%= f.text_area :tags, 
                         id: "search-tags-input", 
                         data: { controller: "search-tags" }, 
-                        placeholder: t('posts.search.search_words'),
+                        placeholder: t('posts.search.search_tags'),
                         class: "bg-gray-300 w-full focus:outline-none text-gray-700" %>
                 </div>
             </div>

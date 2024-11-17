@@ -220,10 +220,10 @@
   resolved "https://registry.npmjs.org/@rails/actioncable/-/actioncable-7.2.100.tgz"
   integrity sha512-7xtIENf0Yw59AFDM3+xqxPCZxev3QVAqjPmUzmgsB9eL8S/zTpB0IU9srNc7XknzJI4e09XKNnCaJRx3gfYzXA==
 
-"@yaireo/tagify@^4.31.6":
-  version "4.31.6"
-  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.31.6.tgz#d3cddeedc4ecba2839195df36164cb37a1e8a49a"
-  integrity sha512-mEdz0eVXg2P0InSKE7xThTWjQ+foXZ0vBvGpHUcKvYbGFZnXPdfkPweZB7OEPibBRVP5VoW2U+7vgrJGcu/tdA==
+"@yaireo/tagify@^4.32.0":
+  version "4.32.0"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.32.0.tgz#d20a88fca397f4e75e85ae811d386513772c0b0c"
+  integrity sha512-CxHpwgloFYh3EwGs4LUkEz8oKswLNyX4CtSSqZCcSA0pUV5xTe8L+YaJnbpU79iV3bqxCwkxTx6E0Wi0ebujBQ==
 
 ansi-regex@^5.0.1:
   version "5.0.1"

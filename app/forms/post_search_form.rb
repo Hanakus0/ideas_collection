@@ -17,7 +17,7 @@ class PostSearchForm
     # タイトルor本文の検索条件指定がある場合
     if self.contents.present?
       # 配列化する
-      words_ary = self.contents.split(',')
+      words_ary = self.contents.split(' ')
 
       search_result_ary = []
       # タイトルor本文でのあいまい検索
@@ -37,6 +37,8 @@ class PostSearchForm
       # タグでの一致検索
       search_result_ary = []
       tags_ary.each do |tag|
+        # 登録されていないタグで検索される場合のnilガード
+        break if Tag.find_by(name: tag).blank?
         search_result_ary += Tag.find_by(name: tag).posts
       end
       # 重複を取り除きidだけにする
@@ -57,12 +59,10 @@ class PostSearchForm
         # いいね数が多い順
         order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
         result = result.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
-        # raise
       when 'post_comments'
         # コメント数が多い順
         order_comments_ary = Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)
         result = result.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
-        # raise
     else
       # 並び替えを処理しない
     end

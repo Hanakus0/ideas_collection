@@ -7,14 +7,12 @@ class Users::FollowsController < ApplicationController
   end
 
   def create
-    # raise
     current_user.follower_relationships.create(followee_id: @followee.id)
     redirect_to users_profile_path(@followee.screen_name), success: t('.success')
   end
 
   def destroy
     target_followee = current_user.follower_relationships.find_by(followee_id: @followee.id)
-    # raise
     target_followee.destroy
     redirect_to users_profile_path(@followee.screen_name), success: t('.success'), status: :see_other
   end

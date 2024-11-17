@@ -14,7 +14,7 @@ export default class extends Controller {
         enabled       : 0,              // show the dropdown immediately on focus
         maxItems      : 5,
         position      : "input",         // place the dropdown near the typed text
-        closeOnSelect : false,          // keep the dropdown open after selecting a suggestion
+        closeOnSelect : true,          // keep the dropdown open after selecting a suggestion
         highlightFirst: true
       }
     }),

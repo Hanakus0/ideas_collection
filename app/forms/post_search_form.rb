@@ -34,7 +34,6 @@ class PostSearchForm
     if self.tags.present?
       # 配列化
       tags_ary = self.tags.split(',')
-      raise
       # タグでの一致検索
       search_result_ary = []
       tags_ary.each do |tag|
@@ -60,12 +59,10 @@ class PostSearchForm
         # いいね数が多い順
         order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
         result = result.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
-        # raise
       when 'post_comments'
         # コメント数が多い順
         order_comments_ary = Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)
         result = result.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
-        # raise
     else
       # 並び替えを処理しない
     end

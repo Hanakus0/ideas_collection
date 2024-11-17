@@ -12,7 +12,6 @@ class CommentLikesController < ApplicationController
 
   # ブックマーク解除処理
   def destroy
-    # raise
     @comment = Comment.find(params[:id])
     @post = Post.find_by(post_uid: params[:id])
     current_user.liked_comments.destroy(@comment)

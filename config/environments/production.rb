@@ -99,9 +99,9 @@ Rails.application.configure do
   # ]
   config.hosts = [
     "ideaflow.jp",     # Allow requests from example.com
-    /.*\.ideaflow\.jp/ # Allow requests from subdomains like `www.example.com`
+    /.*\.ideaflow\.jp/, # Allow requests from subdomains like `www.example.com`
     "ideas-collection.onrender.com", # main
-    "graduation-project-1avl.onrender.com", # develop
+    "graduation-project-1avl.onrender.com" # develop
   ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }

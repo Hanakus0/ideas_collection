@@ -24,24 +24,27 @@
   </head>
   <!-- ログイン有無での表示内容の切り替え -->
   <body class="font-mono">
-  <%= render 'layouts/header' %>
+    <%# header %>
+    <%= render 'layouts/header' %>
 
-  <%# フラッシュメッセージを表示 %>
-  <% flash.each do |key, message| %>
-    <% case key %>
-    <% when "notice" %>
-      <%= render 'shared/info_notice', message: message %>
-    <% when "success" %>
-      <%= render 'shared/success_notice', message: message %>
-    <% when "warning" %>
-      <%= render 'shared/warning_notice', message: message %>
-    <% when "alert" %>
-      <%= render 'shared/error_notice', message: message %>
+    <%# フラッシュメッセージを表示 %>
+    <% flash.each do |key, message| %>
+      <% case key %>
+      <% when "notice" %>
+        <%= render 'shared/info_notice', message: message %>
+      <% when "success" %>
+        <%= render 'shared/success_notice', message: message %>
+      <% when "warning" %>
+        <%= render 'shared/warning_notice', message: message %>
+      <% when "alert" %>
+        <%= render 'shared/error_notice', message: message %>
+      <% end %>
     <% end %>
-  <% end %>
 
     <%# main %>
     <%= yield %>
-  <%= render 'layouts/footer' %>
+
+    <%# footer %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

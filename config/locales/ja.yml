@@ -2,6 +2,8 @@ ja:
   messages:
     signin_info: ログインに成功しました
     signup_info: 新規登録完了しました
+    follow_info: "%{account_name} さんをフォローしました"
+    unfollow_info: "%{account_name} さんをフォロー解除しました"
     signin_warning: 編集権限がありません
     post_success: 新規投稿が作成されました
     destroy_post_success: 投稿を削除しました

@@ -3,7 +3,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'アイデアを見て・考えて・投稿するサービス',
-      title: 'アイデアを見て・考えて・投稿するサービス',
+      title: 'アイデア収集場',
       reverse: true,
       charset: 'utf-8',
       description: 'アイデア収集所では自分のアイデアの投稿や他の方のアイデアの検索・閲覧が可能です',

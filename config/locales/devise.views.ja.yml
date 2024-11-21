@@ -56,16 +56,19 @@ ja:
         message_unconfirmed: メールアドレスが（%{email}）変更されたため、メールを送信しています。
         subject: メール変更完了
       password_change:
-        greeting: "%{recipient}様"
+        greeting: "%{recipient} 様"
         message: パスワードが再設定されました。
         subject: パスワードの変更について
       reset_password_instructions:
-        action: パスワード変更
+        action: パスワードのリセットおよび変更はこちらのリンクから
         greeting: "%{recipient}様"
-        instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
-        instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
+        instruction: パスワードリセットのリクエストを受け付けました。
+        instruction_2: 新しいパスワードを設定するには、以下のリンクをクリックしてください：
         instruction_3: パスワードの再設定は、上のリンクから新しいパスワードを登録するまで完了しません。
-        subject: パスワードの再設定について
+        instruction_4: もしパスワード再設定の依頼をしていない場合、このメールを無視してください。
+        instruction_5: ご不明な点がございましたら、フッターのお問い合わせフォームよりお問い合わせください。
+        period: アイデア収集場
+        subject: パスワードの再設定のご案内 【アイデア収集場】
       unlock_instructions:
         action: アカウントのロック解除
         greeting: "%{recipient}様"
@@ -82,7 +85,7 @@ ja:
         confirm_new_password: 確認用新しいパスワード
         new_password: 新しいパスワード
       new:
-        forgot_your_password: パスワードを忘れましたか？
+        forgot_your_password: パスワードの再設定
         send_me_reset_password_instructions: パスワード再設定のメールを送信
       no_token: このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。
       send_instructions: パスワードの再設定について数分以内にメールでご連絡いたします。

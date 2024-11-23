@@ -22,7 +22,7 @@
       <%= comment.content %>
     </div>
     <%# コメントへのいいね %>
-    <%= render 'comment_like_buttons', { comment: comment } %>
+    <%= render 'comments/comment_like_buttons', { comment: comment } %>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
       <%# コメント削除ボタン %>
@@ -59,7 +59,7 @@
       <% end %>
     </div>
     <%# コメントへのいいね %>
-    <%= render 'comment_like_buttons', { comment: comment } %>
+    <%= render 'comments/comment_like_buttons', { comment: comment } %>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
     </div>

@@ -59,9 +59,9 @@
   </div>
 
   <!-- post comments -->
-  <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem] space-y-6 px-5 mx-auto overflow-y-auto h-80">
+  <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem] space-y-6 px-5 mx-auto">
     <% @comments.each do |comment| %>
-      <%= render 'comment_card', post: @post, comment: comment %>
+      <%= render 'comments/comment_card', post: @post, comment: comment %>
     <% end %>
   </div>
 </div>

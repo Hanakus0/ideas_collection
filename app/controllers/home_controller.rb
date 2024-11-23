@@ -5,21 +5,24 @@ class HomeController < ApplicationController
     # ログイン後
     if user_signed_in?
       # ランダム
-      @random_posts = Post.where(draft_flg: 0).order("RANDOM()").limit(@posts_num)
-      add_blank_post(@random_posts)
+      random_posts = Post.where(draft_flg: 0).order("RANDOM()").limit(@posts_num)
+      @random_posts = add_blank_post(random_posts)
+
       # いいね数
-      @good_posts = Post.where(draft_flg: 0).where(id: PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
-      add_blank_post(@good_posts)
+      order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
+      good_posts = Post.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
+      @good_posts = add_blank_post(good_posts)
+
       # コメント数
-      @comment_posts = Post.where(draft_flg: 0).where(id: Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id))
-      add_blank_post(@comment_posts)
+      order_comments_ary = Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)
+      comment_posts = Post.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
+      @comment_posts = add_blank_post(comment_posts)
+
       # 最新の投稿
-      @latest_posts = Post.where(draft_flg: 0).order(created_at: :desc).limit(@posts_num)
-      add_blank_post(@latest_posts)
-    else
-      # ログイン前
-      @posts = Post.order("RANDOM()").limit(12)
+      latest_posts = Post.where(draft_flg: 0).order(created_at: :desc).limit(@posts_num)
+      @latest_posts = add_blank_post(latest_posts)
     end
+
   end
 
   private #################################
@@ -30,8 +33,11 @@ class HomeController < ApplicationController
   # 投稿数が@posts_numに満たない場合は空を追加
   def add_blank_post(posts_ary)
     diff_num = @posts_num - posts_ary.size
+    result = posts_ary.to_a
     diff_num.times do
-      posts_ary.to_a << Post.none
+      result.push(Post.none)
     end
+
+    return result
   end
 end

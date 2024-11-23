@@ -5,7 +5,8 @@ class HomeController < ApplicationController
     # ログイン後
     if user_signed_in?
       # ランダム
-      @random_posts = Post.where(draft_flg: 0).order("RANDOM()").limit(@posts_num)
+      random_posts = Post.where(draft_flg: 0).order("RANDOM()").limit(@posts_num)
+      @random_posts = add_blank_post(random_posts)
 
       # いいね数
       order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
@@ -18,10 +19,10 @@ class HomeController < ApplicationController
       @comment_posts = add_blank_post(comment_posts)
 
       # 最新の投稿
-      @latest_posts = Post.where(draft_flg: 0).order(created_at: :desc).limit(@posts_num)
+      latest_posts = Post.where(draft_flg: 0).order(created_at: :desc).limit(@posts_num)
+      @latest_posts = add_blank_post(latest_posts)
     end
 
-    # raise
   end
 
   private #################################

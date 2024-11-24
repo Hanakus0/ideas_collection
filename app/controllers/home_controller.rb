@@ -4,22 +4,25 @@ class HomeController < ApplicationController
   def index
     # ログイン後
     if user_signed_in?
+      # 公開済みの投稿だけを取得
+      published_posts = Post.where(draft_flg: 0)
+
       # ランダム
-      random_posts = Post.where(draft_flg: 0).order("RANDOM()").limit(@posts_num)
+      random_posts = published_posts.order("RANDOM()").limit(@posts_num)
       @random_posts = add_blank_post(random_posts)
 
       # いいね数
       order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
-      good_posts = Post.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
+      good_posts = published_posts.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
       @good_posts = add_blank_post(good_posts)
 
       # コメント数
       order_comments_ary = Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)
-      comment_posts = Post.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
+      comment_posts = published_posts.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
       @comment_posts = add_blank_post(comment_posts)
 
       # 最新の投稿
-      latest_posts = Post.where(draft_flg: 0).order(created_at: :desc).limit(@posts_num)
+      latest_posts = published_posts.order(created_at: :desc).limit(@posts_num)
       @latest_posts = add_blank_post(latest_posts)
     end
 

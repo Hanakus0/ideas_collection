@@ -3,11 +3,11 @@
     <div class="w-full">
       <div class="w-full h-auto bg-slate-50 rounded-lg">
         <div class="p-2 justify-between">
-          <div class="mt-2">
+          <div class="my-3">
               <p class="text-2xl text-slate-700 font-bold hover:text-gray-600 truncate">
                 <%= post.title %>
               </p>
-              <p class="mt-2 text-gray-600 truncate">
+              <p class="my-3 text-gray-600 truncate">
                 <%= post.content %>
               </p>
           </div>
@@ -54,8 +54,27 @@
               </div>
             </div>
           <%# 表示内容の分岐-最新投稿 %>
+          <% elsif flg == "latest" %>
+            <div class="flex justify-between mr-2 text-gray-700 text-sm">
+              <div class="mt-6 flex">
+                <span class="text-xs">
+                  <%= post.decorate.created_date %>
+                </span>
+              </div>
+              <div class="flex">
+                <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
+                <div>
+                  <h1 class="text-gray-700 font-bold">
+                    <%= post.user.account_name %>
+                  </h1>
+                  <h1 class="text-gray-400">
+                    ＠<%= post.user.screen_name %>
+                  </h1>
+                </div>
+              </div>
+            </div>
           <% else %>
-            <div class="mt-6 flex justify-end mr-2 text-gray-700 text-sm">
+            <div class="flex justify-end mr-2 text-gray-700 text-sm">
               <div class="flex">
                 <%= image_tag post.decorate.has_image?, class: "w-10 h-10 object-cover border-2 border-slate-300 rounded-full sm:block" %>
                 <div>
@@ -78,10 +97,10 @@
   <div class="w-full">
     <div class="w-full h-auto bg-slate-50 rounded-lg">
       <div class="p-2 justify-between">
-        <div class="mt-2">
+        <div class="my-3">
             <p class="text-2xl text-slate-700 font-bold hover:text-gray-600 truncate">
             </p>
-            <p class="mt-2 text-gray-600 truncate">
+            <p class="my-3 text-gray-600 truncate">
             </p>
         </div>
         <div class="mt-6 flex justify-end">

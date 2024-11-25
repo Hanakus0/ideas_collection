@@ -113,7 +113,9 @@ Rails.application.configure do
   # ]
   config.hosts = [
     "xn--cckaf4ll70pbsfu56j.com",     # Allow requests from example.com
-    /.*\.xn--cckaf4ll70pbsfu56j\.com/ # Allow requests from subdomains like `www.example.com`
+    /.*\.xn--cckaf4ll70pbsfu56j\.com/, # Allow requests from subdomains like `www.example.com`
+    "graduation-project-1avl.onrender.com",
+    "ideas-collection.onrender.com"
   ]
 
   # Skip DNS rebinding protection for the default health check endpoint.

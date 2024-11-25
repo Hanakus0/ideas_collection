@@ -34,7 +34,7 @@
       <div id="item4" class="pt-10 carousel-item w-full">
         <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4">
           <% @latest_posts.each do |post| %>
-            <%= render 'home_posts', post: post, flg: nil %>
+            <%= render 'home_posts', post: post, flg: "latest" %>
           <% end %>
         </div>
       </div>

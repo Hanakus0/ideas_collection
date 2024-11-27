@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "home#index"
+  # footer pages
+  get "staticpages/term", as: "footer_term"
+  get "staticpages/inquire", as: "footer_inquire"
+  get "staticpages/policy", as: "footer_policy"
 
   # by devise
   devise_for :users, controllers: {

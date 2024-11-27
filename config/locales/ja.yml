@@ -40,8 +40,9 @@ ja:
     follows: フォロー
   footer:
     privacy_policy: プライバシーポリシー
+    inquire_form_link: お問い合わせフォーム (別タブで開きます)
     terms_of_service: 利用規約
-    contact_form: お問い合わせフォーム
+    inquire_form: お問い合わせフォーム
   form:
     ok: OK
     post:

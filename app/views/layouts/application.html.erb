@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-THSJ9K8E2M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-THSJ9K8E2M');
+    </script>
+    <!-- title -->
     <title><%= content_for(:title) || "Myapp" %></title>
+    <!-- Twitter -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%# ファビコン画像 %>
@@ -12,7 +23,9 @@
 
     <%= yield :head %>
 
-    <!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
+    <!-- manifest for PWA -->
+    <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
+
     <!-- Tagify -->
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <!-- ogp -->
@@ -47,4 +60,17 @@
     <%# footer %>
     <%= render 'layouts/footer' %>
   </body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service_worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 </html>

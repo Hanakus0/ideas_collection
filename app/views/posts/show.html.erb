@@ -59,9 +59,34 @@
   </div>
 
   <!-- post comments -->
-  <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem] space-y-6 px-5 mx-auto">
-    <% @comments.each do |comment| %>
-      <%= render 'comments/comment_card', post: @post, comment: comment %>
-    <% end %>
-  </div>
+  <%= turbo_frame_tag "comments-list", data: { turbo_action: :advance } do %>
+    <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem] space-y-6 px-5 mx-auto">
+      <!-- comment form -->
+      <%# 下書きの場合コメントフォームは非表示 %>
+      <% if !@post.decorate.post_status? %>
+        <%= form_with model: [@post, @comment], class: "flex items-center justify-between", html: { data: { turbo_frame: "comments-list"} } do |f| %>
+          <%= image_tag current_user.decorate.has_image?, class: "bg-white rounded-full w-10 h-10 object-cover border" %>
+          <div class="flex items-center	justify-between	bg-gray-50 h-11 w-11/12 border rounded-2xl overflow-hidden px-4">
+            <%= f.text_field :content, 
+                class:"h-full w-full bg-gray-50 outline-none",
+                minlength: "1", 
+                maxlength: "140", 
+                placeholder: t('form.post.post_comment') 
+            %>
+          </div>
+          <%= f.submit 'OK', 
+              class: "py-3 w-12 bg-blue-500 text-white hover:bg-blue-400 rounded-full"
+          %>
+        <% end %>
+      <% end %>
+      <%# コメント作成成功時はフラッシュメッセージ表示 %>
+      <% if flash.present? %>
+        <%= render 'shared/success_notice', message: flash[:success] %>
+      <% end %>
+      <%# コメント一覧 %>
+      <% @comments.each do |comment| %>
+        <%= render 'comments/comment_card', post: @post, comment: comment %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

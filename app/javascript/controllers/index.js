@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import CommonController from "./common_controller"
+application.register("common", CommonController)
 
 import SearchTagsController from "./search_tags_controller"
 application.register("search-tags", SearchTagsController)

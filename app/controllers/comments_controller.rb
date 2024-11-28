@@ -10,18 +10,10 @@ class CommentsController < ApplicationController
     @post_comment = @post.comments.new(set_comment)
     @post_comment.user_id = current_user.id
 
-    @post_comment.save
-    
     flash.now[:success] = t('messages.comment_success')
+    @post_comment.save
     redirect_to post_path(@post)
   end
-
-  # コメントの削除(未定)
-  # def destroy
-  #   @comment = Comment.find(params[:id])
-  #   @comment.destroy
-  #   redirect_to post_path(@post.post_uid), notice: "Cooment was successfully created."
-  # end
 
   private #######################################################
 

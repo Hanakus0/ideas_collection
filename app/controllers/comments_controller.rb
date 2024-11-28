@@ -10,12 +10,10 @@ class CommentsController < ApplicationController
     @post_comment = @post.comments.new(set_comment)
     @post_comment.user_id = current_user.id
 
-    if @post_comment.save
-      flash[:success] = t('messages.comment_success')
-      redirect_to post_path(@post)
-    else
-      redirect_to  post_path(@post), status: :unprocessable_entity
-    end
+    @post_comment.save
+    
+    flash.now[:success] = t('messages.comment_success')
+    redirect_to post_path(@post)
   end
 
   # コメントの削除(未定)

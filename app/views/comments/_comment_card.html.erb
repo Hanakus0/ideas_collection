@@ -25,10 +25,6 @@
     <%= render 'comments/comment_like_buttons', { comment: comment } %>
     <div class="chat-footer opacity-50">
       <%= comment.decorate.created_date %>
-      <%# コメント削除ボタン %>
-      <% if comment.user_id == post.user_id %>
-        <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
-      <% end %>
     </div>
   </div>
 <% else %>
@@ -53,10 +49,6 @@
     </div>
     <div class="chat-bubble">
       <%= comment.content %>
-      <%# コメント削除ボタン %>
-      <% if comment.user_id == post.user_id %>
-        <%#= link_to "[削除]", post_comment_path(post.post_uid, comment), data: { turbo_method: :delete } %>
-      <% end %>
     </div>
     <%# コメントへのいいね %>
     <%= render 'comments/comment_like_buttons', { comment: comment } %>

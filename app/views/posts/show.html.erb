@@ -59,9 +59,11 @@
   </div>
 
   <!-- post comments -->
-  <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem] space-y-6 px-5 mx-auto">
-    <% @comments.each do |comment| %>
-      <%= render 'comments/comment_card', post: @post, comment: comment %>
-    <% end %>
-  </div>
+  <%= turbo_frame_tag "comments-list", data: { turbo_action: :advance } do %>
+    <div class="bg-slate-100 rounded-lg w-full mx-5 md:w-[40rem] space-y-6 px-5 mx-auto">
+      <% @comments.each do |comment| %>
+        <%= render 'comments/comment_card', post: @post, comment: comment %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

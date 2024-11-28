@@ -7,7 +7,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-THSJ9K8E2M');
     </script>
     <!-- title -->
@@ -24,7 +23,7 @@
     <%= yield :head %>
 
     <!-- manifest for PWA -->
-    <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Tagify -->
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
@@ -60,6 +59,7 @@
     <%# footer %>
     <%= render 'layouts/footer' %>
   </body>
+  <!-- PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

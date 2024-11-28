@@ -10,9 +10,10 @@ class CommentsController < ApplicationController
     @post_comment = @post.comments.new(set_comment)
     @post_comment.user_id = current_user.id
 
-    flash.now[:success] = t('messages.comment_success')
-    @post_comment.save
-    redirect_to post_path(@post)
+    if @post_comment.save
+      flash[:success] = t('messages.comment_success')
+      redirect_to post_path(@post)
+    end
   end
 
   private #######################################################

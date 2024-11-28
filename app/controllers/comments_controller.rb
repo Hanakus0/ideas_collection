@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @post_comment.user_id = current_user.id
 
     if @post_comment.save
-      flash[:success] = t('messages.comment_success')
+      flash[:comment_success] = t('messages.comment_success')
       redirect_to post_path(@post)
     end
   end

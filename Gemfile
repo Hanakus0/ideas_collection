@@ -70,9 +70,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 7.1'
   gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
   gem 'faker', '~> 3.5', '>= 3.5.1'
-  gem 'faker', '~> 3.5', '>= 3.5.1'
   gem 'omochi', '~> 0.1.0'
   gem 'simplecov', '~> 0.22.0'
+  gem 'pry-rails', '~> 0.3.11'
 end
 
 group :development do

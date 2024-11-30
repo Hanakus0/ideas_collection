@@ -13,6 +13,11 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+# https://github.com/simplecov-ruby/simplecov
+require 'simplecov'
+SimpleCov.start
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -91,4 +96,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # devise on RSpec
+  # https://github.com/heartcombo/devise#:~:text=If%20you%27re%20using%20RSpec%2C
+  # config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::Test::ControllerHelpers, type: :view
+
 end

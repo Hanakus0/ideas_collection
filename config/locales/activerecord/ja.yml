@@ -40,3 +40,9 @@ ja:
       draft_flg:
         publish: 投稿を公開する
         draft: 下書きとして保存する
+    # errors:
+    #   models:
+    #     user:
+    #       attributes:
+    #         introduction:
+    #           too_long: "は %{count} 文字以下である必要があります"

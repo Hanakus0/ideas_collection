@@ -9,7 +9,7 @@
     <!-- Posts start -->
 <%= turbo_frame_tag "bookmark_posts-page-#{@bookmark_posts.current_page}" do %>
     <%# 今のページで取得したTweet一覧 %>
-  <%= render @bookmark_posts %>
+  <%= render partial: "post", collection: @bookmark_posts %>
 
     <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
   <%= turbo_frame_tag "bookmark_posts-page-#{@bookmark_posts.next_page}", loading: :lazy, src: path_to_next_page(@bookmark_posts) %>

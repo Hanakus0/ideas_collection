@@ -12,12 +12,12 @@ class HomeController < ApplicationController
       @random_posts = add_blank_post(random_posts)
 
       # いいね数
-      order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
+      order_likes_ary = PostLike.group(:post_id).order("count(post_id) desc").pluck(:post_id)
       good_posts = published_posts.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
       @good_posts = add_blank_post(good_posts)
 
       # コメント数
-      order_comments_ary = Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)
+      order_comments_ary = Comment.group(:post_id).order("count(post_id) desc").pluck(:post_id)
       comment_posts = published_posts.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
       @comment_posts = add_blank_post(comment_posts)
 
@@ -25,7 +25,6 @@ class HomeController < ApplicationController
       latest_posts = published_posts.order(created_at: :desc).limit(@posts_num)
       @latest_posts = add_blank_post(latest_posts)
     end
-
   end
 
   private #################################
@@ -41,6 +40,6 @@ class HomeController < ApplicationController
       result.push(Post.none)
     end
 
-    return result
+    result # return
   end
 end

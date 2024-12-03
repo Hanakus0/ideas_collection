@@ -17,12 +17,12 @@ class PostSearchForm
     # タイトルor本文の検索条件指定がある場合
     if self.contents.present?
       # 配列化する
-      words_ary = self.contents.split(' ')
+      words_ary = self.contents.split(" ")
 
       search_result_ary = []
       # タイトルor本文でのあいまい検索
       words_ary.each do |word|
-        search_result_ary += result.where('title LIKE ?', "%#{ word }%").or(result.where('content LIKE ?', "%#{ word }%"))
+        search_result_ary += result.where("title LIKE ?", "%#{ word }%").or(result.where("content LIKE ?", "%#{ word }%"))
       end
       # 重複を取り除きidだけにする
       target_post_ids = search_result_ary.uniq.pluck(:id)
@@ -33,7 +33,7 @@ class PostSearchForm
     # タグの検索条件指定がある場合
     if self.tags.present?
       # 配列化
-      tags_ary = self.tags.split(',')
+      tags_ary = self.tags.split(",")
       # タグでの一致検索
       search_result_ary = []
       tags_ary.each do |tag|
@@ -49,26 +49,23 @@ class PostSearchForm
 
     # 並び替えの検索条件指定がある場合
     case self.how_order
-      when 'latest'
-        # 投稿日が新しい順
-        result = result.order(created_at: :desc)
-      when 'oldest'
-        # 投稿日が古い順
-        result = result.order(:created_at)
-      when 'post_likes'
-        # いいね数が多い順
-        order_likes_ary = PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id)
-        result = result.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
-      when 'post_comments'
-        # コメント数が多い順
-        order_comments_ary = Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)
-        result = result.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
-    else
-      # 並び替えを処理しない
+    when "latest"
+      # 投稿日が新しい順
+      result = result.order(created_at: :desc)
+    when "oldest"
+      # 投稿日が古い順
+      result = result.order(:created_at)
+    when "post_likes"
+      # いいね数が多い順
+      order_likes_ary = PostLike.group(:post_id).order("count(post_id) desc").pluck(:post_id)
+      result = result.where(id: order_likes_ary).in_order_of(:id, order_likes_ary)
+    when "post_comments"
+      # コメント数が多い順
+      order_comments_ary = Comment.group(:post_id).order("count(post_id) desc").pluck(:post_id)
+      result = result.where(id: order_comments_ary).in_order_of(:id, order_comments_ary)
     end
 
     # 下書き以外の検索結果を返す
     result
   end
-
 end

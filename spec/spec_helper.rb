@@ -101,5 +101,4 @@ RSpec.configure do |config|
   # https://github.com/heartcombo/devise#:~:text=If%20you%27re%20using%20RSpec%2C
   # config.include Devise::Test::ControllerHelpers, type: :controller
   # config.include Devise::Test::ControllerHelpers, type: :view
-
 end

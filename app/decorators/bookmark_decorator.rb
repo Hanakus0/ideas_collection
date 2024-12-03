@@ -1,7 +1,6 @@
 class BookmarkDecorator < Draper::Decorator
   delegate_all
 
-
   #############################
   ## クラスメソッド: bookmark ##
   #############################
@@ -10,5 +9,4 @@ class BookmarkDecorator < Draper::Decorator
   def bookmark?(post)
     bookmark_posts.include?(post)
   end
-
 end

@@ -9,7 +9,7 @@
     <!-- Posts start -->
 <%= turbo_frame_tag "draft_posts-page-#{@draft_posts.current_page}" do %>
     <%# 今のページで取得したTweet一覧 %>
-  <%= render @draft_posts %>
+  <%= render partial: "post", collection: @draft_posts %>
 
     <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
   <%= turbo_frame_tag "draft_posts-page-#{@draft_posts.next_page}", loading: :lazy, src: path_to_next_page(@draft_posts) %>

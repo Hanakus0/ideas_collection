@@ -4,7 +4,7 @@ class Users::ProfilesController < ApplicationController
   # deviseによるログイン済みかの判定
   before_action :authenticate_user!
   # 編集権限の確認
-  before_action :is_match_login_user, only: %i(edit update)
+  before_action :is_match_login_user, only: %i[ edit update ]
 
   def show
     @user_posts = @user.posts.where(draft_flg: 0).order(created_at: :desc)
@@ -15,7 +15,7 @@ class Users::ProfilesController < ApplicationController
 
   def update
     if @user.update(profile_params)
-      flash[:success] = t('messages.update_profile_success')
+      flash[:success] = t("messages.update_profile_success")
       redirect_to users_profile_path(@user.screen_name)
     else
       # screen_nameを代入しないと遷移先が指定できない問題の措置
@@ -29,7 +29,7 @@ class Users::ProfilesController < ApplicationController
   def is_match_login_user
     check_user = User.find_by(screen_name: params[:screen_name])
     unless check_user.blank? || check_user == current_user
-      flash[:warning] = t('messages.signin_warning')
+      flash[:warning] = t("messages.signin_warning")
       redirect_to users_profile_path(check_user.screen_name)
     end
   end
@@ -47,6 +47,6 @@ class Users::ProfilesController < ApplicationController
     check_box_val = params.require(:user)[:profile_image_flg]
     profile_params[:profile_image] = nil if check_box_val == "1"
 
-    return profile_params
+    profile_params # return
   end
 end

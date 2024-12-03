@@ -10,9 +10,9 @@ gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+# Hotwire"s SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+# Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
@@ -38,19 +38,19 @@ gem "bootsnap", require: false
 
 # -- added gem ---
 gem "devise", "~> 4.9"
-gem 'rails-i18n', '~> 7.0.0'
-gem 'devise-i18n', '~> 1.12', '>= 1.12.1'
-gem 'enum_help'
-gem 'draper'
-gem 'kaminari', '~> 1.2', '>= 1.2.2'
-gem 'meta-tags', '~> 2.22', '>= 2.22.1'
+gem "rails-i18n", "~> 7.0.0"
+gem "devise-i18n", "~> 1.12", ">= 1.12.1"
+gem "enum_help"
+gem "draper"
+gem "kaminari", "~> 1.2", ">= 1.2.2"
+gem "meta-tags", "~> 2.22", ">= 2.22.1"
 # aws s3 with carrierwave
-gem 'carrierwave', '~> 3.0'
-gem 'fog-aws', '~> 3.29'
+gem "carrierwave", "~> 3.0"
+gem "fog-aws", "~> 3.29"
 # For GoogleOauth2 gems
-gem 'omniauth'
-gem 'omniauth-rails_csrf_protection'
-gem 'omniauth-google-oauth2'
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2"
 
 
 group :development, :test do
@@ -65,14 +65,14 @@ group :development, :test do
 
   # -- added gem ---
   # env value
-  gem 'dotenv'
+  gem "dotenv"
   # RSpec test
-  gem 'rspec-rails', '~> 7.1'
-  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
-  gem 'faker', '~> 3.5', '>= 3.5.1'
-  gem 'omochi', '~> 0.1.0'
-  gem 'simplecov', '~> 0.22.0'
-  gem 'pry-rails', '~> 0.3.11'
+  gem "rspec-rails", "~> 7.1"
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
+  gem "faker", "~> 3.5", ">= 3.5.1"
+  gem "omochi", "~> 0.1.0"
+  gem "simplecov", "~> 0.22.0"
+  gem "pry-rails", "~> 0.3.11"
 end
 
 group :development do

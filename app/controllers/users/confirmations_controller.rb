@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# deviseによるログイン済みかの判定
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new

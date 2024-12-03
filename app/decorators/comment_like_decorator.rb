@@ -5,5 +5,4 @@ class CommentLikeDecorator < Draper::Decorator
   def liked?(comment)
     object.like_comments.include?(comment)
   end
-
 end

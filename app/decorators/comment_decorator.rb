@@ -21,8 +21,7 @@ class CommentDecorator < Draper::Decorator
     if object.user.profile_image?
       object.user.profile_image.url
     else
-      'tokumeisan.png'
+      "tokumeisan.png"
     end
   end
-
 end

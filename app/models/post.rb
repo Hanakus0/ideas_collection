@@ -40,9 +40,9 @@ class Post < ApplicationRecord
   validate :image_size
   validate :image_length
   # column: title
-  validates :title, presence: true, length: { minimum: 1 , maximum: 50 }
+  validates :title, presence: true, length: { minimum: 1, maximum: 50 }
   # column: content
-  validates :content, presence: true, length: { minimum: 1 , maximum: 500 }
+  validates :content, presence: true, length: { minimum: 1, maximum: 500 }
 
   # 列挙型
   # column: post_genre
@@ -92,8 +92,8 @@ class Post < ApplicationRecord
 
   # タグの入力内容の保存前修正
   def modify_tag_name
-    before_str = '０-９ａ-ｚＡ-Ｚ'
-    after_str = '0-9a-zA-Z'
+    before_str = "０-９ａ-ｚＡ-Ｚ"
+    after_str = "0-9a-zA-Z"
     # 全角を半角に変換＆小文字を大文字に変換
     self.name = name.tr(before_str, after_str).upcase if name.present?
   end

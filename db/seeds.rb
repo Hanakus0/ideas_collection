@@ -25,5 +25,5 @@ PostGenre.create([
     { name: 'sports' },
     { name: 'music' },
     { name: 'travel' },
-    { name: 'other' },
+    { name: 'other' }
   ])

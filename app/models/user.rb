@@ -73,15 +73,15 @@ class User < ApplicationRecord
   # column: gender
   # validates :gender, presence: true, inclusion: { in: (0..2) }
   # column: introduction (文字数はXの自己紹介文160文字制限仕様に倣う)
-  validates :introduction, length: { maximum: 160, too_long: "自己紹介文は 160 文字以内にしてください" }, allow_blank: true
+  validates :introduction, length: { maximum: 160 }, allow_blank: true
 
   # 列挙型
   # column: gender
-  enum gender: { unkown: 0, male: 1, female: 2, other: 99 }, _prefix: true
+  enum gender: { unknown: 0, male: 1, female: 2, other: 99 }, _prefix: true
 
   # column: age
   enum age: {
-                  unkown: 0,
+    unknown: 0,
                   teens: 1,
                   twenties: 2,
                   therties: 3,

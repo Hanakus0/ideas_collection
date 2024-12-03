@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PostGenre, type: :model do
-  describe '[Model : PostGenre] ジャンルが登録されている' do
+  describe '[Model : PostGenre] 投稿ジャンル' do
     # Success
     # ユーザー
     let(:correct_user) { create(:correct_user) }

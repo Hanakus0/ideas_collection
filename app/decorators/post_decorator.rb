@@ -11,7 +11,7 @@ class PostDecorator < Draper::Decorator
     if object.user.profile_image?
       object.user.profile_image.url
     else
-      'tokumeisan.png'
+      "tokumeisan.png"
     end
   end
 
@@ -36,5 +36,4 @@ class PostDecorator < Draper::Decorator
     quote_relation = object.quote_relations.find_by(post_id: object.id)
     Post.find(quote_relation.quote_post_id)
   end
-
 end

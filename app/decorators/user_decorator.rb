@@ -36,7 +36,7 @@ class UserDecorator < Draper::Decorator
     if object.profile_image?
       object.profile_image.url
     else
-      'tokumeisan.png'
+      "tokumeisan.png"
     end
   end
 
@@ -44,5 +44,4 @@ class UserDecorator < Draper::Decorator
   def following?(other_user)
     object.followees.include?(other_user)
   end
-
 end

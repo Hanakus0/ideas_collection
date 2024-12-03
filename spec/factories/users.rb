@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "test#{n}@example.com" }
     password { "password12345" }
   end
-  
+
   # 適切なサインアップ
   factory :correct_user, class: User do
     sequence(:email) { |n| "test#{n}@example.com" }

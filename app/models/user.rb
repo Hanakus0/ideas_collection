@@ -8,14 +8,14 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :timeoutable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: [ :google_oauth2 ]
   # carrierwave関連
   attr_accessor :profile_image_cache
   mount_uploader :profile_image, ProfileImageUploader
 
   ##############################################################################
   # TODO:以下不要か？
-  require 'securerandom'
+  require "securerandom"
   # Table name: users
   # 保存前処理
   before_save :check_secure_id
@@ -24,10 +24,10 @@ class User < ApplicationRecord
   # アトリビュート
   attribute :user_uid, :string, default: -> { SecureRandom.alphanumeric(20) }
   attribute :screen_name, :string, default: -> { SecureRandom.alphanumeric }
-  attribute :account_name, :string, default: '匿名さん'
+  attribute :account_name, :string, default: "匿名さん"
   attribute :gender, :integer, default: 0
   attribute :age, :integer, default: 0
-  attribute :introduction, :string, default: 'よろしくお願いいたします'
+  attribute :introduction, :string, default: "よろしくお願いいたします"
 
   # アソシエーション
   has_many :posts
@@ -63,9 +63,9 @@ class User < ApplicationRecord
   # column: user_uid
   validates :user_uid, presence: true, length: { is: 20 }, uniqueness: true
   # column: screen_name
-  validates :screen_name, presence: true, length: { minimum: 5 , maximum: 16 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+  validates :screen_name, presence: true, length: { minimum: 5, maximum: 16 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   # column: account_name
-  validates :account_name, presence: true, length: { minimum: 1 , maximum: 20 }
+  validates :account_name, presence: true, length: { minimum: 1, maximum: 20 }
 
   #######################
   # TODO: profile_image #
@@ -103,7 +103,7 @@ class User < ApplicationRecord
   end
 
   def self.new_with_session(params, session)
-    provider = 'google'
+    provider = "google"
     super.tap do |user|
       if data = session["devise.#{ provider }_data"] && session["devise.#{ provider }_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
@@ -135,5 +135,4 @@ class User < ApplicationRecord
         self.screen_name = SecureRandom.alphanumeric
       end
     end
-
 end

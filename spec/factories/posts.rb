@@ -35,5 +35,4 @@ FactoryBot.define do
     images { [] }
     draft_flg { 0 }
   end
-
 end

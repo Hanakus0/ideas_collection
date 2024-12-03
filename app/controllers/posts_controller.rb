@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # deviseによるログイン済みかの判定
   before_action :authenticate_user!, except: %i[ index ]
   # 編集権限の確認
-  before_action :is_match_login_user, only: %i(edit update destroy)
+  before_action :is_match_login_user, only: %i[ edit update destroy ]
 
   # GET /posts
   def index
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
       # 投稿のタグ設定
       register_article_tags(@post, @post_tags) if @post_tags
 
-      flash[:success] = t('messages.post_success')
+      flash[:success] = t("messages.post_success")
       redirect_to post_path(@post)
     else
       render :new, status: :unprocessable_entity
@@ -80,7 +80,7 @@ class PostsController < ApplicationController
     if @post.update(update_params)
       # 投稿のタグ設定
       register_article_tags(@post, @post_tags) if @post_tags
-      flash[:success] = t('messages.update_post_success')
+      flash[:success] = t("messages.update_post_success")
       redirect_to post_path(@post.post_uid)
     else
       render :edit, status: :unprocessable_entity
@@ -90,7 +90,7 @@ class PostsController < ApplicationController
   # DELETE
   def destroy
     @post.destroy!
-    flash[:success] = t('messages.destroy_post_success')
+    flash[:success] = t("messages.destroy_post_success")
     redirect_to posts_path, status: :see_other
   end
 
@@ -162,7 +162,7 @@ class PostsController < ApplicationController
       # チェックボックスに応じて投稿画像を削除する
       update_params[:images] = nil if update_params[:remove_images] === 1
 
-      return update_params
+      update_params # return
     end
 
     # 投稿のタグを登録用に加工する
@@ -183,5 +183,4 @@ class PostsController < ApplicationController
         post.tags << tag
       end
     end
-##########
 end

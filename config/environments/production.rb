@@ -83,15 +83,15 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # 参考：https://qiita.com/Erika328/items/ae4dde4e9f946eb08832
-  config.action_mailer.default_url_options = { host: 'xn--cckaf4ll70pbsfu56j.com' }
+  config.action_mailer.default_url_options = { host: "xn--cckaf4ll70pbsfu56j.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              "smtp.gmail.com",
     port:                 587,
-    domain:               'xn--cckaf4ll70pbsfu56j.com', #自分のアプリのドメイン
-    user_name:            ENV['MAILER_SENDER'],
-    password:             ENV['MAILER_PASSWORD'],
-    authentication:       'plain',
+    domain:               "xn--cckaf4ll70pbsfu56j.com",
+    user_name:            ENV["MAILER_SENDER"],
+    password:             ENV["MAILER_PASSWORD"],
+    authentication:       "plain",
     enable_starttls_auto: true
   }
 

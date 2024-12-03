@@ -22,13 +22,13 @@ RSpec.describe Post, type: :model do
   let(:correct_file4) { fixture_file_upload(Rails.root.join('spec/support/cc.png'), 'image/png') }
   # 不適切な画像ファイル
   let(:incorrect_file) { fixture_file_upload(Rails.root.join('spec/support/pg.webp'), 'image/webp') }
+  # TEST Success
   describe '[Model : Post] Success - バリデーションの確認' do
-
     context '適切な投稿内容で新規登録する場合、' do
       it 'エラー無く投稿できる' do
         correct_post.save
         # 画像を3枚追加すると想定
-        correct_post.images = [correct_file1, correct_file2, correct_file3]
+        correct_post.images = [ correct_file1, correct_file2, correct_file3 ]
         # タグを追加
         correct_post.tags << tags
 
@@ -61,7 +61,7 @@ RSpec.describe Post, type: :model do
       it '必須項目ではないタグを未入力でも投稿できる' do
         correct_post.save
         # 画像を3枚追加すると想定
-        correct_post.images = [correct_file1, correct_file2, correct_file3]
+        correct_post.images = [ correct_file1, correct_file2, correct_file3 ]
 
         expect(correct_post).to be_valid
         expect(correct_post.errors).to be_empty
@@ -115,7 +115,7 @@ RSpec.describe Post, type: :model do
         expect(correct_post.images).to be_empty
       end
       it '画像が３枚より多く添付されたためバリデーションエラーが発生する' do
-        correct_post.images = [correct_file1, correct_file2, correct_file3, correct_file4]
+        correct_post.images = [ correct_file1, correct_file2, correct_file3, correct_file4 ]
         correct_post.save
         expect(correct_post).to be_invalid
         expect(correct_post.errors).to be_present

@@ -77,9 +77,8 @@ jobs:
       #   run: bin/rails db:test:prepare test test:system
 
       # RSpec Test
-      - run:
-          name: Run RSpec tests
-          command: bundle exec rspec --fail-fast
+      - name: Run RSpec tests
+        command: bundle exec rspec --fail-fast
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe QuoteRelation, type: :model do
   describe '[Model : QuoteRelation] 引用投稿の確認' do
-    # ユーザー
-    # let(:correct_user) { create(:correct_user) }
     # ポストジャンル関連
     let(:post_genre) { create(:post_genre) }
     let(:genre_tech) { create(:genre_tech) }

@@ -78,7 +78,7 @@ jobs:
 
       # RSpec Test
       - name: Run RSpec tests
-        command: bundle exec rspec --fail-fast
+        run: bundle exec rspec --fail-fast
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

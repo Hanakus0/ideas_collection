@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe PostGenre, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  describe '[Model : Post] Success - バリデーションの確認' do
+    context 'ジャンル' do
+      it '適切なジャンルが入っている' do
+      end
+    end
+  end
 end

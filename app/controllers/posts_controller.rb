@@ -142,7 +142,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :content, { images: [] }, :images_cache, :draft_flg).merge(post_uid: gen_secure_id, user_id: current_user.id)
     end
 
-    # 新規会員登録時、user_idに重複が無いかをチェックした上で保存する
+    # 新規会員登録時、post_idに重複が無いかをチェックした上で保存する
     def gen_secure_id
       loop do
         gen_uid = SecureRandom.alphanumeric

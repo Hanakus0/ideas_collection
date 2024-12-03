@@ -6,14 +6,13 @@
   <%= render "shared/search_form" %>
 <% end %>
 
-
 <!-- Posts layouts -->
 <div class="px-6 mx-auto">
   <div class="w-full">
     <!-- Posts start -->
 <%= turbo_frame_tag "posts-page-#{@posts.current_page}" do %>
   <%# 今のページで取得したTweet一覧 %>
-  <%= render @posts %>
+  <%= render partial: "post", collection: @posts %>
 
   <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
   <%= turbo_frame_tag "posts-page-#{@posts.next_page}", loading: :lazy, src: path_to_next_page(@posts) %>

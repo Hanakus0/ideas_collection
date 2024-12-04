@@ -1,14 +1,12 @@
 name: CI
-
 on:
-  pull_request:
   push:
+    branches: [ develop ]
+  pull_request:
     branches: [ main ]
-
 jobs:
   scan_ruby:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,52 +36,36 @@ jobs:
         run: bin/rubocop -f github
 
   test:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest  # テストを実行する環境を指定
     services:
-      postgres:
-        image: postgres
+      db:
+        image: postgres:latest
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: myapp_test
         ports:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      # redis:
-      #   image: redis
-      #   ports:
-      #     - 6379:6379
-      #   options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-      - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
-
-      - name: Checkout code
+      - name: Checkout code  # コードのチェックアウト
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
+      - name: Set up Ruby  # Rubyのセットアップ
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+          ruby-version: .ruby-version  # 使用するRubyのバージョンを指定
+          bundler-cache: true  # Bundlerのキャッシュを有効化
 
-      # - name: Run tests
-      #   env:
-      #     RAILS_ENV: test
-      #     DATABASE_URL: postgres://postgres:postgres@localhost:5432
-      #     # REDIS_URL: redis://localhost:6379/0
-      #   run: bin/rails db:test:prepare test test:system
+      - name: Install dependencies  # 依存関係のインストール
+        run: bundle install
 
-      # RSpec Test
-      - name: Run RSpec tests
-        run: bundle exec rspec --fail-fast
+      - name: Setup database
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rake db:drop RAILS_ENV=test
+          bundle exec rake db:create RAILS_ENV=test
+          bundle exec rake db:migrate RAILS_ENV=test
 
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
+      - name: Run RSpec tests  # RSpecテストの実行
+        run: bundle exec rspec

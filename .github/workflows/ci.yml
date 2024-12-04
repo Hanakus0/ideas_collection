@@ -22,15 +22,6 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
-        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -46,6 +37,16 @@ jobs:
 
   test:
     runs-on: ubuntu-latest  # テストを実行する環境を指定
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: myapp_test
+        ports:
+          - 5432:5432
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=5
     steps:
       - name: Checkout code  # コードのチェックアウト
         uses: actions/checkout@v4
@@ -58,6 +59,11 @@ jobs:
 
       - name: Install dependencies  # 依存関係のインストール
         run: bundle install
+
+      - name: Setup database
+        run: |
+          bundle exec rake db:create
+          bundle exec rake db:migrate RAILS_ENV=test
 
       - name: Run RSpec tests  # RSpecテストの実行
         run: bundle exec rspec

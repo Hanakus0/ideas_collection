@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest  # テストを実行する環境を指定
     services:
       postgres:
-        image: postgres
+        image: postgres:latest
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
@@ -62,7 +62,7 @@ jobs:
 
       - name: Setup database
         run: |
-          bundle exec rake db:create
+          bundle exec rake db:create RAILS_ENV=test
           bundle exec rake db:migrate RAILS_ENV=test
 
       - name: Run RSpec tests  # RSpecテストの実行

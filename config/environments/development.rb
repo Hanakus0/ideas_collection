@@ -13,6 +13,8 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  # 本番と同じようなエラーページを表示して確認したい場合
+  # config.consider_all_requests_local = false
 
   # Enable server timing.
   config.server_timing = true
@@ -90,5 +92,5 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   # Add for `gem "better_errors"`
-  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  # BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 end

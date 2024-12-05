@@ -1,0 +1,27 @@
+<!-- https://www.creative-tim.com/twcomponents/component/tailwind-css-500-server-error -->
+<div class="mx-auto w-4/5 md:w-3/4 md:px-0 h-screen flex items-center justify-center">
+    <div class="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg shadow-2xl">
+        <p class="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-gray-300">403</p>
+        <p class="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wider text-gray-500 mt-4">
+          forbidden
+        </p>
+        <div class="text-gray-500 mt-8 py-2 border-y-2">
+          <p class="text-lg text-center">
+            アクセスが拒否されました
+          </p>
+          <p class="mt-3"></p>
+          <ul class="list-disc list-inside">
+            <li>アクセスしたURLが正しいか確認してください</li>
+            <li>閲覧権限があることを確認してください</li>
+          </ul>
+        </div>
+        <div class="mt-8 py-2 border-y-2 text-center">
+          <%= link_to t('footer.inquire_form'), 
+            'https://docs.google.com/forms/d/e/1FAIpQLSc2eFF6LZ5ai-jXMhxjhRibqtziqlxsFmiDXTXJL_RUU4qTEQ/viewform?usp=sf_link',
+            target: :_blank, 
+            rel: "noopener noreferrer",
+            class: "mx-2 text-cyan-600 transition-colors duration-300 hover:text-cyan-300" 
+          %>
+        </div>
+    </div>
+</div>

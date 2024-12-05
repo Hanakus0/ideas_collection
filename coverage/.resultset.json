@@ -770,6 +770,56 @@
           null
         ]
       },
+      "/myapp/config/initializers/rambulance.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
       "/myapp/spec/factories/bookmarks.rb": {
         "lines": [
           1,
@@ -2498,6 +2548,6 @@
         ]
       }
     },
-    "timestamp": 1733236871
+    "timestamp": 1733407364
   }
 }

@@ -52,7 +52,7 @@
     </li>
     <% post.tags.each do |tag| %>
       <li>
-        <%= link_to '#', class:"link link-info" do %>
+        <%= link_to posts_path( q: { tags: tag.name, search_flg: true } ), class:"link link-info" do %>
           <%= tag.name %>
         <% end %>
       </li>

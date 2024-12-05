@@ -16,8 +16,8 @@ class PostSearchForm
 
     # タイトルor本文の検索条件指定がある場合
     if self.contents.present?
-      # 配列化する
-      words_ary = self.contents.split(" ")
+      # 全角半角空白で区切り配列化する
+      words_ary = self.contents.split(/[\s　]+/)
 
       search_result_ary = []
       # タイトルor本文でのあいまい検索

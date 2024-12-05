@@ -44,7 +44,7 @@ gem "enum_help"
 gem "draper"
 gem "kaminari", "~> 1.2", ">= 1.2.2"
 gem "meta-tags", "~> 2.22", ">= 2.22.1"
-gem 'rambulance', '~> 3.1'
+gem "rambulance", "~> 3.1"
 # aws s3 with carrierwave
 gem "carrierwave", "~> 3.0"
 gem "fog-aws", "~> 3.29"

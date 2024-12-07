@@ -46,10 +46,14 @@ ja:
       unconfirmed: メールアドレスの本人確認が必要です。
     mailer:
       confirmation_instructions:
-        action: メールアドレスの確認
-        greeting: "%{recipient}様"
-        instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
         subject: メールアドレス確認メール
+        warning: ※本メールに心当たりの無い方は、本メールの破棄をお願いいたします。
+        greeting: "%{recipient}様"
+        instruction1: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
+        instruction2: ※この認証リンクの有効期限は３日間です。
+        instruction3: ※もし有効期限が過ぎてしまった場合は、以下のアカウント確認メール再送ページより再送のお手続きをお願いします。
+        action: 会員登録　メールアドレス認証
+        action_resend: アカウント確認メール再送ページへ
       email_changed:
         greeting: こんにちは、%{recipient}様。
         message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。

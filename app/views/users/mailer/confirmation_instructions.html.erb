@@ -1,5 +1,17 @@
+<p><%= t('.warning') %></p>
+</br>
+
 <p><%= t('.greeting', recipient: @email) %></p>
+</br>
 
-<p><%= t('.instruction') %></p>
+<p><%= t('.instruction1') %></p>
+</br>
+</br>
 
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>【<%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %>】</p>
+</br>
+</br>
+
+<p><%= t('.instruction2') %></p>
+<p><%= t('.instruction3') %></p>
+<p><%= link_to t('.action_resend'), new_user_confirmation_url %></p>

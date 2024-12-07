@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :timeoutable,
+         :confirmable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
   # carrierwave関連
   attr_accessor :profile_image_cache

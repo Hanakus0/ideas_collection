@@ -92,5 +92,5 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   # Add for `gem "better_errors"`
-  # BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 end

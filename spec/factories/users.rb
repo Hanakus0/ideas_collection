@@ -3,12 +3,14 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "test#{n}@example.com" }
     password { "password12345" }
+    confirmed_at { Time.now } # confirmable
   end
 
   # 適切なサインアップ
   factory :correct_user, class: User do
     sequence(:email) { |n| "test#{n}@example.com" }
     password { "password12345" }
+    confirmed_at { Time.now } # confirmable
   end
   # emailが不適切なサインアップ
   factory :incorrect_email_user, class: User do

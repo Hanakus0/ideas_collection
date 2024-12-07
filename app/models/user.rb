@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :timeoutable,
+         :confirmable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
   # carrierwave関連
   attr_accessor :profile_image_cache
@@ -96,10 +97,13 @@ class User < ApplicationRecord
   # devise for omniauth-google-oauth2
   # https://github.com/heartcombo/devise/wiki/OmniAuth%3A-Overview
   def self.from_omniauth(auth)
-    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+    user = where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
+    user.skip_confirmation! # メール認証のスキップ
+    user.save
+    user
   end
 
   def self.new_with_session(params, session)

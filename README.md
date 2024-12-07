@@ -83,7 +83,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 ## 機能一覧 (2024/12/4 時点)
 | 機能 | 詳細 | 関連情報 |
 | --- | --- | --- | 
-| ユーザー登録機能 | ログイン/ログアウト <br> サインアップ <br> パスワードリセット <br> Google認証 | devise <br> omniauth-google-oauth2 |
+| ユーザー登録機能 | ログイン/ログアウト <br> サインアップ <br> 　・メールアドレス認証 <br> パスワードリセット <br> Google認証 | devise <br> omniauth-google-oauth2 |
 | マイページ/ユーザーページ | プロフィール <br> ユーザー情報表示 <br> ユーザーのフォロー/フォロー解除 |  |
 | 投稿アイデアの閲覧 (基本的なCRUD) | 投稿の詳細画面 <br> 　・投稿へのいいね <br> 　・投稿のブックマーク <br> 　・投稿のTwitter共有 <br><br> 投稿のランキング表示 <br> 　・ランダム表示 <br> 　・いいね数の多い順 <br> 　・コメント数の多い順 <br> 　・最新の投稿順 <br><br> 投稿の検索機能 <br> 　・投稿ジャンル検索 <br> 　・検索結果の並び替え <br> 　・タグ検索 <br> 　　・オートコンプリート機能 <br> 　・タイトル/投稿内容のキーワード検索 (曖昧検索) | [Tagify](https://github.com/yairEO/tagify) 利用 <br> meta-tags <br> kaminari |
 | アイデア投稿機能 (基本的なCRUD) | 下書き保存機能 <br> タグ登録 <br> 　・オートコンプリート機能 <br> 画像添付 <br> 引用投稿機能 | Carrierwave <br> fog-aws <br> [Tagify](https://github.com/yairEO/tagify) 利用 |

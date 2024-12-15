@@ -11,17 +11,17 @@ RSpec.describe Post, type: :model do
   # タグ関連
   let(:tags) { create_list(:tag, 5) }
   # 適切な画像ファイル
-  let(:correct_file1) { fixture_file_upload(Rails.root.join('spec/support/app_logo.png'), 'image/png') }
-  let(:correct_file2) { fixture_file_upload(Rails.root.join('spec/support/kat.jpg'), 'image/jpg') }
-  let(:correct_file3) { fixture_file_upload(Rails.root.join('spec/support/spec.jpeg'), 'image/jpeg') }
+  let(:correct_file1) { fixture_file_upload(Rails.root.join('spec/support/images/app_logo.png'), 'image/png') }
+  let(:correct_file2) { fixture_file_upload(Rails.root.join('spec/support/images/kat.jpg'), 'image/jpg') }
+  let(:correct_file3) { fixture_file_upload(Rails.root.join('spec/support/images/spec.jpeg'), 'image/jpeg') }
 
   # ERROR
   # 不適切な入力内容の投稿
   let(:no_title_post) { build(:no_title_post, post_genre: post_genre) }
   let(:no_content_post) { build(:no_content_post, post_genre: post_genre) }
-  let(:correct_file4) { fixture_file_upload(Rails.root.join('spec/support/cc.png'), 'image/png') }
+  let(:correct_file4) { fixture_file_upload(Rails.root.join('spec/support/images/cc.png'), 'image/png') }
   # 不適切な画像ファイル
-  let(:incorrect_file) { fixture_file_upload(Rails.root.join('spec/support/pg.webp'), 'image/webp') }
+  let(:incorrect_file) { fixture_file_upload(Rails.root.join('spec/support/images/pg.webp'), 'image/webp') }
   # TEST Success
   describe '[Model : Post] Success - バリデーションの確認' do
     context '適切な投稿内容で新規登録する場合、' do

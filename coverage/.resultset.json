@@ -76,7 +76,7 @@
           null,
           null,
           null,
-          null,
+          3,
           null,
           null,
           null,
@@ -124,6 +124,16 @@
           null,
           null,
           1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
           null
         ]
       },
@@ -193,6 +203,12 @@
           null,
           null,
           1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           null,
           null,
@@ -1303,21 +1319,18 @@
           1,
           2,
           2,
-          2,
           null,
           null,
           null,
           1,
           2,
           2,
-          2,
           null,
           null,
           null,
           1,
           2,
           null,
-          2,
           2,
           null,
           null
@@ -1735,6 +1748,36 @@
       "/myapp/app/helpers/users/profiles_helper.rb": {
         "lines": [
           1,
+          null
+        ]
+      },
+      "/myapp/spec/support/capybara.rb": {
+        "lines": [
+          1,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null
+        ]
+      },
+      "/myapp/spec/support/login_macros.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           null
         ]
       },
@@ -2555,8 +2598,13 @@
           null,
           null
         ]
+      },
+      "/myapp/spec/system/user_spec.rb": {
+        "lines": [
+
+        ]
       }
     },
-    "timestamp": 1733549038
+    "timestamp": 1734303969
   }
 }

@@ -1,4 +1,4 @@
-<%= link_to post_like_path(id: post.post_uid), id: "unlike-button-#{@post.post_uid}", data: { turbo_method: :delete } ,class: "flex" do %>
+<%= link_to post_like_path(id: post.post_uid), id: "unlike-button-#{@post.post_uid}", data: { turbo_method: :delete }, disabled_with: true, class: "flex" do %>
   <%= image_tag 'heart_fill', class: "w-6 h-6 mr-1" %>
   <span>
     x<%= post.post_likes.count %>

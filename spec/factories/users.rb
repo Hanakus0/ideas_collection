@@ -30,4 +30,10 @@ FactoryBot.define do
     # 129文字
     password { "YeCJX4JuObEZKivwDhYV1rifWb3PWPG2rhFplQIYzsSde4mqiVdgAZRp1D1OU0MZBbuAS9gUYyR99UdrQ4JiTAxtLsSgRolL79ely6jxsZ8YHB72onp8CxavsYGOlFK8F" }
   end
+
+  # google認証を利用するユーザー
+  factory :google_user, class: User do
+    sequence(:email) { |n| "TEST#{n}@example.com" }
+    password { "testuser123" }
+  end
 end

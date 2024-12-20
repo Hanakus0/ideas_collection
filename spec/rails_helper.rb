@@ -32,6 +32,7 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -81,4 +82,19 @@ RSpec.configure do |config|
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
     # Capybara.ignore_hidden_elements = false
   end
+
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Warden::Test::Helpers
+end
+
+OmniAuth.configure do |c|
+  c.test_mode = true
+  c.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    provider: "google_oauth2",
+    uid: "12345abcde",
+    info: {
+      email: "john@example.com",
+    }
+  })
 end

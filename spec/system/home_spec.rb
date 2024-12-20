@@ -27,7 +27,7 @@ RSpec.describe "ログイン前における操作", type: :system do
     end
     it "Googleログイン画面に遷移できる" do
       click_button('Continue with Google')
-      expect(page).to have_content('Google')
+      expect(page).to have_content('google アカウントによる認証に成功しました。')
     end
   end
   # フッター

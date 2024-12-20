@@ -53,7 +53,7 @@ RSpec.describe "ログイン前における操作", type: :system do
     end
   end
 
-  context "2)画面遷移のテスト" do
+  context "画面遷移のテスト" do
     it "1)ホーム画面に遷移できる" do
       expect(current_path).to eq root_path
       expect(page).to have_content('エンジニアのためのアプリ開発アイデア掲示板')

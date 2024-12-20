@@ -6,11 +6,10 @@ RSpec.describe "ログイン前における操作", type: :system do
     visit root_path
   end
   # ヘッダー
-  context "ヘッダーのテスト" do
-    it "ヘッダーの確認" do
-      expect(page).to have_content('みんなの投稿を見る')
-      expect(page).to have_content('ログイン')
-      expect(page).to have_content('新規会員登録')
+  context "Google認証のテスト" do
+    it "Googleログイン画面に遷移できる" do
+      click_button('Continue with Google')
+      expect(page).to have_content('google アカウントによる認証に成功しました。')
     end
   end
 end

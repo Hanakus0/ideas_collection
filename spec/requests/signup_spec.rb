@@ -1,5 +1,5 @@
-RSpec.describe "/XXXXX", type: :request do
-  describe 'GET /XXXXX' do
+RSpec.describe "/users/auth/google_oauth2/callback", type: :request do
+  describe 'GET|POST user_google_oauth2_omniauth_callback_path' do
     let(:google_user) { create(:google_user) }
 
     before do

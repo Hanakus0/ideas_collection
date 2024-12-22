@@ -73,7 +73,10 @@ jobs:
           bundle exec rake db:create RAILS_ENV=test
           bundle exec rake db:migrate RAILS_ENV=test
 
-      - name: Run RSpec tests  # RSpecテストの実行
+      - name: precompile assets  # Capybaraでのシステムテストに必須
         run: |
           bundle exec rake assets:precompile RAILS_ENV=test
+
+      - name: Run RSpec tests  # RSpecテストの実行
+        run: |
           bundle exec rspec

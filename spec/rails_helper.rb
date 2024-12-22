@@ -94,7 +94,7 @@ OmniAuth.configure do |c|
     provider: "google_oauth2",
     uid: "12345abcde",
     info: {
-      email: "john@example.com",
+      email: "john@example.com"
     }
   })
 end

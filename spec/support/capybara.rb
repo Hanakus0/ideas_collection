@@ -5,7 +5,7 @@ Capybara.register_driver :remote_chrome do |app|
   # コマンドラインからchromeを開く
   options.add_argument('--headless')
   options.add_argument('--disable-gpu')
-   # ディスクのメモリスペースを使う
+  # ディスクのメモリスペースを使う
   options.add_argument('--disable-dev-shm-usage')
   # chromeのウィンドウサイズ
   options.add_argument('--window-size=1440,990')

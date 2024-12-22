@@ -75,5 +75,5 @@ jobs:
 
       - name: Run RSpec tests  # RSpecテストの実行
         run: |
-          bundle exec rake assets:precompile RAILS_ENV=development
+          bundle exec rake assets:precompile RAILS_ENV=test
           bundle exec rspec

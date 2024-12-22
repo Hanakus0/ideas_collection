@@ -74,4 +74,6 @@ jobs:
           bundle exec rake db:migrate RAILS_ENV=test
 
       - name: Run RSpec tests  # RSpecテストの実行
-        run: bundle exec rspec
+        run: |
+          bundle exec rake assets:precompile
+          bundle exec rspec

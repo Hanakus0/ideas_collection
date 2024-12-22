@@ -76,10 +76,6 @@ group :development, :test do
   gem "pry-rails", "~> 0.3.11"
   # search N+1 problem
   gem "bullet"
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
 end
 
 group :development do

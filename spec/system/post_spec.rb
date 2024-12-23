@@ -4,6 +4,7 @@ RSpec.describe "新規投稿の操作", type: :system do
   # 共通処理
   before do
     visit root_path
+    # Google認証でログインしたユーザーでテストする
     click_button('Continue with Google')
     # details要素を開く
     find(:xpath, '/html/body/header/nav/div[1]/details[1]').click

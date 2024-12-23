@@ -50,7 +50,7 @@ jobs:
       selenium_chrome:
         image: selenium/standalone-chrome
         ports:
-          - 3333:4444
+          - 4444:4444
         env:
           SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
     steps:

@@ -50,9 +50,9 @@ jobs:
       selenium_chrome:
         image: selenium/standalone-chrome
         ports:
-          - 3001:4444
+          - 3333:4444
         env:
-          SELENIUM_DRIVER_URL: http://selenium_chrome:3001/wd/hub
+          SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
     steps:
       - name: Checkout code  # コードのチェックアウト
         uses: actions/checkout@v4

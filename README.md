@@ -36,6 +36,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
   - [機能一覧 (2024/12/4 時点)](#機能一覧-2024124-時点)
 - [技術構成](#技術構成)
   - [使用技術](#使用技術)
+  - [インフラ構成全体図](#インフラ構成全体図)
   - [ER図](#er図)
   - [画面遷移図](#画面遷移図)
 
@@ -105,9 +106,21 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | コード解析 <br> テスト | rubocop <br> brakeman <br> RSpec <br> simplecov |  |
 <br>
 
+## インフラ構成全体図
+[![Image from Gyazo](https://i.gyazo.com/ca0e74e21d5ebeadea47790489d27acc.png)](https://gyazo.com/ca0e74e21d5ebeadea47790489d27acc)
+<br>
+
+| # | 説明 | 補足・関連情報など |
+| --- | --- | --- | 
+| ① | develop ブランチにプッシュ | ・main ブランチには直接プッシュせず、develop ブランチからプルするのみ <br> ・必要に応じて別ブランチに分岐 |
+| ② |  |  |
+| ③ |  |  |
+| ④ |  |  |
+| ⑤ |  |  |
+| ⑥ |  |  |
+
 ## ER図
 <img src="./public/er_figure.png" width="75%">
 
 ## 画面遷移図
-Figma：https://www.figma.com/design/vz6XbnnnYwU8RdRK2PTKqH/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?m=auto&t=3V13DKribKRTLizi-1
-
+[![Image from Gyazo](https://i.gyazo.com/b070d4066e90d36fa1a23b037ece6b76.png)](https://gyazo.com/b070d4066e90d36fa1a23b037ece6b76)

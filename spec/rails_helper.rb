@@ -83,6 +83,8 @@ RSpec.configure do |config|
     # Capybara.ignore_hidden_elements = false
   end
 
+  Capybara.default_max_wait_time = 10
+
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Warden::Test::Helpers

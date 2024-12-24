@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CommentLike, type: :model do
+  before do
+    Post.destroy_all # テスト前にデータを削除
+    PostGenre.destroy_all # テスト前にデータを削除
+    PostRecord.destroy_all # テスト前にデータを削除
+  end
   # ユーザー
   let(:user1) { create(:user) }
   let(:user2) { create(:user) }

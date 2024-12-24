@@ -7,7 +7,8 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
+    # Bullet.enable        = true
+    Bullet.enable        = false
     Bullet.bullet_logger = true
     Bullet.raise         = true # raise an error if n+1 query occurs
   end
@@ -52,6 +53,7 @@ Rails.application.configure do
   # Unlike controllers, the mailer instance doesn't have any context about the
   # incoming request so you'll need to provide the :host parameter yourself.
   config.action_mailer.default_url_options = { host: "www.example.com" }
+  # config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

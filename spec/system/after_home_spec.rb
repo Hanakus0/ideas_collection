@@ -1,10 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "ログイン後における操作", type: :system do
-  # 変数
-  # let(:google_user) { create(:google_user) }
-  # 共通処理
   before do
+    Post.destroy_all # テスト前にデータを削除
+    PostGenre.destroy_all # テスト前にデータを削除
+    PostRecord.destroy_all # テスト前にデータを削除
+    # ホーム画面に遷移
     visit root_path
     click_button('Continue with Google')
   end

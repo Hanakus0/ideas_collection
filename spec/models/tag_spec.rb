@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
+  before do
+    Post.destroy_all # テスト前にデータを削除
+    PostGenre.destroy_all # テスト前にデータを削除
+    PostRecord.destroy_all # テスト前にデータを削除
+  end
+
   # Success
   # ユーザー
   let(:correct_user) { create(:correct_user) }

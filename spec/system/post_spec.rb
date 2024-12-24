@@ -70,7 +70,7 @@ RSpec.describe "新規投稿の操作", type: :system do
       end
     end
     context "セレクトボックスから投稿ジャンル「歴史・地理」を選択した場合、" do
-      it "「」が表示される" do
+      it "「歴史・地理」が表示される" do
         find(:xpath, '/html/body/div/form/select').click
         find(:xpath, '/html/body/div[1]/form/select/option[8]').click
         expect(page).to have_content('歴史・地理')
@@ -138,20 +138,16 @@ RSpec.describe "新規投稿の操作", type: :system do
     before do
       # 投稿本文の記入
       find(:xpath, '/html/body/div/form/textarea[1]').click
-      fill_in "アイデアの内容など", with: "lorem content"
+      fill_in "アイデアの内容など", with: "lorem title"
     end
     # Success
-    # context "した場合、" do
-    #   it "タイトル" do
-    #     # 投稿タイトルの記入
-    #     fill_in "タイトル", with: "lorem title"
-    #     # find(:xpath, '/html/body/div/form/div[7]/input').click
-    #     # find('input[type="submit"].py-3.w-3\\/12.bg-blue-500.text-white.hover\\:bg-blue-400').click
-    #     page.save_screenshot 'hoge1.png'
-    #     click_button("OK")
-    #     page.save_screenshot 'hoge2.png'
-    #     expect(page).to have_content("この投稿の閲覧数")
-    #   end
-    # end
+    context "した場合、" do
+      it "タイトル" do
+        # 投稿タイトルの記入
+        fill_in "タイトル", with: "lorem content"
+        click_button("OK")
+        expect(page).to have_content("新規投稿が作成されました")
+      end
+    end
   end
 end

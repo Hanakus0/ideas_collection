@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before do
+    Post.destroy_all # テスト前にデータを削除
+    PostGenre.destroy_all # テスト前にデータを削除
+    PostRecord.destroy_all # テスト前にデータを削除
+  end
+  
   let(:correct_user) { create(:correct_user) }
   let(:correct_user2) { create(:correct_user) }
   let(:build_correct_user) { build(:correct_user) }

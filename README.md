@@ -91,6 +91,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | 投稿へのコメント機能 (基本的なCRUD) | 投稿へのコメント <br> 投稿へのコメントに対していいね |  |
 | 他機能 | 独自ドメイン <br> PWA <br> カスタムエラーページ | [MuuMuuDomain](https://muumuu-domain.com/) 利用 <br> rambulance |
 <br>
+* 
 
 # 技術構成
 ## 使用技術

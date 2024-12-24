@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe "ログイン前における操作", type: :system do
   # 共通処理
   before do
+    Post.destroy_all # テスト前にデータを削除
+    PostGenre.destroy_all # テスト前にデータを削除
+    PostRecord.destroy_all # テスト前にデータを削除
+    # ホーム画面に遷移
     visit root_path
   end
   # ヘッダー

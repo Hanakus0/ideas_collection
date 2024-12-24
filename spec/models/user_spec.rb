@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
     PostGenre.destroy_all # テスト前にデータを削除
     PostRecord.destroy_all # テスト前にデータを削除
   end
-  
   let(:correct_user) { create(:correct_user) }
   let(:correct_user2) { create(:correct_user) }
   let(:build_correct_user) { build(:correct_user) }

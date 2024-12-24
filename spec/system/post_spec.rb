@@ -133,18 +133,16 @@ RSpec.describe "新規投稿の操作", type: :system do
       end
     end
   end
-  describe "投稿タイトルの入力" do
-    # 共通処理
+  describe "新規投稿のテスト" do
     before do
       # 投稿本文の記入
       find(:xpath, '/html/body/div/form/textarea[1]').click
+      fill_in "タイトル", with: "lorem content"
       fill_in "アイデアの内容など", with: "lorem title"
     end
     # Success
-    context "した場合、" do
-      it "タイトル" do
-        # 投稿タイトルの記入
-        fill_in "タイトル", with: "lorem content"
+    context "必須項目を入力後、OKボタンを押下すると" do
+      it "新規投稿が完了する" do
         click_button("OK")
         expect(page).to have_content("新規投稿が作成されました")
       end

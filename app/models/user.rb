@@ -15,7 +15,7 @@ class User < ApplicationRecord
   mount_uploader :profile_image, ProfileImageUploader
 
   ##############################################################################
-  # TODO:以下不要か？
+  # REVIEW:以下不要か？
   require "securerandom"
   # Table name: users
   # 保存前処理
@@ -68,9 +68,6 @@ class User < ApplicationRecord
   # column: account_name
   validates :account_name, presence: true, length: { minimum: 1, maximum: 20 }
 
-  #######################
-  # TODO: profile_image #
-  #######################
   # column: gender
   # validates :gender, presence: true, inclusion: { in: (0..2) }
   # column: introduction (文字数はXの自己紹介文160文字制限仕様に倣う)

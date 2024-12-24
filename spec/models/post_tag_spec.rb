@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe PostTag, type: :model do
   describe '[Model : PostTag] 外部キーの確認' do
+    before do
+      Post.destroy_all # テスト前にデータを削除
+      PostGenre.destroy_all # テスト前にデータを削除
+      PostRecord.destroy_all # テスト前にデータを削除
+    end
     # ユーザー
     let(:correct_user) { create(:correct_user) }
     # ポストジャンル関連

@@ -47,6 +47,12 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
+      selenium_chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+        env:
+          SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
     steps:
       - name: Checkout code  # コードのチェックアウト
         uses: actions/checkout@v4
@@ -67,5 +73,10 @@ jobs:
           bundle exec rake db:create RAILS_ENV=test
           bundle exec rake db:migrate RAILS_ENV=test
 
+      - name: precompile assets  # Capybaraでのシステムテストに必須
+        run: |
+          bundle exec rake assets:precompile RAILS_ENV=test
+
       - name: Run RSpec tests  # RSpecテストの実行
-        run: bundle exec rspec
+        run: |
+          bundle exec rspec

@@ -6,6 +6,13 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  config.after_initialize do
+    # Bullet.enable        = true
+    Bullet.enable        = false
+    Bullet.bullet_logger = true
+    Bullet.raise         = true # raise an error if n+1 query occurs
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.
@@ -46,6 +53,7 @@ Rails.application.configure do
   # Unlike controllers, the mailer instance doesn't have any context about the
   # incoming request so you'll need to provide the :host parameter yourself.
   config.action_mailer.default_url_options = { host: "www.example.com" }
+  # config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

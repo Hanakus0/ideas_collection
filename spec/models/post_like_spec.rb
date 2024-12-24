@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe PostLike, type: :model do
   describe '[Model : QuoteRelation] 引用投稿の確認' do
+    before do
+      Post.destroy_all # テスト前にデータを削除
+      PostGenre.destroy_all # テスト前にデータを削除
+      PostRecord.destroy_all # テスト前にデータを削除
+    end
     # ユーザー
     let(:user) { create(:user) }
     # 投稿1
@@ -19,7 +24,7 @@ RSpec.describe PostLike, type: :model do
     let(:post_like3) { create(:post_like, user: user, post: post3) }
 
     # TEST
-    context 'ユーザーが投稿に"いいねする際、' do
+    context 'ユーザーが投稿に"いいね"する際、' do
       it 'いいねレコードが生成される' do
         # 投稿1のブックマーク
         expect(post_like1).to be_valid

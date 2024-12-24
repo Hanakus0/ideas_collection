@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe QuoteRelation, type: :model do
   describe '[Model : QuoteRelation] 引用投稿の確認' do
+    before do
+      Post.destroy_all # テスト前にデータを削除
+      PostGenre.destroy_all # テスト前にデータを削除
+      PostRecord.destroy_all # テスト前にデータを削除
+    end
+
     # ポストジャンル関連
     let(:post_genre) { create(:post_genre) }
     let(:genre_tech) { create(:genre_tech) }

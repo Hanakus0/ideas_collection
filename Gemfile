@@ -74,6 +74,8 @@ group :development, :test do
   gem "omochi", "~> 0.1.0"
   gem "simplecov", "~> 0.22.0"
   gem "pry-rails", "~> 0.3.11"
+  # search N+1 problem
+  gem "bullet"
 end
 
 group :development do
@@ -88,4 +90,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "webdrivers"
 end

@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before do
+    Post.destroy_all # テスト前にデータを削除
+    PostGenre.destroy_all # テスト前にデータを削除
+    PostRecord.destroy_all # テスト前にデータを削除
+  end
   let(:correct_user) { create(:correct_user) }
   let(:correct_user2) { create(:correct_user) }
   let(:build_correct_user) { build(:correct_user) }
-  let(:correct_file) { fixture_file_upload(Rails.root.join('spec/support/app_logo.png'), 'image/png') }
+  let(:correct_file) { fixture_file_upload(Rails.root.join('spec/support/images/app_logo.png'), 'image/png') }
 
   describe '[Model : User] Success - バリデーションの確認' do
     # Signup
@@ -81,7 +86,7 @@ RSpec.describe User, type: :model do
     let(:build_incorrect_email_user) { build(:incorrect_email_user) }
     let(:build_incorrect_password_user1) { build(:incorrect_password_user1) }
     let(:build_incorrect_password_user2) { build(:incorrect_password_user2) }
-    let(:incorrect_file) { fixture_file_upload(Rails.root.join('spec/support/pg.webp'), 'image/webp') }
+    let(:incorrect_file) { fixture_file_upload(Rails.root.join('spec/support/images/pg.webp'), 'image/webp') }
 
     # Signup
     context '不適切な email で新規登録する場合、' do

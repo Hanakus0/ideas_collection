@@ -3,13 +3,13 @@
   <div id="comment-<%= comment.id %>" class="chat chat-start">
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
-        <%= link_to users_profile_path(comment.user) do %>
+        <%= link_to users_profile_path(comment.user), data: { turbo: false } do %>
           <%= image_tag comment.decorate.comment_user_image %>
         <% end %>
       </div>
     </div>
     <div class="chat-header">
-      <%= link_to users_profile_path(comment.user) do %>
+      <%= link_to users_profile_path(comment.user), data: { turbo: false } do %>
         <p class="text-xs">
           <%= comment.decorate.get_account_name %>
         </p>
@@ -32,13 +32,13 @@
   <div id="comment-<%= comment.id %>" class="chat chat-end">
     <div class="chat-image avatar">
       <div class="w-10 rounded-full">
-        <%= link_to users_profile_path(comment.user) do %>
+        <%= link_to users_profile_path(comment.user), data: { turbo: false } do %>
           <%= image_tag comment.decorate.comment_user_image %>
         <% end %>
       </div>
     </div>
     <div class="chat-header break-words">
-      <%= link_to users_profile_path(comment.user) do %>
+      <%= link_to users_profile_path(comment.user), data: { turbo: false } do %>
         <p class="text-xs">
           <%= comment.decorate.get_account_name %>
         </p>
@@ -47,7 +47,7 @@
         </p>
       <% end %>
     </div>
-    <div class="chat-bubble">
+    <div class="chat-bubble break-words">
       <%= comment.content %>
     </div>
     <%# コメントへのいいね %>

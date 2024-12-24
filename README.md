@@ -36,6 +36,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
   - [機能一覧 (2024/12/4 時点)](#機能一覧-2024124-時点)
 - [技術構成](#技術構成)
   - [使用技術](#使用技術)
+  - [インフラ構成全体図](#インフラ構成全体図)
   - [ER図](#er図)
   - [画面遷移図](#画面遷移図)
 
@@ -90,6 +91,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | 投稿へのコメント機能 (基本的なCRUD) | 投稿へのコメント <br> 投稿へのコメントに対していいね |  |
 | 他機能 | 独自ドメイン <br> PWA <br> カスタムエラーページ | [MuuMuuDomain](https://muumuu-domain.com/) 利用 <br> rambulance |
 <br>
+* 
 
 # 技術構成
 ## 使用技術
@@ -98,16 +100,28 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | サーバーサイド | Ruby 3.2.3 <br> Ruby on Rails 7.2.1 |  |
 | フロントエンド | Ruby on Rails (ERB) <br> JavaScript (Stimulus) |  |
 | CSSフレームワーク | Tailwindcss <br> daisyUI | [CreativeTim](https://www.creative-tim.com/twcomponents?ref=ct-lp-resources) 利用|
-| データベースサーバー | PostgreSQL | Render.com (Basic-256mb) 利用 |
+| データベースサーバー | PostgreSQL | Render.com (Basic-256mb) 利用 <br> 検証用・本番用兼用 |
 | ファイルサーバー | AWS S3 | 無料利用枠 利用 |
-| アプリケーションサーバー | Render.com | Free 利用 |
+| アプリケーションサーバー | Render.com | 検証用：Free 利用 <br> 本番： Stater 利用 |
 | バージョン管理ツール | Git <br> GitHub |  |
 | コード解析 <br> テスト | rubocop <br> brakeman <br> RSpec <br> simplecov |  |
 <br>
 
+## インフラ構成全体図
+[![Image from Gyazo](https://i.gyazo.com/ca0e74e21d5ebeadea47790489d27acc.png)](https://gyazo.com/ca0e74e21d5ebeadea47790489d27acc)
+<br>
+
+| # | 説明 | 補足・関連情報など |
+| --- | --- | --- | 
+| ① | develop ブランチにプッシュ | ・main ブランチには直接プッシュせず、develop ブランチからプルするのみ <br> ・必要に応じて別ブランチに分岐 |
+| ② | GitHub Actions で以下のワークフローを実行 <br> ・rubocop  <br> ・brakeman <br> ・RSpec | 以下のタイミングで実行 <br> ・develop ブランチにプッシュ時  <br> ・main ブランチにプルリクエスト時 |
+| ③ | 検証用 web サーバー | develop ブランチをデプロイ <br> ・main ブランチにプルリクエストする前の検証に使用 |
+| ④ | 本番 web サーバー | main ブランチをデプロイ <br> ・ユーザーに使用していただくサーバー <br> ・独自ドメインはこちらだけに適用 |
+| ⑤ | PostgresSQL | 検証用・本番用兼用 <br> ※無料枠が 30 日間のみのため |
+| ⑥ | Amazon S3 | プロフ画像、投稿添付画像の保存のため |
+
 ## ER図
-<img src="./public/er_figure.png" width="75%">
+[![Image from Gyazo](https://i.gyazo.com/f986f64dcee07cf119ccc80e59d00f10.png)](https://gyazo.com/f986f64dcee07cf119ccc80e59d00f10)
 
 ## 画面遷移図
-Figma：https://www.figma.com/design/vz6XbnnnYwU8RdRK2PTKqH/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?m=auto&t=3V13DKribKRTLizi-1
-
+[![Image from Gyazo](https://i.gyazo.com/b070d4066e90d36fa1a23b037ece6b76.png)](https://gyazo.com/b070d4066e90d36fa1a23b037ece6b76)

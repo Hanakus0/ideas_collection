@@ -99,9 +99,9 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | サーバーサイド | Ruby 3.2.3 <br> Ruby on Rails 7.2.1 |  |
 | フロントエンド | Ruby on Rails (ERB) <br> JavaScript (Stimulus) |  |
 | CSSフレームワーク | Tailwindcss <br> daisyUI | [CreativeTim](https://www.creative-tim.com/twcomponents?ref=ct-lp-resources) 利用|
-| データベースサーバー | PostgreSQL | Render.com (Basic-256mb) 利用 |
+| データベースサーバー | PostgreSQL | Render.com (Basic-256mb) 利用 <br> 検証用・本番用兼用 |
 | ファイルサーバー | AWS S3 | 無料利用枠 利用 |
-| アプリケーションサーバー | Render.com | Free 利用 |
+| アプリケーションサーバー | Render.com | 検証用：Free 利用 <br> 本番： Stater 利用 |
 | バージョン管理ツール | Git <br> GitHub |  |
 | コード解析 <br> テスト | rubocop <br> brakeman <br> RSpec <br> simplecov |  |
 <br>
@@ -113,14 +113,14 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | # | 説明 | 補足・関連情報など |
 | --- | --- | --- | 
 | ① | develop ブランチにプッシュ | ・main ブランチには直接プッシュせず、develop ブランチからプルするのみ <br> ・必要に応じて別ブランチに分岐 |
-| ② |  |  |
-| ③ |  |  |
-| ④ |  |  |
-| ⑤ |  |  |
-| ⑥ |  |  |
+| ② | GitHub Actions で以下のワークフローを実行 <br> ・rubocop  <br> ・brakeman <br> ・RSpec | 以下のタイミングで実行 <br> ・develop ブランチにプッシュ時  <br> ・main ブランチにプルリクエスト時 |
+| ③ | 検証用 web サーバー | develop ブランチをデプロイ <br> ・main ブランチにプルリクエストする前の検証に使用 |
+| ④ | 本番 web サーバー | main ブランチをデプロイ <br> ・ユーザーに使用していただくサーバー <br> ・独自ドメインはこちらだけに適用 |
+| ⑤ | PostgresSQL | 検証用・本番用兼用 <br> ※無料枠が 30 日間のみのため |
+| ⑥ | Amazon S3 | プロフ画像、投稿添付画像の保存のため |
 
 ## ER図
-<img src="./public/er_figure.png" width="75%">
+[![Image from Gyazo](https://i.gyazo.com/f986f64dcee07cf119ccc80e59d00f10.png)](https://gyazo.com/f986f64dcee07cf119ccc80e59d00f10)
 
 ## 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/b070d4066e90d36fa1a23b037ece6b76.png)](https://gyazo.com/b070d4066e90d36fa1a23b037ece6b76)

@@ -52,7 +52,7 @@ class PostsController < ApplicationController
     quote_post_param = params.require(:post)[:quote_post]
     # 引用投稿した投稿の取得
     @quote_post = Post.find(quote_post_param) if quote_post_param
-    # 引用投稿した投稿の取得
+    # 投稿に設定しているタグの取得
     @post_tags = modify_post_tags
 
     if @post.save
@@ -74,7 +74,7 @@ class PostsController < ApplicationController
   def update
     # ジャンルの更新
     @post.post_genre = get_post_genre
-    # 引用投稿した投稿の取得
+    # 投稿に設定しているタグの取得
     @post_tags = modify_post_tags
 
     if @post.update(update_params)
@@ -105,7 +105,7 @@ class PostsController < ApplicationController
   end
 
   private ###################################################################
-    # 投稿一覧の取得
+    # 特定の投稿の取得
     def set_post
       @post = Post.find_by(post_uid: params[:id])
     end
@@ -126,6 +126,7 @@ class PostsController < ApplicationController
                  }
     end
 
+    # 検索時のパラメータ取得
     def search_post_params
       params[:q].permit(:post_genre_id, :how_order, :contents, :tags)
     end
@@ -137,7 +138,7 @@ class PostsController < ApplicationController
       PostGenre.find(get_post_genre_id)
     end
 
-    # Only allow a list of trusted parameters through.
+    # 投稿内容のストロングパラメータ
     def post_params
       params.require(:post).permit(:title, :content, { images: [] }, :images_cache, :draft_flg).merge(post_uid: gen_secure_id, user_id: current_user.id)
     end
@@ -153,15 +154,12 @@ class PostsController < ApplicationController
     # 更新対象のカラムのみ
     def update_params
       update_params = params.require(:post).permit(:title, :content, { images: [] }, :remove_images, :draft_flg)
-
       # アップロードされた画像がある場合
       new_images_ary = update_params[:images].select { |image| image.class == ActionDispatch::Http::UploadedFile }
       # 新規にアップロードされた画像だけを投稿画像とする
       update_params[:images] = new_images_ary if new_images_ary.present?
-
       # チェックボックスに応じて投稿画像を削除する
       update_params[:images] = nil if update_params[:remove_images] === 1
-
       update_params # return
     end
 

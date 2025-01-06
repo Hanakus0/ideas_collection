@@ -117,7 +117,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 <br>
 
 ## インフラ構成全体図
-[![Image from Gyazo](https://i.gyazo.com/ca0e74e21d5ebeadea47790489d27acc.png)](https://gyazo.com/ca0e74e21d5ebeadea47790489d27acc)
+[![Image from Gyazo](https://i.gyazo.com/0d396f444b01bad76aab4fa2444c1dad.png)](https://gyazo.com/0d396f444b01bad76aab4fa2444c1dad)
 <br>
 
 | # | 説明 | 補足・関連情報など |
@@ -128,6 +128,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | ④ | 本番 web サーバー | main ブランチをデプロイ <br> ・ユーザーに使用していただくサーバー <br> ・独自ドメインはこちらだけに適用 |
 | ⑤ | PostgresSQL | 検証用・本番用兼用 <br> ※無料枠が 30 日間のみのため |
 | ⑥ | Amazon S3 | プロフ画像、投稿添付画像の保存のため |
+| ⑦ | GAS | Render.com の無料枠利用におけるスリープ対策 <br>  ・GAS より Web サーバーにリクエストを送りスリープしないようにしている |
 
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/f986f64dcee07cf119ccc80e59d00f10.png)](https://gyazo.com/f986f64dcee07cf119ccc80e59d00f10)

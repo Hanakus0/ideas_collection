@@ -13,11 +13,4 @@ RSpec.describe "ログイン前における操作", type: :system do
     end
   end
   # TODO: メール認証サインアップのテスト
-  # context "メールアドレス&パスワードでのサインアップのテスト" do
-  # 新規会員登録画面に遷移
-  # before do
-  #   click_link('新規会員登録')
-  # end
-  # https://gist.github.com/trendwithin/1d2a6721c89d5bf91f51
-  # end
 end

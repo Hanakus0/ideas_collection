@@ -2,7 +2,7 @@ window.addEventListener("turbo:load", function() {
   const fileInput = document.querySelector('input[type="file"]');
   const preview = document.querySelector('#image-preview');
   // 要素が読み込めない画面の場合はコンソールでエラーをはかないように防ぐ
-  if (!fileInput || !preview) { return false;}
+  if (!fileInput || !preview) { return false; }
 
   fileInput.addEventListener('change', function() {
     const file = fileInput.files[0];

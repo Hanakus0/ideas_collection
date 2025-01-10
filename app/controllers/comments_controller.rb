@@ -18,14 +18,14 @@ class CommentsController < ApplicationController
   end
 
   private #######################################################
-  # 対象の
+  # コメント対象の投稿を取得
   def set_post
     post_uid_param = params[:post_id]
     @post = Post.find_by(post_uid: post_uid_param)
   end
 
+  # コメント内容を取得
   def set_comment
-    # params[:comment][:content]
     params.require(:comment).permit(:content)
   end
 end

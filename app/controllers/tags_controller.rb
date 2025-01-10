@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  # tagifyのオートコンプリート機能用処理
   def search
     q = params[:value]
     @tags = Tag.where("name LIKE ?", "%#{ q }%")

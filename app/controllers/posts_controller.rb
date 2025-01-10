@@ -8,7 +8,8 @@ class PostsController < ApplicationController
   # 編集権限の確認
   before_action :is_match_login_user, only: %i[ edit update destroy ]
 
-  # GET /posts
+  # 投稿検索結果画面
+  # デフォルトは全件表示
   def index
     # フラグ無し
     @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET
+  # 投稿詳細画面表示
   def show
     # ビューをカウント
     postRecord = PostRecord.find_by(post_id: @post)
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
   end
 
-  # GET /posts/new
+  # 新規投稿画面表示
   def new
     @post = Post.new
     @quote_post = Post.find_by(post_uid: params[:quote_post_id])
@@ -40,11 +41,10 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1/edit
-  def edit
-  end
+  # 投稿編集画面表示
+  def edit; end
 
-  # POST /posts
+  # 投稿登録処理処理
   def create
     # 親クラスからインスタンスを取得しレコードを生成
     @post = get_post_genre.posts.build(post_params)
@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT
+  # 投稿更新処理
   def update
     # ジャンルの更新
     @post.post_genre = get_post_genre
@@ -87,7 +87,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE
+  # 投稿削除処理
   def destroy
     @post.destroy!
     flash[:success] = t("messages.destroy_post_success")
@@ -105,7 +105,7 @@ class PostsController < ApplicationController
   end
 
   private ###################################################################
-    # 特定の投稿の取得
+    # 対象の投稿の取得
     def set_post
       @post = Post.find_by(post_uid: params[:id])
     end

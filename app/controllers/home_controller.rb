@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   before_action :set_posts_num
 
+  # 投稿一覧を表示
   def index
     # ログイン後
     if user_signed_in?
@@ -28,14 +29,16 @@ class HomeController < ApplicationController
   end
 
   private #################################
+  # 投稿一覧画面で表示する投稿数
   def set_posts_num
     @posts_num = 100
   end
 
-  # 投稿数が@posts_numに満たない場合は空を追加
+  # 空の投稿を追加
   def add_blank_post(posts_ary)
     diff_num = @posts_num - posts_ary.size
     result = posts_ary.to_a
+    # 投稿数が@posts_numに満たない場合は空を追加
     diff_num.times do
       result.push(Post.none)
     end

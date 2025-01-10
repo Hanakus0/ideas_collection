@@ -6,13 +6,16 @@ class Users::ProfilesController < ApplicationController
   # 編集権限の確認
   before_action :is_match_login_user, only: %i[ edit update ]
 
+  # ユーザーページを表示
   def show
     @user_posts = @user.posts.where(draft_flg: 0).order(created_at: :desc)
   end
 
+  # ユーザー編集ページを表示
   def edit
   end
 
+  # ユーザーページを更新
   def update
     if @user.update(profile_params)
       flash[:success] = t("messages.update_profile_success")

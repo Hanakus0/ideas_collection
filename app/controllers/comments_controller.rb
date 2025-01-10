@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   # 対象ポストの取得
   before_action :set_post
 
+  # 投稿へのコメント追加
   def create
     # 親クラスからインスタンスを取得しレコードを保存
     set_comment
@@ -17,7 +18,7 @@ class CommentsController < ApplicationController
   end
 
   private #######################################################
-
+  # 対象の
   def set_post
     post_uid_param = params[:post_id]
     @post = Post.find_by(post_uid: post_uid_param)

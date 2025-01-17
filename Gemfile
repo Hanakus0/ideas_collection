@@ -47,7 +47,7 @@ gem "meta-tags", "~> 2.22", ">= 2.22.1"
 gem "rambulance", "~> 3.1"
 # aws s3 with carrierwave
 gem "carrierwave", "~> 3.0"
-gem "fog-aws", "~> 3.29"
+gem "fog-aws", "~> 3.30"
 # For GoogleOauth2 gems
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"

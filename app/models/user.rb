@@ -15,9 +15,8 @@ class User < ApplicationRecord
   mount_uploader :profile_image, ProfileImageUploader
 
   ##############################################################################
-  # REVIEW:以下不要か？
+  # REVIEW: 以下不要か？
   require "securerandom"
-  # Table name: users
   # 保存前処理
   before_save :check_secure_id
   before_save :check_screen_id
@@ -32,26 +31,30 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :posts
+
   # table: post_likes
   has_many :post_likes, dependent: :destroy
   has_many :like_posts, through: :post_likes, source: :post, dependent: :destroy
+
   # table: bookmarks
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post, dependent: :destroy
+
   # table: comments
   has_many :comments, dependent: :destroy
   # hmt型
   # ユーザーが削除されてもコメントは残す
   has_many :comment_posts, through: :comments, source: :post
+
   # table: comment_likes
   has_many :comment_likes, dependent: :destroy
   has_many :liked_comments, through: :comment_likes, source: :comment
+
   # table: follows
   has_many :follower_relationships, class_name:  "Follow",
                                     foreign_key: "follower_id",
                                     dependent: :destroy
   has_many :followees, through: :follower_relationships, source: :followee
-  # table: follows
   has_many :followee_relationships, class_name:  "Follow",
                                     foreign_key: "followee_id",
                                     dependent: :destroy
@@ -68,8 +71,6 @@ class User < ApplicationRecord
   # column: account_name
   validates :account_name, presence: true, length: { minimum: 1, maximum: 20 }
 
-  # column: gender
-  # validates :gender, presence: true, inclusion: { in: (0..2) }
   # column: introduction (文字数はXの自己紹介文160文字制限仕様に倣う)
   validates :introduction, length: { maximum: 160 }, allow_blank: true
 
@@ -112,7 +113,7 @@ class User < ApplicationRecord
     end
   end
 
-  # URL の :id の部分に id 以外を指定
+  # URLに任意のパラメータでルーティング
   def to_param
     screen_name
   end

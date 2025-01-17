@@ -7,6 +7,7 @@ class PostSearchForm
   attribute :contents, :string
   attribute :tags, :string
 
+  # 投稿の検索処理
   def search
     # 指定が無い場合の検索対策として全件検索をしておく
     result = Post.all.where(draft_flg: 0)

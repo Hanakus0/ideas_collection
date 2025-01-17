@@ -91,4 +91,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "capybara-email"
+  gem "email_spec"
 end

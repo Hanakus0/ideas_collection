@@ -1,11 +1,7 @@
 class BookmarkDecorator < Draper::Decorator
   delegate_all
 
-  #############################
-  ## クラスメソッド: bookmark ##
-  #############################
-  # クラスメソッド: bookmarks
-  # ブックマークした投稿に含まれるか否か
+  # ブックマークした投稿に含まれるか判定
   def bookmark?(post)
     bookmark_posts.include?(post)
   end

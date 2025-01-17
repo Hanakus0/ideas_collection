@@ -15,12 +15,12 @@ class PostDecorator < Draper::Decorator
     end
   end
 
-  # 閲覧者 == 投稿者本人か
+  # 投稿が下書きかを判定
   def post_status?
     object.draft_flg == "draft"
   end
 
-  # 閲覧者 == 投稿者本人か
+  # 投稿者が閲覧者と一致するか判定
   def post_owner?(current_user)
     object.user.id == current_user.id unless current_user.blank?
   end

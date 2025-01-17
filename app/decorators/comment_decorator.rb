@@ -16,7 +16,7 @@ class CommentDecorator < Draper::Decorator
     object.user.screen_name
   end
 
-  # コメントユーザー画像
+  # コメントユーザー画像の取得
   def comment_user_image
     if object.user.profile_image?
       object.user.profile_image.url

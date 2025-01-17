@@ -11,7 +11,7 @@ class UserDecorator < Draper::Decorator
     PostLike.where(post: object.posts).count
   end
 
-  # 全ての投稿のいいね総数
+  # 全ての投稿の閲覧総数
   def user_post_views
     PostRecord.where(post_id: object.posts).pluck(:view_count).sum
   end

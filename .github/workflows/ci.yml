@@ -78,5 +78,6 @@ jobs:
           bundle exec rake assets:precompile RAILS_ENV=test
 
       - name: Run RSpec tests  # RSpecテストの実行
-        run: |
-          bundle exec rspec
+        run: bundle exec rspec
+        env:
+          MAILER_SENDER: no.necessary.reply.to.this.mail@gmail.com

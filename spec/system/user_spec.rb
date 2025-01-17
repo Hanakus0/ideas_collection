@@ -22,7 +22,7 @@ RSpec.describe "ログイン前における操作", type: :system do
       click_button 'アカウント登録'
 
       # メール受診前に操作しないようにスリープを挟む
-      sleep 5
+      sleep 10
       open_email('testuser@example.com')
       # open_email('testuser@example.com', { with_subject: 'メールアドレス確認メール' })
       expect(current_email).to have_content 'g6Hjg7zjg6vjgqLjg4njg6zjgrnoqo3oqLw8L2E+44CRPC9wPg0KPC9icj4N'

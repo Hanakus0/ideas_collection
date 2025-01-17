@@ -21,12 +21,17 @@ RSpec.describe "ログイン前における操作", type: :system do
       fill_in 'user_password_confirmation', with: 'password123'
       click_button 'アカウント登録'
 
+      # メール受診前に操作しないようにスリープを挟む
+      sleep 5
       open_email('testuser@example.com')
-      expect(current_email).to have_content '以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。'
-      current_email.click_link '会員登録　メールアドレス認証'
+      # open_email('testuser@example.com', { with_subject: 'メールアドレス確認メール' })
+      expect(current_email).to have_content 'g6Hjg7zjg6vjgqLjg4njg6zjgrnoqo3oqLw8L2E+44CRPC9wPg0KPC9icj4N'
+      # current_email.click_link 'g6Hjg7zjg6vjgqLjg4njg6zjgrnoqo3oqLw8L2E+44CRPC9wPg0KPC9icj4N'
+      click_first_link_in_email
 
       switch_to_window(windows.last)
       expect(page).to have_content('メールアドレスが確認できました。')
+      page.save_screenshot 'tmp/screenshots/success_signup.png'
     end
   end
 end

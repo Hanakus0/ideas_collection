@@ -128,7 +128,7 @@ https://ja.fonts2u.com/gn-kmbfont-ub-newstylekanaa.%E3%83%95%E3%82%A9%E3%83%B3%E
 | ④ | 本番 web サーバー | main ブランチをデプロイ <br> ・ユーザーに使用していただくサーバー <br> ・独自ドメインはこちらだけに適用 |
 | ⑤ | PostgresSQL | 検証用・本番用兼用 <br> ※無料枠が 30 日間のみのため |
 | ⑥ | Amazon S3 | プロフ画像、投稿添付画像の保存のため |
-| ⑦ | GAS | Render.com の無料枠利用におけるスリープ対策 <br>  ・GAS より Web サーバーにリクエストを送りスリープしないようにしている |
+| ⑦ | GAS | Render.com の無料枠利用におけるスリープ対策 <br> ・GAS より Web サーバーにリクエストを送りスリープしないようにしている <br> ・[GASのコード](https://github.com/Hanakus0/orig_tools/tree/main/gas_project/apps_script/render_sleep_measures) |
 
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/f986f64dcee07cf119ccc80e59d00f10.png)](https://gyazo.com/f986f64dcee07cf119ccc80e59d00f10)

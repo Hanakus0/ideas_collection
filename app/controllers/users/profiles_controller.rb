@@ -8,7 +8,7 @@ class Users::ProfilesController < ApplicationController
 
   # ユーザーページを表示
   def show
-    @user_posts = @user.posts.where(draft_flg: 0).order(created_at: :desc)
+    @user_posts = @user.posts.where(draft_flg: 0).includes(:tags, :post_record, :comments, :post_likes).order(created_at: :desc)
   end
 
   # ユーザー編集ページを表示

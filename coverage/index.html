@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-01-17T21:27:00+09:00">2025-01-17T21:27:00+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-01-19T19:48:07+09:00">2025-01-19T19:48:07+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -1444,7 +1444,7 @@
 
             
 
-            <code class="ruby">      published_posts = Post.where(draft_flg: 0)</code>
+            <code class="ruby">      published_posts = Post.where(draft_flg: 0).includes(:user)</code>
           </li>
         </div>
       
@@ -2067,7 +2067,7 @@
 
             
 
-            <code class="ruby">    @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)</code>
+            <code class="ruby">    @posts = Post.where(draft_flg: 0).includes(:tags, :post_record, :comments, :post_likes, :user).order(created_at: :desc).page(params[:page]).per(10)</code>
           </li>
         </div>
       
@@ -39213,7 +39213,7 @@
 
             
 
-            <code class="ruby">      # メール送信前に操作しないようにスリープを挟む</code>
+            <code class="ruby">      # メール受診前に操作しないようにスリープを挟む</code>
           </li>
         </div>
       
@@ -39225,7 +39225,7 @@
 
             
 
-            <code class="ruby">      sleep 5</code>
+            <code class="ruby">      sleep 10</code>
           </li>
         </div>
       

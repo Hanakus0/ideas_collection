@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # デフォルトは全件表示
   def index
     # フラグ無し
-    @posts = Post.where(draft_flg: 0).order(created_at: :desc).page(params[:page]).per(10)
+    @posts = Post.where(draft_flg: 0).includes(:tags, :post_record, :comments, :post_likes, :user).order(created_at: :desc).page(params[:page]).per(10)
 
     # 検索なら検索を実行
     if params[:q].present? && params[:q][:search_flg].present?

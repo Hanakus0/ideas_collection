@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     # ログイン後
     if user_signed_in?
       # 公開済みの投稿だけを取得
-      published_posts = Post.where(draft_flg: 0)
+      published_posts = Post.where(draft_flg: 0).includes(:user)
 
       # ランダム
       random_posts = published_posts.order("RANDOM()").limit(@posts_num)

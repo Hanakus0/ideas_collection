@@ -12,6 +12,16 @@ RSpec.describe "ログイン前における操作", type: :system do
       expect(page).to have_content('google アカウントによる認証に成功しました。')
     end
   end
+  context "Google認証のテスト" do
+    it "Google認証が成功しログアウトできる" do
+      click_button('Continue with Google')
+      expect(page).to have_content('google アカウントによる認証に成功しました。')
+      # ヘッダーメニューよりログアウト
+      find(:xpath, '/html/body/header/nav/div[1]/details[2]').click
+      find(:xpath, '/html/body/header/nav/div[1]/details[2]/ul/li[3]/a').click
+      expect(page).to have_content('ログアウトしました。')
+    end
+  end
   # TODO: メール認証サインアップのテスト
   context "メール認証サインアップのテスト" do
     it "メール認証が成功しサインアップできる" do

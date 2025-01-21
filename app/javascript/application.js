@@ -3,3 +3,4 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 
 import "./profile_image_preview"
+import "./post_images_preview"

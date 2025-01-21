@@ -19,7 +19,7 @@ RSpec.describe Tag, type: :model do
 
   describe '[Model : Tag] Success - バリデーションの確認' do
     context '適切な投稿内容で新規登録する場合、' do
-      it '必須項目ではない画像を未入力でも投稿できる' do
+      it 'タグを追加した投稿が投稿できる' do
         # タグを追加
         correct_post.tags << tags
 

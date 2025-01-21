@@ -12,6 +12,7 @@ FactoryBot.define do
     password { "password12345" }
     confirmed_at { Time.now } # confirmable
   end
+
   # emailが不適切なサインアップ
   factory :incorrect_email_user, class: User do
     email { "aaaaa" }

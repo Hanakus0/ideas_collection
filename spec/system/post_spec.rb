@@ -133,11 +133,4 @@ RSpec.describe "新規投稿の操作", type: :system do
       end
     end
   end
-
-  # TODO: 新規投稿のテストの実施
-  # describe "新規投稿のテスト" do
-  # end
-  # # Error
-  # describe "バリデーションのチェック" do
-  # end
 end

@@ -70,10 +70,18 @@
   <span class="count text-gray-400 text-xs font-semibold">
     <%= t('form.post.warning.images2') %>
   </span>
-  <% post.images.each do |image| %>
-    <%= hidden_field :post, :images, multiple: true, value: image.identifier %>
-  <% end %>
-  <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true %>
+  <div class="grid grid-cols-3 gap-2 w-full">
+    <% post.images.each do |image| %>
+        <div class="relative overflow-hidden rounded-xl max-h-[10rem]" id="cache-images">
+          <%= image_tag image.url, class: "h-full w-auto"  %>
+        </div>
+      <%= hidden_field :post, :images, multiple: true, value: image.identifier %>
+      <%= hidden_field_tag "post[images][]", image.identifier %>
+    <% end %>
+  </div>
+  <div id="image-preview" class="my-4 grid grid-cols-3 gap-2 w-full"></div>
+  <%= f.file_field :images, class:"file-input file-input-bordered file-input-md w-full max-w-xs", multiple: true, onchange: "previewImages()" %>
+  <%= f.hidden_field :images_cache %>
   <% if post.images.present? %>
     <label>
       <%= f.check_box :remove_images %>

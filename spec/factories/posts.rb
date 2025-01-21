@@ -35,6 +35,18 @@ FactoryBot.define do
     draft_flg { 0 }
   end
 
+  # 適切な投稿 (下書き)
+  factory :draft_post, class: Post do
+    association :user
+    association :post_genre
+
+    post_uid { SecureRandom.alphanumeric }
+    title { "下書きの投稿" }
+    content { "下書きの投稿ですよ" }
+    images { [] }
+    draft_flg { 1 }
+  end
+
   # タイトルが無い不適切な入力内容での投稿
   factory :no_title_post, class: Post do
     association :user

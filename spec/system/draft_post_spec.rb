@@ -8,7 +8,7 @@ RSpec.describe "ログイン後における操作 - ", type: :system do
     click_button('Continue with Google')
   end
 
-  # ポストジャンル関連
+  # ログイン中のユーザーを取得
   let!(:now_user) { User.last }
   # ポストジャンル関連
   let!(:post_genre) { create(:post_genre) }

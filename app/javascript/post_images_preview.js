@@ -5,7 +5,7 @@ document.addEventListener("turbo:load", function() {
   function previewImages() {
     let preview = document.getElementById('image-preview');
     preview.innerHTML = '';
-    preview.classList.add('bg-cyan-100', 'p-2');
+    preview.classList.add('bg-cyan-100', 'p-2', 'rounded-xl');
     let files = document.querySelector('input[type=file]').files;
 
     // 画像を一枚ずつプレビュー表示するように対策

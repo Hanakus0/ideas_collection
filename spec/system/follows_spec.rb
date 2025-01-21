@@ -17,7 +17,6 @@ RSpec.describe "ログイン後における操作 - ", type: :system do
 
   # Success
   describe "他のユーザーのプロフィール画面を表示する場合、" do
-
     it "フォローボタンが確認できる。" do
       expect(page).to have_content('フォローする')
     end
